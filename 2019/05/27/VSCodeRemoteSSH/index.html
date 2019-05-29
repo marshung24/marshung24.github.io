@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>VS Codey遠端開發套件：Remote-SSH | Mars&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="說明使用VS Codey套件Remote-SSH實現遠端開發 安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configuration">
+<meta name="keywords" content="IDE,VS Code,coding,dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS Codey遠端開發套件：Remote-SSH">
+<meta property="og:url" content="https://marshung24.github.io/2019/05/27/VSCodeRemoteSSH/index.html">
+<meta property="og:site_name" content="Mars&#39;s Blog">
+<meta property="og:description" content="說明使用VS Codey套件Remote-SSH實現遠端開發 安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configuration">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://marshung24.github.io/2019/05/27/VSCodeRemoteSSH/install-remote-ssh.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/05/27/VSCodeRemoteSSH/config-ssh.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/05/27/VSCodeRemoteSSH/connect-to-remote.png">
+<meta property="og:updated_time" content="2019-05-29T14:49:07.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VS Codey遠端開發套件：Remote-SSH">
+<meta name="twitter:description" content="說明使用VS Codey套件Remote-SSH實現遠端開發 安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configuration">
+<meta name="twitter:image" content="https://marshung24.github.io/2019/05/27/VSCodeRemoteSSH/install-remote-ssh.png">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+
+</head>
+</html>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class href="/index.html">Home</a></li>
+        
+          <li><a class href="/archives/">Archives</a></li>
+        
+          <li><a class href="https://github.com/marshung24">GitHub</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">Mars&#39;s Blog</h1>
+  
+    <p class="lead blog-description">Mars&#39;s learning record</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-VSCodeRemoteSSH" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      VS Codey遠端開發套件：Remote-SSH
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/05/27/VSCodeRemoteSSH/" class="article-date"><time datetime="2019-05-27T13:13:47.000Z" itemprop="datePublished">2019-05-27</time></a>
+</div>
+
+    
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/dev/">dev</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h1><p>使用VS Codey套件Remote-SSH實現遠端開發</p>
+<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><ol>
+<li><p><a href="https://code.visualstudio.com/insiders/" target="_blank" rel="noopener">下載並安裝VS Code</a></p>
+</li>
+<li><p>安裝VS Code套件Remote - SSH<br><img src="install-remote-ssh.png" alt></p>
+</li>
+<li><p>建立SSH Key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>設定SSH config<br>In VS Code, run Remote-SSH: Open Configuration File<br><img src="config-ssh.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line"></span><br><span class="line">Host dev.remote</span><br><span class="line">    User user_name</span><br><span class="line">    HostName dev.remote</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa-remote-ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝SSH Key至遠端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id -i ~/.ssh/id_rsa-remote-ssh.pub &#123;user_name&#125;@&#123;dev.remote&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>連線至遠端<br>In VS Code, run Remote-SSH: Connect to Host</p>
+<blockquote>
+<p>第一次連線會自動安裝遠端套件<br><img src="connect-to-remote.png" alt></p>
+</blockquote>
+</li>
+<li><p>本地端環境設定</p>
+<blockquote>
+<p>按<code>[ctrl+,]</code>選User</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 此為預設值</span><br><span class="line">&#123;</span><br><span class="line">    &quot;extensions.autoUpdate&quot;: false,</span><br><span class="line">    &quot;update.mode&quot;: &quot;none&quot;,</span><br><span class="line">    &quot;remote.SSH.defaultExtensions&quot;: [</span><br><span class="line">        &quot;alefragnani.bookmarks&quot;,</span><br><span class="line">        &quot;bmewburn.vscode-intelephense-client&quot;,</span><br><span class="line">        &quot;bysabi.prettier-vscode-semistandard&quot;,</span><br><span class="line">        &quot;eamodio.gitlens&quot;,</span><br><span class="line">        &quot;kokororin.vscode-phpfmt&quot;,</span><br><span class="line">        &quot;mhutchie.git-graph&quot;,</span><br><span class="line">        &quot;ms-ceintl.vscode-language-pack-zh-hant&quot;,</span><br><span class="line">        &quot;neilbrayfield.php-docblocker&quot;,</span><br><span class="line">        &quot;rafamel.subtle-brackets&quot;,</span><br><span class="line">        &quot;small.php-ci&quot;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;editor.matchBrackets&quot;: false,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>遠端環境設定</p>
+<blockquote>
+<p>按<code>[ctrl+,]</code>選Remote</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;files.autoSave&quot;: &quot;onFocusChange&quot;,</span><br><span class="line">    &quot;editor.fontSize&quot;: 18,</span><br><span class="line">    &quot;editor.wordWrapColumn&quot;: 120</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh" target="_blank" rel="noopener">Remote - SSH</a></li>
+<li><a href="https://code.visualstudio.com/docs/remote/ssh#_getting-started" target="_blank" rel="noopener">Remote Development using SSH</a></li>
+<li><a href="https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client" target="_blank" rel="noopener">Remote Development Tips and Tricks</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://marshung24.github.io/2019/05/27/VSCodeRemoteSSH/" data-id="cjw9gfwfi0001douf7tbn5rp8" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VS-Code/">VS Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2019/05/03/程式碼寫作風格標準-CodeStyle/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">程式碼寫作風格標準-CodeStyle</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2019/05/27/VSCodeRemoteSSH/">VS Codey遠端開發套件：Remote-SSH</a>
+        </li>
+      
+        <li>
+          <a href="/2019/05/03/程式碼寫作風格標準-CodeStyle/">程式碼寫作風格標準-CodeStyle</a>
+        </li>
+      
+        <li>
+          <a href="/2019/04/20/GithubBlog/">Github Blog</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/IDE/">IDE</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/VS-Code/">VS Code</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">總訪問量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">訪客數<span id="busuanzi_value_site_uv"></span>人</span>
+  
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>

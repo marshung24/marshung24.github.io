@@ -14,7 +14,7 @@
 <meta property="og:description" content="目錄 一、說明 二、公開標準-PSR 2.1. PSR-1 2.2. PSR-2 2.3. PSR-4 2.4. PHPDoc   三、團隊標準 3.1. 函式內部註解 3.1.1. 功能群組註解 3.1.2. 單行註解   3.2. 命名規則 3.2.1. 原則 3.2.2. 辨識度探討 3.2.3. 命名流派比較 3.2.4. 常見的命名名詞     四、檔案結構 CodeIgniter">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://marshung24.github.io/2019/05/03/程式碼寫作風格標準-CodeStyle/naming_rules.png">
-<meta property="og:updated_time" content="2019-05-09T16:07:42.729Z">
+<meta property="og:updated_time" content="2019-05-29T16:37:29.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程式碼寫作風格標準-CodeStyle">
 <meta name="twitter:description" content="目錄 一、說明 二、公開標準-PSR 2.1. PSR-1 2.2. PSR-2 2.3. PSR-4 2.4. PHPDoc   三、團隊標準 3.1. 函式內部註解 3.1.1. 功能群組註解 3.1.2. 單行註解   3.2. 命名規則 3.2.1. 原則 3.2.2. 辨識度探討 3.2.3. 命名流派比較 3.2.4. 常見的命名名詞     四、檔案結構 CodeIgniter">
@@ -263,7 +263,7 @@
 </tr>
 <tr>
 <td style="text-align:left">@author</td>
-<td style="text-align:left">函數建立者名稱 (Example: @author Mars <a href="mailto:&#x61;&#117;&#116;&#x68;&#111;&#114;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;" target="_blank" rel="noopener">&#x61;&#117;&#116;&#x68;&#111;&#114;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a>)</td>
+<td style="text-align:left">函數建立者名稱 (Example: @author Mars <a href="mailto:&#x61;&#x75;&#x74;&#x68;&#x6f;&#114;&#64;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#111;&#109;" target="_blank" rel="noopener">&#x61;&#x75;&#x74;&#x68;&#x6f;&#114;&#64;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#111;&#109;</a>)</td>
 </tr>
 <tr>
 <td style="text-align:left">@category</td>
@@ -398,7 +398,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * === 功能群組註解 ===</span><br><span class="line"> * 功能群組註解詳細說明</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>範例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 取得使用者資料</span><br><span class="line"> *</span><br><span class="line"> * @param array|string $userList 使用者pk清單</span><br><span class="line"> * @param string $sDate 開始日期</span><br><span class="line"> * @param string $eDate 結束日期</span><br><span class="line"> * @param string $format 格式，如為default時，抓取物件預設格式</span><br><span class="line"> */</span><br><span class="line">public function getUserData($userList, $sDate, $eDate, $format = &apos;default&apos;)</span><br><span class="line">&#123;</span><br><span class="line">    // === 參數整理 ===</span><br><span class="line">    $userList = is_array($userList) ? $userList : array_map(&apos;trim&apos;, explode(&apos;,&apos;, $userList));</span><br><span class="line">    $format = $format == &apos;default&apos; ? self::$format : $format;</span><br><span class="line">    </span><br><span class="line">    // === 資料庫載入 ===</span><br><span class="line">    $UserInfo = UserInfo::singleton();</span><br><span class="line">    $DeptInfo = DeptInfo::singleton();</span><br><span class="line">    $TitleInfo = TitleInfo::singleton();</span><br><span class="line">    $Rule = Rule::singleton();</span><br><span class="line">    </span><br><span class="line">    // === 資料取得 ===</span><br><span class="line">    // 取得使用者資料</span><br><span class="line">    $uData = $UserInfo-&gt;getDataByPK($userList);</span><br><span class="line">    ArrayHelper::indexBy($uData, &apos;id&apos;);</span><br><span class="line">    // 取得部門資料</span><br><span class="line">    $dData = $DeptInfo-&gt;getDataByPK();</span><br><span class="line">    ArrayHelper::indexBy($dData, &apos;id&apos;);</span><br><span class="line">    // 取得職稱資料</span><br><span class="line">    $tData = $TitleInfo-&gt;getDataByPK();</span><br><span class="line">    ArrayHelper::indexBy($tData, &apos;id&apos;);</span><br><span class="line">    </span><br><span class="line">    // === 規則對映表建構 ===</span><br><span class="line">    // 取得規則資料-所屬部門歷程</span><br><span class="line">    $deptMap = $Rule-&gt;deptMapBuilder($userList, $sDate, $eDate);</span><br><span class="line">    // 取得規則資料-職稱歷程</span><br><span class="line">    $titleMap = $Rule-&gt;titleMapBuilder($userList, $sDate, $eDate);</span><br><span class="line">    // 取得規則資料-假日</span><br><span class="line">    $holidayMap = $Rule-&gt;holidayMapBuilder($userList, $sDate, $eDate);</span><br><span class="line">    </span><br><span class="line">   /*</span><br><span class="line">    * === 待處理 ===</span><br><span class="line">    * TODO: 20190508 本註解為問題描述，如下方程式有問題暫時無法解決時描述、可能是待優化，可全專案搜尋「待處理」、「TODO」</span><br><span class="line">    */</span><br><span class="line">    </span><br><span class="line">   /*</span><br><span class="line">    * === 規則 ===</span><br><span class="line">    * RULE: 20190508 本註解為特殊規則描述，如下方程式碼規則特殊，可用此方法記錄</span><br><span class="line">    */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>範例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 取得使用者資料</span><br><span class="line"> *</span><br><span class="line"> * @param array|string $userList 使用者pk清單</span><br><span class="line"> * @param string $sDate 開始日期</span><br><span class="line"> * @param string $eDate 結束日期</span><br><span class="line"> * @param string $format 格式，如為default時，抓取物件預設格式</span><br><span class="line"> */</span><br><span class="line">public function getUserData($userList, $sDate, $eDate, $format = &apos;default&apos;)</span><br><span class="line">&#123;</span><br><span class="line">    // === 參數整理 ===</span><br><span class="line">    $userList = is_array($userList) ? $userList : array_map(&apos;trim&apos;, explode(&apos;,&apos;, $userList));</span><br><span class="line">    $format = $format == &apos;default&apos; ? self::$format : $format;</span><br><span class="line">    </span><br><span class="line">    // === 資料庫載入 ===</span><br><span class="line">    $UserInfo = UserInfo::singleton();</span><br><span class="line">    $DeptInfo = DeptInfo::singleton();</span><br><span class="line">    $TitleInfo = TitleInfo::singleton();</span><br><span class="line">    $Rule = Rule::singleton();</span><br><span class="line">    </span><br><span class="line">    // === 資料取得 ===</span><br><span class="line">    // 取得使用者資料</span><br><span class="line">    $userData = $UserInfo-&gt;getDataByPK($userList);</span><br><span class="line">    ArrayHelper::indexBy($userData, &apos;id&apos;);</span><br><span class="line">    // 取得部門資料</span><br><span class="line">    $deptData = $DeptInfo-&gt;getDataByPK();</span><br><span class="line">    ArrayHelper::indexBy($deptData, &apos;id&apos;);</span><br><span class="line">    // 取得職稱資料</span><br><span class="line">    $titleData = $TitleInfo-&gt;getDataByPK();</span><br><span class="line">    ArrayHelper::indexBy($titleData, &apos;id&apos;);</span><br><span class="line">    </span><br><span class="line">    // === 規則對映表建構 ===</span><br><span class="line">    // 取得規則資料-所屬部門歷程</span><br><span class="line">    $deptMap = $Rule-&gt;deptMapBuilder($userList, $sDate, $eDate);</span><br><span class="line">    // 取得規則資料-職稱歷程</span><br><span class="line">    $titleMap = $Rule-&gt;titleMapBuilder($userList, $sDate, $eDate);</span><br><span class="line">    // 取得規則資料-假日</span><br><span class="line">    $holidayMap = $Rule-&gt;holidayMapBuilder($userList, $sDate, $eDate);</span><br><span class="line">    </span><br><span class="line">   /*</span><br><span class="line">    * === 待處理 ===</span><br><span class="line">    * TODO: 20190508 本註解為問題描述，如下方程式有問題暫時無法解決時描述、可能是待優化，可全專案搜尋「待處理」、「TODO」</span><br><span class="line">    */</span><br><span class="line">    </span><br><span class="line">   /*</span><br><span class="line">    * === 規則 ===</span><br><span class="line">    * RULE: 20190508 本註解為特殊規則描述，如下方程式碼規則特殊，可用此方法記錄</span><br><span class="line">    */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="3-1-2-單行註解"><a href="#3-1-2-單行註解" class="headerlink" title="3.1.2. 單行註解"></a><a href="#目錄">3.1.2. 單行註解</a></h3><ul>
 <li>適用：<ul>
 <li>變數定義</li>
@@ -420,7 +420,7 @@
 </blockquote>
 </li>
 <li><p>單獨的「名稱」沒有意義，而是要配上「來源/意義」、「說明」，如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 取得員工資料</span><br><span class="line">$uData = $this-&gt;Users_info_model-&gt;getUserList();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 取得員工資料</span><br><span class="line">$userData = $this-&gt;Users_info_model-&gt;getUserList();</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>變數的「名稱」、「來源/意義」、「說明」可稱為記憶的鐵三角，彼此可互相聯想</p>
 </blockquote>
@@ -444,7 +444,7 @@
 <li>規則詳細資料值<blockquote>
 <ul>
 <li>英文辨識度：底線分隔 優於 駝峰命名</li>
-<li>中文辨識度：因為是母語關系，三者辨識度差不多</li>
+<li>中文辨識度：因為是母語關系，在一眼可看到整行字時，三者辨識度差不多</li>
 </ul>
 </blockquote>
 </li>
@@ -452,12 +452,35 @@
 </li>
 <li><p>名稱長度與辨識度：</p>
 <ul>
-<li>優：10字母/2單字 以下</li>
+<li>優：10字母/2單字 以下<ul>
+<li>太短的名子，不建議再縮寫，如$ruleData，不宜再縮寫為$rData</li>
+<li>如果函式處理流很簡單(行數少)，取超短名也不會有誤解/遺忘的狀況</li>
+</ul>
+</li>
+<li>優：10 ~ 20字母/2 ~ 4單字<ul>
+<li>名稱兼顧易讀性與釋意</li>
+</ul>
+</li>
 <li>劣：20字母/4單字 以上</li>
+</ul>
+<blockquote>
+<p>名稱定義：</p>
+<ul>
+<li>長名稱：20字母/4單字 以上</li>
+<li>短名稱：20字母/4單字 之下</li>
+<li>完整名稱：很容易從變數命名中看出意義，但有可能很長<ul>
+<li>例：$userExperienceInformation</li>
+</ul>
+</li>
+<li>縮寫名稱：需輔以命名習慣、註釋理解意義，但短<ul>
+<li>例：帳號經歷資訊 $userExpInfo</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// === 長名稱 ===</span><br><span class="line">// 取得規則檔頭</span><br><span class="line">$ruleData = $this-&gt;Rule_model-&gt;read();</span><br><span class="line">// 取得規則資料</span><br><span class="line">$ruleDetailData = $this-&gt;Rule_detail_model-&gt;read();</span><br><span class="line">// 取得子規則資料</span><br><span class="line">$ruleDetailValueData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line"></span><br><span class="line">// === 短名稱 ===</span><br><span class="line">// 取得規則檔頭</span><br><span class="line">$rData = $this-&gt;Rule_model-&gt;read();</span><br><span class="line">// 取得規則資料</span><br><span class="line">$rdData = $this-&gt;Rule_detail_model-&gt;read();</span><br><span class="line">// 取得子規則資料</span><br><span class="line">$rdvData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// === 長名稱 vs 短名稱 ===</span><br><span class="line">// 取得子規則資料</span><br><span class="line">$ruleDetailValueData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line">$rdvData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line">// $rdvData 較優</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// === 長名稱 vs 短名稱 ===</span><br><span class="line">// 取得員工資料</span><br><span class="line">$userInfoData = $this-&gt;Users_info_model-&gt;getUserList();</span><br><span class="line">$userData = $this-&gt;Users_info_model-&gt;getUserList();</span><br><span class="line">$uData = $this-&gt;Users_info_model-&gt;getUserList();</span><br><span class="line">// $userData, $uData 皆優</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">// === 長名稱 ===</span><br><span class="line">// 取得規則檔頭 - 佳 (短名稱)</span><br><span class="line">$ruleData = $this-&gt;Rule_model-&gt;read();</span><br><span class="line">// 取得規則資料 - 可 (短名稱)</span><br><span class="line">$ruleDetailData = $this-&gt;Rule_detail_model-&gt;read();</span><br><span class="line">// 取得子規則資料 - 劣 (長名稱)</span><br><span class="line">$ruleDetailValueData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">* === 短名稱-縮寫名稱 ===</span><br><span class="line">* 依賴習慣、約定命名方式縮寫，但對習慣跳者看Code的人要回頭看註釋/定義</span><br><span class="line">*/</span><br><span class="line">// 取得規則檔頭 - 可 (短名稱)</span><br><span class="line">$rData = $this-&gt;Rule_model-&gt;read();</span><br><span class="line">// 取得規則資料 - 可 (短名稱)</span><br><span class="line">$rdData = $this-&gt;Rule_detail_model-&gt;read();</span><br><span class="line">// 取得子規則資料 - 可 (短名稱)</span><br><span class="line">$rdvData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// === 長名稱 vs 短名稱 ===</span><br><span class="line">// 取得子規則資料 - function內容少時$rdvData較優</span><br><span class="line">$ruleDetailValueData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line">$rdvData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line"></span><br><span class="line">// 打卡規則處理 - 長名稱</span><br><span class="line">foreach ($ruleDetailValueData as $key =&gt; $ruleDetailValue) &#123;</span><br><span class="line">    // 問題4</span><br><span class="line">    $ruleDetailValueQuest4 = ruleDetailValue[4];</span><br><span class="line">    // 問題5</span><br><span class="line">    $ruleDetailValueQuest5 = ruleDetailValue[5];</span><br><span class="line">    </span><br><span class="line">    // 使用者打卡資料</span><br><span class="line">    $userPunch = $userInfo[&apos;punch&apos;][$ruleDetailValueQuest4];</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">// 打卡規則處理 - 短名稱 - 依賴習慣、約定命名方式</span><br><span class="line">foreach ($rdvData as $k =&gt; $rdv) &#123;</span><br><span class="line">    // 問題4</span><br><span class="line">    $rdvQ4 = $rdv[4];</span><br><span class="line">    // 問題5</span><br><span class="line">    $rdvQ5 = $rdv[5];</span><br><span class="line">    </span><br><span class="line">    // 使用者打卡資料</span><br><span class="line">    $userPunch = $userInfo[&apos;punch&apos;][$rdvQ4];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h3 id="3-2-3-命名流派比較"><a href="#3-2-3-命名流派比較" class="headerlink" title="3.2.3. 命名流派比較"></a><a href="#目錄">3.2.3. 命名流派比較</a></h3><h4 id="A-短名稱-說明-來源-意義"><a href="#A-短名稱-說明-來源-意義" class="headerlink" title="A. 短名稱+說明+來源/意義"></a>A. 短名稱+說明+來源/意義</h4><p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 取得子規則資料  ⇦ 說明</span><br><span class="line">$rdvData = $this-&gt;Rule_detail_value_model-&gt;read();</span><br><span class="line">   ⇧ 名稱          ⇧ 來源/意義</span><br></pre></td></tr></table></figure></p>
 <p>特點分析：</p>
 <ul>
@@ -468,7 +491,7 @@
 <li>程式處理過程中，短名稱易閱讀、易辨識、易記憶<blockquote>
 <ul>
 <li>較佳做法</li>
-<li>有時名稱不縮寫就很短了，此時如果變數名稱夠清楚了，可不寫註解說明</li>
+<li>有時名稱不縮寫就很短了，則不縮寫</li>
 </ul>
 </blockquote>
 </li>
@@ -479,7 +502,8 @@
 <li>名稱：等號左邊的內容，用名稱盡量描述完變數的意義後，不寫註釋</li>
 <li>來源/意義：等號右邊的內容，變數真正的意義由來</li>
 <li>有二個記憶/聯想元素</li>
-<li>程式處理過程中，長名稱不易閱讀、不易辨識、不易記憶<blockquote>
+<li>程式處理過程中，長名稱不易閱讀、不易辨識、不易記憶</li>
+<li>如看Code喜歡跳著看，或喜歡寫出長長的Code讓變數活很久的人，較喜歡長名稱<blockquote>
 <ul>
 <li>較差做法</li>
 </ul>
@@ -488,7 +512,7 @@
 </ul>
 <h3 id="3-2-4-常見的命名名詞"><a href="#3-2-4-常見的命名名詞" class="headerlink" title="3.2.4. 常見的命名名詞"></a><a href="#目錄">3.2.4. 常見的命名名詞</a></h3><ul>
 <li>動詞：常放在字頭<ul>
-<li>get, set, read, add(create), edit(update), delete(del), remove(rm), find, do, re(重做), allow, deny</li>
+<li>get, set, read, add(create), edit(update), del(delete), remove(rm), find, do, re(重做), allow, deny</li>
 </ul>
 </li>
 <li>判斷詞：常放在字頭<ul>
@@ -500,7 +524,11 @@
 <li>builder, parser, provider, converter, reader, writer, refactor, reform, reformat, render</li>
 </ul>
 </li>
-<li>複數：字尾</li>
+<li>複數：字尾<br>$salarySnList, $salarySNs<br>$userList, $users</li>
+<li>常用縮寫：<ul>
+<li>dept(department), sn(series number), id(identification), info(information), del(delete)</li>
+</ul>
+</li>
 </ul>
 <hr>
 <h1 id="四、檔案結構"><a href="#四、檔案結構" class="headerlink" title="四、檔案結構"></a><a href="#目錄">四、檔案結構</a></h1><ul>
@@ -635,7 +663,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/05/03/程式碼寫作風格標準-CodeStyle/" data-id="cjw6e2iyo000dsoufe4doq7nn" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/05/03/程式碼寫作風格標準-CodeStyle/" data-id="cjw9gfwg5000odoufhjqobyz1" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -657,6 +685,13 @@
   </li>
   
   
+  <li role="presentation">
+    <a href="/2019/05/27/VSCodeRemoteSSH/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">VS Codey遠端開發套件：Remote-SSH</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
 </ul>
 
 
@@ -675,6 +710,10 @@
     <ul class="sidebar-module-list">
       
         <li>
+          <a href="/2019/05/27/VSCodeRemoteSSH/">VS Codey遠端開發套件：Remote-SSH</a>
+        </li>
+      
+        <li>
           <a href="/2019/05/03/程式碼寫作風格標準-CodeStyle/">程式碼寫作風格標準-CodeStyle</a>
         </li>
       
@@ -689,7 +728,7 @@
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -697,7 +736,7 @@
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -705,7 +744,7 @@
   
   <div class="sidebar-module">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/IDE/">IDE</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/VS-Code/">VS Code</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
