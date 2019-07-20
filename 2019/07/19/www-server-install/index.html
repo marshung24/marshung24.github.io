@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Web伺服器安裝(LNMP) | Mars&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、說明安裝網頁執行平台，以供開發作業 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7.2 MySQL 5.7  三、安裝 虛擬機器3.1 下載 VirtualBox前往 VirtualBox 官方網站下載安裝軟體 Download VirtualBox  3.2 安裝 VirtualBox執行安裝，一直「下一步」到底即可  3.3 建立">
+<meta name="keywords" content="web,php,server,nginx,mysql,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web伺服器安裝(LNMP)">
+<meta property="og:url" content="https://marshung24.github.io/2019/07/19/www-server-install/index.html">
+<meta property="og:site_name" content="Mars&#39;s Blog">
+<meta property="og:description" content="一、說明安裝網頁執行平台，以供開發作業 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7.2 MySQL 5.7  三、安裝 虛擬機器3.1 下載 VirtualBox前往 VirtualBox 官方網站下載安裝軟體 Download VirtualBox  3.2 安裝 VirtualBox執行安裝，一直「下一步」到底即可  3.3 建立">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/01-download-virtualbox.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/02-install-virtualbox.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-1.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-2.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-3.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-4.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-5.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-6.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-7.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-8.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-9.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/04-create-virtual-machine-10.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/03-download-ubuntu.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-01.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-02.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-03.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-04.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-05.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-06.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-07.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-08.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-09.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-10.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-11.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-12.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-13.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-14.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-15.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-16.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-17.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-18.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-19.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-20.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-21.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-22.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-23.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-24.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-25.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-26.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-27.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-28.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-29.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-30.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/05-install-ubuntu-31.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-download-putty.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-login-server.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-server-ip-1.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-server-ip-2-1.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-server-ip-2-2.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-server-ip-3.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-ssh-login-1.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/06-ssh-login-2.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/07-update-01.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/07-update-02.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/08-install-mysql-01.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/08-install-mysql-02.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/08-install-mysql-03.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/08-install-mysql-04.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/09-ca-install-01.png">
+<meta property="og:updated_time" content="2019-07-20T11:59:13.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web伺服器安裝(LNMP)">
+<meta name="twitter:description" content="一、說明安裝網頁執行平台，以供開發作業 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7.2 MySQL 5.7  三、安裝 虛擬機器3.1 下載 VirtualBox前往 VirtualBox 官方網站下載安裝軟體 Download VirtualBox  3.2 安裝 VirtualBox執行安裝，一直「下一步」到底即可  3.3 建立">
+<meta name="twitter:image" content="https://marshung24.github.io/2019/07/19/www-server-install/01-download-virtualbox.png">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+
+</head>
+</html>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class href="/index.html">Home</a></li>
+        
+          <li><a class href="/archives/">Archives</a></li>
+        
+          <li><a class href="https://github.com/marshung24">GitHub</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">Mars&#39;s Blog</h1>
+  
+    <p class="lead blog-description">Mars&#39;s learning record</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-www-server-install" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      Web伺服器安裝(LNMP)
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/07/19/www-server-install/" class="article-date"><time datetime="2019-07-19T13:03:26.000Z" itemprop="datePublished">2019-07-19</time></a>
+</div>
+
+    <div class="article-author">Mars Hung</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/server/">server</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、環境"><span class="toc-text">二、環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、安裝-虛擬機器"><span class="toc-text">三、安裝 虛擬機器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-下載-VirtualBox"><span class="toc-text">3.1 下載 VirtualBox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-安裝-VirtualBox"><span class="toc-text">3.2 安裝 VirtualBox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-建立新虛擬機器"><span class="toc-text">3.3 建立新虛擬機器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、安裝-Linux"><span class="toc-text">四、安裝 Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-下載-Ubuntu-ISO檔"><span class="toc-text">4.1 下載 Ubuntu ISO檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-安裝-Ubuntu"><span class="toc-text">4.2 安裝 Ubuntu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-登入-Ubuntu-Server"><span class="toc-text">4.3 登入 Ubuntu Server</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、安裝-LNMP-Server"><span class="toc-text">五、安裝 LNMP Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-更新套件"><span class="toc-text">5.1 更新套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-安裝管理套件"><span class="toc-text">5.2 安裝管理套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-安裝Nginx-PHP套件"><span class="toc-text">5.3 安裝Nginx,PHP套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-安裝MySQL-phpMyAdmin套件"><span class="toc-text">5.4 安裝MySQL,phpMyAdmin套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-設定Nginx"><span class="toc-text">5.5 設定Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-1-nginx-conf設定檔"><span class="toc-text">5.5.1 nginx.conf設定檔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-2-HTTP轉HTTPS設定"><span class="toc-text">5.5.2 HTTP轉HTTPS設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-3-HTTPS-SSL証書"><span class="toc-text">5.5.3 HTTPS SSL証書</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#申請免費通配符SSL證書"><span class="toc-text">申請免費通配符SSL證書</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#測試用"><span class="toc-text">測試用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迪菲－赫爾曼密鑰"><span class="toc-text">迪菲－赫爾曼密鑰</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-4-共用設定檔"><span class="toc-text">5.5.4 共用設定檔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-5-網站設定檔"><span class="toc-text">5.5.5 網站設定檔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-6-啟動-Nginx"><span class="toc-text">5.5.6 啟動 Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-7-查看成果"><span class="toc-text">5.5.7 查看成果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-8-自簽憑証問題"><span class="toc-text">5.5.8 自簽憑証問題</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-設定-PHP-FPM"><span class="toc-text">5.6 設定 PHP-FPM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-1-PHP調校"><span class="toc-text">5.6.1 PHP調校</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-2-啟動PHP-FPM"><span class="toc-text">5.6.2 啟動PHP-FPM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-7-設定MySQL"><span class="toc-text">5.7 設定MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-1-啟動MySQL"><span class="toc-text">5.7.1 啟動MySQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-8-設定phpMyAdmin"><span class="toc-text">5.8 設定phpMyAdmin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8-1-查看成果"><span class="toc-text">5.8.1 查看成果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、Linux常用指令"><span class="toc-text">六、Linux常用指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、參考："><span class="toc-text">七、參考：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#八、名詞解釋"><span class="toc-text">八、名詞解釋</span></a></li></ol>
+</div>
+
+        <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>安裝網頁執行平台，以供開發作業</p>
+<h1 id="二、環境"><a href="#二、環境" class="headerlink" title="二、環境"></a>二、環境</h1><ul>
+<li>windows</li>
+<li>virtualbox</li>
+<li>Ubuntu 16.04</li>
+<li>Nignx 1.10</li>
+<li>PHP 7.2</li>
+<li>MySQL 5.7</li>
+</ul>
+<h1 id="三、安裝-虛擬機器"><a href="#三、安裝-虛擬機器" class="headerlink" title="三、安裝 虛擬機器"></a>三、安裝 虛擬機器</h1><h2 id="3-1-下載-VirtualBox"><a href="#3-1-下載-VirtualBox" class="headerlink" title="3.1 下載 VirtualBox"></a>3.1 下載 VirtualBox</h2><p>前往 <a href="https://www.virtualbox.org" target="_blank" rel="noopener">VirtualBox</a> 官方網站下載安裝軟體</p>
+<p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">Download VirtualBox</a></p>
+<p><img src="01-download-virtualbox.png" alt></p>
+<h2 id="3-2-安裝-VirtualBox"><a href="#3-2-安裝-VirtualBox" class="headerlink" title="3.2 安裝 VirtualBox"></a>3.2 安裝 VirtualBox</h2><p>執行安裝，一直「下一步」到底即可</p>
+<p><img src="02-install-virtualbox.png" alt></p>
+<h2 id="3-3-建立新虛擬機器"><a href="#3-3-建立新虛擬機器" class="headerlink" title="3.3 建立新虛擬機器"></a>3.3 建立新虛擬機器</h2><p>啟動VirtualBox</p>
+<ul>
+<li><p>點選「新增」鍵</p>
+<p><img src="04-create-virtual-machine-1.png" alt></p>
+</li>
+<li><p>設定記憶體</p>
+<p><img src="04-create-virtual-machine-2.png" alt></p>
+</li>
+<li><p>建立硬碟</p>
+<p><img src="04-create-virtual-machine-3.png" alt></p>
+</li>
+<li><p>選擇硬碟類型</p>
+<p><img src="04-create-virtual-machine-4.png" alt></p>
+</li>
+<li><p>選擇硬碟使用方式</p>
+<p><img src="04-create-virtual-machine-5.png" alt></p>
+</li>
+<li><p>選擇硬碟位置和大小</p>
+<p><img src="04-create-virtual-machine-6.png" alt></p>
+</li>
+<li><p>建立完成，並設定光碟機</p>
+<p><img src="04-create-virtual-machine-7.png" alt></p>
+<blockquote>
+<p>下拉scrollbar，並點選 存放位置 光碟機</p>
+</blockquote>
+</li>
+<li><p>設定網路</p>
+<ul>
+<li>虛擬機器可連線internet，且虛擬機器之間可互連</li>
+</ul>
+<p><img src="04-create-virtual-machine-8.png" alt></p>
+<ul>
+<li>讓主機端可連線虛擬機器</li>
+</ul>
+<p><img src="04-create-virtual-machine-9.png" alt></p>
+</li>
+<li><p>啟動虛擬機器</p>
+<p><img src="04-create-virtual-machine-10.png" alt></p>
+</li>
+</ul>
+<h1 id="四、安裝-Linux"><a href="#四、安裝-Linux" class="headerlink" title="四、安裝 Linux"></a>四、安裝 Linux</h1><h2 id="4-1-下載-Ubuntu-ISO檔"><a href="#4-1-下載-Ubuntu-ISO檔" class="headerlink" title="4.1 下載 Ubuntu ISO檔"></a>4.1 下載 Ubuntu ISO檔</h2><p>前往 <a href="https://www.ubuntu-tw.org" target="_blank" rel="noopener">Ubuntu 正體中文站</a> 下載 <a href="https://www.ubuntu-tw.org/modules/tinyd0/" target="_blank" rel="noopener">Ubuntu 16.04</a></p>
+<p><img src="03-download-ubuntu.png" alt></p>
+<h2 id="4-2-安裝-Ubuntu"><a href="#4-2-安裝-Ubuntu" class="headerlink" title="4.2 安裝 Ubuntu"></a>4.2 安裝 Ubuntu</h2><blockquote>
+<p>Tips: 除了選擇軟體步驗外，基本上不是「continue」就是「yes」</p>
+</blockquote>
+<ul>
+<li><p>選擇語系 English</p>
+<p><img src="05-install-ubuntu-01.png" alt></p>
+<blockquote>
+<p>不知為何，筆者用中文語系裝不起來</p>
+</blockquote>
+</li>
+<li><p>安裝畫面 Install Ubuntu Server</p>
+<p><img src="05-install-ubuntu-02.png" alt></p>
+</li>
+<li><p>系統語系 建議 English</p>
+<p><img src="05-install-ubuntu-03.png" alt></p>
+</li>
+<li><p>地區 other</p>
+<p><img src="05-install-ubuntu-04.png" alt></p>
+<blockquote>
+<p>為了選Taiwan</p>
+</blockquote>
+</li>
+<li><p>地區 Asia</p>
+<p><img src="05-install-ubuntu-05.png" alt></p>
+<blockquote>
+<p>為了選Taiwan</p>
+</blockquote>
+</li>
+<li><p>地區 Taiwan</p>
+<p><img src="05-install-ubuntu-06.png" alt></p>
+</li>
+<li><p>系統語系相關 建議選United States</p>
+<p><img src="05-install-ubuntu-07.png" alt></p>
+</li>
+<li><p>鍵盤類型 不偵測</p>
+<p><img src="05-install-ubuntu-08.png" alt></p>
+</li>
+<li><p>鍵盤 English(US)</p>
+<p><img src="05-install-ubuntu-09.png" alt></p>
+<blockquote>
+<p>台灣標準鍵盤基本上就選這個</p>
+</blockquote>
+</li>
+<li><p>鍵盤 English(US)</p>
+<p><img src="05-install-ubuntu-10.png" alt></p>
+</li>
+<li><p>安裝部份元件</p>
+<p><img src="05-install-ubuntu-11.png" alt></p>
+</li>
+<li><p>設定主機名稱</p>
+<p><img src="05-install-ubuntu-12.png" alt></p>
+<blockquote>
+<p>可自行設定，不影響使用</p>
+</blockquote>
+</li>
+<li><p>建立使用者</p>
+<p><img src="05-install-ubuntu-13.png" alt></p>
+<blockquote>
+<p>輸入自己的名子</p>
+</blockquote>
+</li>
+<li><p>輸入帳號名稱</p>
+<p><img src="05-install-ubuntu-14.png" alt></p>
+</li>
+<li><p>輸入密碼</p>
+<p><img src="05-install-ubuntu-15.png" alt></p>
+</li>
+<li><p>建立帳號的家目錄[建議Yes]</p>
+<p><img src="05-install-ubuntu-16.png" alt></p>
+</li>
+<li><p>系統時區設定 Asia/Taipei</p>
+<p><img src="05-install-ubuntu-17.png" alt></p>
+</li>
+<li><p>格式化硬碟(LVM系統)</p>
+<p><img src="05-install-ubuntu-18.png" alt></p>
+<blockquote>
+<p>不會設定的話，就預設吧</p>
+</blockquote>
+</li>
+<li><p>設定LVM目標</p>
+<p><img src="05-install-ubuntu-19.png" alt></p>
+<blockquote>
+<p>不會設定的話，就預設吧</p>
+</blockquote>
+</li>
+<li><p>將LVM設定寫入碟碟</p>
+<p><img src="05-install-ubuntu-20.png" alt></p>
+<blockquote>
+<p>Yes就對了</p>
+</blockquote>
+</li>
+<li><p>設定LVM磁區大小</p>
+<p><img src="05-install-ubuntu-21.png" alt></p>
+<blockquote>
+<p>全給了</p>
+</blockquote>
+</li>
+<li><p>LVM的建議磁碟分割</p>
+<p><img src="05-install-ubuntu-22.png" alt></p>
+<blockquote>
+<p>Yes就對了，反正也玩不出花來</p>
+</blockquote>
+</li>
+<li><p>proxy，空白即可</p>
+<p><img src="05-install-ubuntu-23.png" alt></p>
+</li>
+<li><p>不自動更新</p>
+<p><img src="05-install-ubuntu-24.png" alt></p>
+<blockquote>
+<p>更新還是手動來比較好，起碼知道更新了什麼</p>
+</blockquote>
+</li>
+<li><p>安裝套件-建議如圖選項</p>
+<p><img src="05-install-ubuntu-25.png" alt></p>
+<blockquote>
+<p>需要的套件，建議之後再裝，在此只要裝基本套件和SSH服務即可</p>
+</blockquote>
+</li>
+<li><p>套件安裝中</p>
+<p><img src="05-install-ubuntu-26.png" alt></p>
+</li>
+<li><p>安裝開機引導程式[建議Yes]</p>
+<p><img src="05-install-ubuntu-27.png" alt></p>
+</li>
+<li><p>安裝完成</p>
+<p><img src="05-install-ubuntu-28.png" alt></p>
+</li>
+<li><p>重開機中</p>
+<p><img src="05-install-ubuntu-29.png" alt></p>
+</li>
+<li><p>開機完成</p>
+<p><img src="05-install-ubuntu-30.png" alt></p>
+</li>
+<li><p>關機，製作快照</p>
+<p><img src="05-install-ubuntu-31.png" alt></p>
+<blockquote>
+<p>建立快照(Snapshot)還原點</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="4-3-登入-Ubuntu-Server"><a href="#4-3-登入-Ubuntu-Server" class="headerlink" title="4.3 登入 Ubuntu Server"></a>4.3 登入 Ubuntu Server</h2><ul>
+<li><p>下載 <a href="https://www.putty.org/" target="_blank" rel="noopener">Putty</a> SSH連線程式 (windows用的)</p>
+<p><img src="06-download-putty.png" alt></p>
+<blockquote>
+<p>或使用其他SSH連線程式</p>
+</blockquote>
+</li>
+<li><p>登入系統查IP</p>
+<p><img src="06-login-server.png" alt></p>
+<blockquote>
+<ul>
+<li>先使用VirtualBox介面登入系統中找IP (預設使用DHCP抓取浮動IP)</li>
+<li>請輸入安裝時設定的帳號密碼</li>
+<li>打密碼時，密碼欄不會有東西出現是正常的</li>
+<li>查IP的指令：ifconfig -a</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>發現有張網卡沒有啟動</p>
+<p><img src="06-server-ip-1.png" alt></p>
+</li>
+<li><p>編輯網路設定檔</p>
+<p><img src="06-server-ip-2-1.png" alt></p>
+<blockquote>
+<p>指令： sudo vi /etc/network/interfaces</p>
+</blockquote>
+<p><img src="06-server-ip-2-2.png" alt></p>
+<blockquote>
+<ul>
+<li>增加第二張網卡設定</li>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi 快速入門</a></li>
+</ul>
+</blockquote>
+</li>
+<li><p>重新啟動網路，查IP</p>
+<p><img src="06-server-ip-3.png" alt></p>
+<blockquote>
+<p>指令： ifconfig -a<br>指令： sudo service networking restart</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>使用SSH連線程式登入</p>
+<p><img src="06-ssh-login-1.png" alt><br><img src="06-ssh-login-2.png" alt></p>
+</li>
+</ul>
+<blockquote>
+<p>從VirtualBox介面登入就像是在伺服器前用KVM登入使用一樣，從SSH登入使用才是遠端使用</p>
+</blockquote>
+<h1 id="五、安裝-LNMP-Server"><a href="#五、安裝-LNMP-Server" class="headerlink" title="五、安裝 LNMP Server"></a>五、安裝 LNMP Server</h1><h2 id="5-1-更新套件"><a href="#5-1-更新套件" class="headerlink" title="5.1 更新套件"></a>5.1 更新套件</h2><ul>
+<li>更新apt資料庫</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p><img src="07-update-01.png" alt></p>
+<ul>
+<li>更新套件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<p><img src="07-update-02.png" alt></p>
+<blockquote>
+<ul>
+<li>新系統使用前，建議全面更新</li>
+<li>舊系統更新前，<strong>請先備份config檔</strong></li>
+</ul>
+</blockquote>
+<h2 id="5-2-安裝管理套件"><a href="#5-2-安裝管理套件" class="headerlink" title="5.2 安裝管理套件"></a>5.2 安裝管理套件</h2><ul>
+<li>時間同步&amp;vim編輯器</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get install ntp ntpdate vim</span><br></pre></td></tr></table></figure>
+<h2 id="5-3-安裝Nginx-PHP套件"><a href="#5-3-安裝Nginx-PHP套件" class="headerlink" title="5.3 安裝Nginx,PHP套件"></a>5.3 安裝Nginx,PHP套件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get install nginx php php-fpm php-mysql php-cli php-mcrypt php-curl php-mbstring php-imagick php-gd php-xml php-bcmath php-zip php-opcache php-common</span><br></pre></td></tr></table></figure>
+<h2 id="5-4-安裝MySQL-phpMyAdmin套件"><a href="#5-4-安裝MySQL-phpMyAdmin套件" class="headerlink" title="5.4 安裝MySQL,phpMyAdmin套件"></a>5.4 安裝MySQL,phpMyAdmin套件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo apt-get install mysql-server mysql-client phpmyadmin</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>設定MySQL root密碼</p>
+<p><img src="08-install-mysql-01.png" alt></p>
+</li>
+<li><p>略過phpMyAdmin web server安裝</p>
+<p><img src="08-install-mysql-02.png" alt></p>
+<blockquote>
+<p>已經裝了Nginx，不需要再裝二上面個web server</p>
+</blockquote>
+</li>
+<li><p>設定phpMyAdmin參數，預設即可</p>
+<p><img src="08-install-mysql-03.png" alt></p>
+</li>
+<li><p>設定帳號phpmyadmin的密碼</p>
+<p><img src="08-install-mysql-04.png" alt></p>
+<blockquote>
+<p>此帳號密碼是phpMyAdmin建立的MySQL帳號</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 連結phpMyAdmin到網頁根目錄</span><br><span class="line"><span class="meta">$</span> sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin</span><br></pre></td></tr></table></figure>
+<h2 id="5-5-設定Nginx"><a href="#5-5-設定Nginx" class="headerlink" title="5.5 設定Nginx"></a>5.5 設定Nginx</h2><h3 id="5-5-1-nginx-conf設定檔"><a href="#5-5-1-nginx-conf設定檔" class="headerlink" title="5.5.1 nginx.conf設定檔"></a>5.5.1 nginx.conf設定檔</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vi /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>基本上不用改</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Nginx Server 啟動所使用的使用者</span><br><span class="line">user www-data;</span><br><span class="line"><span class="meta">#</span> 開啟的程序數量，請對應 CPU 核心數進行調整（多設無益）</span><br><span class="line">worker_processes auto;</span><br><span class="line"><span class="meta">#</span> ProcessID 存放位置 (CentOS 預設在 /var/run/nginx.pid)</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">        # 每個程序最高可以開啟的連線數，理論上每台 nginx 服務器的最大連接數為 worker_processes*worker_connections。</span><br><span class="line">        worker_connections 768;</span><br><span class="line">        # multi_accept on;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Basic Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        # 可以讓sendfile()發揮作用。因為這種拷貝是在內核完成的，</span><br><span class="line">        # sendfile()要比組合read()和write()以及打開關閉丟棄緩衝更加有效(更多有關於sendfile)</span><br><span class="line">        sendfile on;</span><br><span class="line">        # 在一個數據包裡發送所有頭文件，而不一個接一個的發送</span><br><span class="line">        tcp_nopush on;</span><br><span class="line">        # 不要緩存數據，而是一段一段的發送--當需要及時發送數據時</span><br><span class="line">        # ，就應該給應用設置這個屬性，這樣發送一小塊數據信息時就不能立即得到返回值。</span><br><span class="line">        tcp_nodelay on;</span><br><span class="line">        # keepalive 超時時間。</span><br><span class="line">        keepalive_timeout 65;</span><br><span class="line">        types_hash_max_size 2048;</span><br><span class="line">        # server_tokens off;</span><br><span class="line"></span><br><span class="line">        # server_names_hash_bucket_size 64;</span><br><span class="line">        # server_name_in_redirect off;</span><br><span class="line"></span><br><span class="line">        include /etc/nginx/mime.types;</span><br><span class="line">        default_type application/octet-stream;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # SSL Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        # 支援的加密協定</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</span><br><span class="line">        # 優先採取服務器算法</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Logging Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        # HTTP Log 存放的位置</span><br><span class="line">        access_log /var/log/nginx/access.log;</span><br><span class="line">        error_log /var/log/nginx/error.log;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Gzip Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        # 啟用壓縮</span><br><span class="line">        gzip on;</span><br><span class="line">        # 為指定的客戶端禁用gzip功能。我們設置成IE6或者更低版本以使我們的方案能夠廣泛兼容</span><br><span class="line">        gzip_disable "msie6";</span><br><span class="line"></span><br><span class="line">        # gzip_vary on;</span><br><span class="line">        # gzip_proxied any;</span><br><span class="line">        # gzip_comp_level 6;</span><br><span class="line">        # gzip_buffers 16 8k;</span><br><span class="line">        # gzip_http_version 1.1;</span><br><span class="line">        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Virtual Host Configs</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        include /etc/nginx/conf.d/*.conf;</span><br><span class="line">        include /etc/nginx/sites-enabled/*;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-2-HTTP轉HTTPS設定"><a href="#5-5-2-HTTP轉HTTPS設定" class="headerlink" title="5.5.2 HTTP轉HTTPS設定"></a>5.5.2 HTTP轉HTTPS設定</h3><blockquote>
+<p>HTTP連線未加密，不安全<br>如果要做自己的開發機，可跳過HTTPS設定</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vi /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>只留本設定即可</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line">        return 301 https://$server_name$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-3-HTTPS-SSL証書"><a href="#5-5-3-HTTPS-SSL証書" class="headerlink" title="5.5.3 HTTPS SSL証書"></a>5.5.3 HTTPS SSL証書</h3><h4 id="申請免費通配符SSL證書"><a href="#申請免費通配符SSL證書" class="headerlink" title="申請免費通配符SSL證書"></a>申請免費通配符SSL證書</h4><ul>
+<li><a href="https://www.sslforfree.com/" target="_blank" rel="noopener">SSL FOR FREE</a> 或 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot</a></li>
+</ul>
+<h4 id="測試用"><a href="#測試用" class="headerlink" title="測試用"></a>測試用</h4><p>如果是自己做測試，那麼證書的申請機構和頒發機構都是自己。就可以用下面這個命令來生成證書：</p>
+<ul>
+<li>創建根憑証</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo mkdir -p /etc/nginx/ssl/</span><br><span class="line"><span class="meta">$</span> cd /etc/nginx/ssl/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 創建密鑰</span><br><span class="line"><span class="meta">$</span> sudo openssl genrsa -out rootCA.key 2048</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 生成憑證並自簽名</span><br><span class="line"><span class="meta">$</span> sudo openssl req -sha256 -new -x509 -days 3650 -key rootCA.key -out rootCA.crt -subj "/CN=rootCA"</span><br></pre></td></tr></table></figure>
+<ul>
+<li>創建域名証書</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 創建密鑰</span><br><span class="line"><span class="meta">$</span> sudo openssl genrsa -out dev.idv.key 2048</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 創建請求文件</span><br><span class="line"><span class="meta">$</span> sudo openssl req -new -sha256 -key dev.idv.key -out dev.idv.csr -subj "/CN=*.dev.idv"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 生成憑證並用根憑證簽名</span><br><span class="line"><span class="meta">$</span> sudo openssl x509 -req -in dev.idv.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -days 3560 -out dev.idv.crt</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 變更權限</span><br><span class="line"><span class="meta">$</span> sudo chown www-data *</span><br><span class="line"><span class="meta">$</span> sudo chmod 400 *.key</span><br></pre></td></tr></table></figure>
+<h4 id="迪菲－赫爾曼密鑰"><a href="#迪菲－赫爾曼密鑰" class="headerlink" title="迪菲－赫爾曼密鑰"></a>迪菲－赫爾曼密鑰</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd /etc/nginx/ssl</span><br><span class="line"><span class="meta">$</span> sudo openssl dhparam -out dhparam.pem 2048</span><br><span class="line"><span class="meta">$</span> sudo chown www-data dhparam.pem</span><br><span class="line"><span class="meta">$</span> sudo chmod 400 dhparam.pem</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-4-共用設定檔"><a href="#5-5-4-共用設定檔" class="headerlink" title="5.5.4 共用設定檔"></a>5.5.4 共用設定檔</h3><ul>
+<li>加密設定 ssl.conf</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo mkdir -p /etc/nginx/common.conf.d</span><br><span class="line"><span class="meta">$</span> sudo vi /etc/nginx/common.conf.d/ssl.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>設定檔內容</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 証書文件 - 如有憑証鏈，需整合，服務器證書必須出現在組合文件中的鏈接證書之前：</span><br><span class="line">ssl_certificate /etc/nginx/ssl/dev.idv.crt;</span><br><span class="line"><span class="meta">#</span> 私鑰文件</span><br><span class="line">ssl_certificate_key /etc/nginx/ssl/dev.idv.key;</span><br><span class="line"><span class="meta">#</span> session cache大小</span><br><span class="line">ssl_session_cache shared:SSL:10m;</span><br><span class="line"><span class="meta">#</span> session timeout時間</span><br><span class="line">ssl_session_timeout  10m;</span><br><span class="line"><span class="meta">#</span>定義算法</span><br><span class="line">ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line"><span class="meta">#</span>優先採取服務器算法</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line"><span class="meta">#</span>使用DH文件</span><br><span class="line">ssl_dhparam /etc/nginx/ssl/dhparam.pem;</span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 加入 HSTS 告訴你的瀏覽器本網站全站加密，並且強制用 HTTPS 訪問</span><br><span class="line"><span class="meta">#</span>add_header Strict-Transport-Security "max-age=31536000; includeSubDomains;preload" always;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>減少點擊劫持</span><br><span class="line"><span class="meta">#</span>add_header X-Frame-Options DENY;</span><br><span class="line"><span class="meta">#</span>禁止服務器自動解析資源類型</span><br><span class="line"><span class="meta">#</span>add_header X-Content-Type-Options nosniff;</span><br><span class="line"><span class="meta">#</span>防XSS攻擊</span><br><span class="line"><span class="meta">#</span>add_header X-Xss-Protection 1;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 移除 Nginx 版本資訊</span><br><span class="line"><span class="meta">#</span>server_tokens off;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>共用設定 common.conf</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo mkdir -p /etc/nginx/common.conf.d</span><br><span class="line"><span class="meta">$</span> sudo vi /etc/nginx/common.conf.d/common.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>設定檔內容</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">        index  index.php index.htm index.html;</span><br><span class="line">        try_files $uri $uri/ /index.php =404;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line"><span class="meta">#</span></span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">        include snippets/fastcgi-php.conf;</span><br><span class="line">        </span><br><span class="line">        # 連線過期時間</span><br><span class="line">        #fastcgi_connect_timeout 600;</span><br><span class="line">        #fastcgi_send_timeout 600;</span><br><span class="line">        #fastcgi_read_timeout 600;</span><br><span class="line"></span><br><span class="line">        # With php7.0-cgi alone:</span><br><span class="line">        #fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        # With php7.0-fpm:</span><br><span class="line">        fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> deny access to .htaccess files, if Apache's document root</span><br><span class="line"><span class="meta">#</span> concurs with nginx's one</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span>location ~ /\.ht &#123;</span><br><span class="line"><span class="meta">#</span>       deny all;</span><br><span class="line"><span class="meta">#</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 如果發生 404 可以指定到特定的頁面來顯示</span><br><span class="line">error_page 404 /404.html;</span><br><span class="line">    location = /40x.html &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">error_page 500 502 503 504 /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-5-網站設定檔"><a href="#5-5-5-網站設定檔" class="headerlink" title="5.5.5 網站設定檔"></a>5.5.5 網站設定檔</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vi /etc/nginx/sites-available/myweb.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>#</span><br><span class="line"><span class="meta">#</span> server configuration</span><br><span class="line"><span class="meta">#</span>#</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 域名：sql.dev.idv</span><br><span class="line">server &#123;</span><br><span class="line">        # SSL configuration</span><br><span class="line">        listen 443 ssl;</span><br><span class="line">        listen [::]:443 ssl;</span><br><span class="line"></span><br><span class="line">        root /var/www/html/phpmyadmin;</span><br><span class="line"></span><br><span class="line">        # Add index.php to the list if you are using PHP</span><br><span class="line">        index index.php;</span><br><span class="line"></span><br><span class="line">        server_name sql.dev.idv;</span><br><span class="line"></span><br><span class="line">        # SSL相關設定</span><br><span class="line">        include common.conf.d/ssl.conf;</span><br><span class="line"></span><br><span class="line">        # 共用設定</span><br><span class="line">        include common.conf.d/common.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 域名：site2.dev.idv</span><br><span class="line">server &#123;</span><br><span class="line">        # SSL configuration</span><br><span class="line">        listen 443 ssl;</span><br><span class="line">        listen [::]:443 ssl;</span><br><span class="line"></span><br><span class="line">        root /var/www/html/site2;</span><br><span class="line"></span><br><span class="line">        # Add index.php to the list if you are using PHP</span><br><span class="line">        index index.php;</span><br><span class="line"></span><br><span class="line">        server_name site2.dev.idv;</span><br><span class="line"></span><br><span class="line">        # SSL相關設定</span><br><span class="line">        include common.conf.d/ssl.conf;</span><br><span class="line"></span><br><span class="line">        # 共用設定</span><br><span class="line">        include common.conf.d/common.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 連結到啟動設定區</span><br><span class="line"><span class="meta">$</span> sudo ln -s /etc/nginx/sites-available/myweb.conf /etc/nginx/sites-enabled/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 建立site2內容</span><br><span class="line"><span class="meta">$</span> sudo mkdir -p /var/www/html/site2</span><br><span class="line"><span class="meta">$</span> echo "hello world !" | sudo tee -a /var/www/html/site2/index.html</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-6-啟動-Nginx"><a href="#5-5-6-啟動-Nginx" class="headerlink" title="5.5.6 啟動 Nginx"></a>5.5.6 啟動 Nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo systemctl enable nginx.service</span><br><span class="line"><span class="meta">$</span> sudo systemctl restart nginx.service</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-7-查看成果"><a href="#5-5-7-查看成果" class="headerlink" title="5.5.7 查看成果"></a>5.5.7 查看成果</h3><ul>
+<li><a href="https://site2.dev.idv/" target="_blank" rel="noopener">https://site2.dev.idv/</a></li>
+</ul>
+<blockquote>
+<p>PHP還未設定完成，無法查看 <a href="https://sql.dev.idv/" target="_blank" rel="noopener">https://sql.dev.idv/</a></p>
+</blockquote>
+<h3 id="5-5-8-自簽憑証問題"><a href="#5-5-8-自簽憑証問題" class="headerlink" title="5.5.8 自簽憑証問題"></a>5.5.8 自簽憑証問題</h3><ul>
+<li>憑証不安全提示</li>
+</ul>
+<p><img src="09-ca-install-01.png" alt></p>
+<blockquote>
+<p>選擇進階 =&gt; 繼續前往 XXXX 網站(不安全) 可略過警告</p>
+</blockquote>
+<h2 id="5-6-設定-PHP-FPM"><a href="#5-6-設定-PHP-FPM" class="headerlink" title="5.6 設定 PHP-FPM"></a>5.6 設定 PHP-FPM</h2><h3 id="5-6-1-PHP調校"><a href="#5-6-1-PHP調校" class="headerlink" title="5.6.1 PHP調校"></a>5.6.1 PHP調校</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vi /etc/php/7.0/fpm/php.ini</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>調整設定內容</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">; ========= 除錯 =========</span><br><span class="line">display_errors = On</span><br><span class="line"></span><br><span class="line">; ========= 時區 =========</span><br><span class="line">date.timezone = "Asia/Taipei"</span><br><span class="line"></span><br><span class="line">; ========= PHP上傳檔案 (需同步調整Web Server上傳限制) =========</span><br><span class="line"></span><br><span class="line">; 是否允許通過HTTP上傳文件的開關。默認為ON即是開</span><br><span class="line">file_uploads = On</span><br><span class="line"></span><br><span class="line">; 望文生意，即允許上傳文件大小的最大值。默認為2M</span><br><span class="line">upload_max_filesize 20M</span><br><span class="line"></span><br><span class="line">; 指通過表單POST給PHP的所能接收的最大值，包括表單裡的所有值。默認為8M</span><br><span class="line">post_max_size 40M</span><br><span class="line"></span><br><span class="line">; 每個PHP頁面運行的最大時間值(秒)，默認30秒 - 通常不用調，需要時在該頁用ini_set變更</span><br><span class="line">max_execution_time 60</span><br><span class="line"></span><br><span class="line">; 每個PHP頁面接收數據所需的最大時間，默認60秒</span><br><span class="line">max_input_time 120</span><br><span class="line"></span><br><span class="line">; 每個PHP頁面可接收的input變數數量</span><br><span class="line">max_input_vars = 30000</span><br><span class="line"></span><br><span class="line">; 每個PHP頁面所吃掉的最大內存，默認8M</span><br><span class="line">memory_limit 256M</span><br><span class="line"></span><br><span class="line">; 設定SESSION有效時間為2小時</span><br><span class="line">session.gc_maxlifetime 7200</span><br><span class="line"></span><br><span class="line">; 防止 XSS 擷取cookie:HttpOnly參數的設置</span><br><span class="line">; 設置其值為1或者TRUE，來開啟全局的Cookie的HttpOnly屬性，當然也支持在代碼中來開啟：</span><br><span class="line">;   ini_set("session.cookie_httponly", 1);</span><br><span class="line">;   session_set_cookie_params(0, NULL, NULL, NULL, TRUE);</span><br><span class="line">session.cookie_httponly=1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>必須是 memory_limit &gt;= post_max_size &gt;= upload_max_filesize</li>
+<li>在清單上Changeable項目被標示為 PHP_INI_ALL或是 PHP_INI_USER的選項才能被ini_set修改</li>
+<li>php.ini清單請參照: <a href="http://tw.php.net/manual/en/ini.list.php" target="_blank" rel="noopener">http://tw.php.net/manual/en/ini.list.php</a></li>
+</ul>
+</blockquote>
+<h3 id="5-6-2-啟動PHP-FPM"><a href="#5-6-2-啟動PHP-FPM" class="headerlink" title="5.6.2 啟動PHP-FPM"></a>5.6.2 啟動PHP-FPM</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo systemctl restart php7.0-fpm.service</span><br><span class="line"><span class="meta">$</span> sudo systemctl enable php7.0-fpm.service</span><br></pre></td></tr></table></figure>
+<h2 id="5-7-設定MySQL"><a href="#5-7-設定MySQL" class="headerlink" title="5.7 設定MySQL"></a>5.7 設定MySQL</h2><blockquote>
+<p>預設即可</p>
+</blockquote>
+<h3 id="5-7-1-啟動MySQL"><a href="#5-7-1-啟動MySQL" class="headerlink" title="5.7.1 啟動MySQL"></a>5.7.1 啟動MySQL</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo service mysql restart</span><br><span class="line"><span class="meta">$</span> sudo systemctl enable mysql.service</span><br></pre></td></tr></table></figure>
+<h2 id="5-8-設定phpMyAdmin"><a href="#5-8-設定phpMyAdmin" class="headerlink" title="5.8 設定phpMyAdmin"></a>5.8 設定phpMyAdmin</h2><blockquote>
+<p>預設即可</p>
+</blockquote>
+<h3 id="5-8-1-查看成果"><a href="#5-8-1-查看成果" class="headerlink" title="5.8.1 查看成果"></a>5.8.1 查看成果</h3><ul>
+<li><a href="https://sql.dev.idv/" target="_blank" rel="noopener">https://sql.dev.idv/</a></li>
+</ul>
+<h1 id="六、Linux常用指令"><a href="#六、Linux常用指令" class="headerlink" title="六、Linux常用指令"></a>六、Linux常用指令</h1><ul>
+<li>sudo 其他指令: 變換(root)權限執行指令</li>
+<li>ssh: ssh連線</li>
+<li>showdown -h now: 關機</li>
+<li>reboot: 重開機</li>
+<li>logout: 登出 (或ctrl+D)</li>
+<li>vi 檔案路徑: 使用linux文字編輯器編輯檔案</li>
+<li>cd 目錄名稱: 前往目錄</li>
+<li>ls: 顯示目前目錄內容</li>
+<li>pwd: 顯示目前目錄路徑</li>
+<li>ifconfig: 查看網路介面</li>
+<li>netstat -tln: 查看服務監聽狀況</li>
+</ul>
+<h1 id="七、參考："><a href="#七、參考：" class="headerlink" title="七、參考："></a>七、參考：</h1><ul>
+<li><a href="http://linux.vbird.org/" target="_blank" rel="noopener">鳥哥的Linux 私房菜</a></li>
+<li><a href="http://download.virtualbox.org/virtualbox/UserManual.pdf" target="_blank" rel="noopener">VirtualBox User Manual</a></li>
+<li><a href="https://blog.csdn.net/xiangyuecn/article/details/79179684" target="_blank" rel="noopener">生成本地測試用https證書</a></li>
+</ul>
+<h1 id="八、名詞解釋"><a href="#八、名詞解釋" class="headerlink" title="八、名詞解釋"></a>八、名詞解釋</h1><ul>
+<li>虛擬機器 : 在電腦平台中安裝虛擬系統，在虛擬系統中安裝其他執行環境，虛擬機器會共用電腦平台的資源</li>
+<li>Host(主機端) : 你目前使用的作業系統</li>
+<li>Guest(客戶端) : 你於 VirtualBox 上安裝的作業系統</li>
+<li>KVM : 即鍵盤、顯示器、滑鼠的英文首字母縮寫（Keyboard、Video、Mouse）</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://marshung24.github.io/2019/07/19/www-server-install/" data-id="cjybh4pdd001sewufxbx5kurv" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2019/07/03/phpunit/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">使用PHPUnit進行單元測試</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2019/07/19/www-server-install/">Web伺服器安裝(LNMP)</a>
+        </li>
+      
+        <li>
+          <a href="/2019/07/03/phpunit/">使用PHPUnit進行單元測試</a>
+        </li>
+      
+        <li>
+          <a href="/2019/06/03/program-structure/">程式結構</a>
+        </li>
+      
+        <li>
+          <a href="/2019/05/31/code-tracking/">程式碼追蹤定位</a>
+        </li>
+      
+        <li>
+          <a href="/2019/05/30/nodejs-install/">Node.js安裝</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-javascript/">web, javascript</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/IDE/">IDE</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/VS-Code/">VS Code</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/">linux</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/">nginx</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">4</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">總訪問量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">訪客數<span id="busuanzi_value_site_uv"></span>人</span>
+  
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>

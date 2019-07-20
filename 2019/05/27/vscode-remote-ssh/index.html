@@ -5,21 +5,21 @@
   
   <title>VS Codey遠端開發套件：Remote-SSH | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="說明使用VS Codey套件Remote-SSH實現遠端開發 安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configuration">
+  <meta name="description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configurat">
 <meta name="keywords" content="IDE,VS Code,coding,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VS Codey遠端開發套件：Remote-SSH">
 <meta property="og:url" content="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
-<meta property="og:description" content="說明使用VS Codey套件Remote-SSH實現遠端開發 安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configuration">
+<meta property="og:description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configurat">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/install-remote-ssh.png">
 <meta property="og:image" content="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/config-ssh.png">
 <meta property="og:image" content="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/connect-to-remote.png">
-<meta property="og:updated_time" content="2019-05-30T15:53:31.650Z">
+<meta property="og:updated_time" content="2019-07-20T12:08:45.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VS Codey遠端開發套件：Remote-SSH">
-<meta name="twitter:description" content="說明使用VS Codey套件Remote-SSH實現遠端開發 安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configuration">
+<meta name="twitter:description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh  設定SSH configIn VS Code, run Remote-SSH: Open Configurat">
 <meta name="twitter:image" content="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/install-remote-ssh.png">
   
   
@@ -117,9 +117,14 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h1><p>使用VS Codey套件Remote-SSH實現遠端開發</p>
-<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><ol>
-<li><p><a href="https://code.visualstudio.com/insiders/" target="_blank" rel="noopener">下載並安裝VS Code</a></p>
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、安裝"><span class="toc-text">二、安裝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、參考"><span class="toc-text">三、參考</span></a></li></ol>
+</div>
+
+        <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>使用VS Codey套件Remote-SSH實現遠端開發</p>
+<h1 id="二、安裝"><a href="#二、安裝" class="headerlink" title="二、安裝"></a>二、安裝</h1><ol>
+<li><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">下載並安裝VS Code</a></p>
 </li>
 <li><p>安裝VS Code套件Remote - SSH<br><img src="install-remote-ssh.png" alt></p>
 </li>
@@ -140,17 +145,17 @@
 <li><p>本地端環境設定</p>
 <blockquote>
 <p>按<code>[ctrl+,]</code>選User</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 此為預設值</span><br><span class="line">&#123;</span><br><span class="line">    &quot;extensions.autoUpdate&quot;: false,</span><br><span class="line">    &quot;update.mode&quot;: &quot;none&quot;,</span><br><span class="line">    &quot;remote.SSH.defaultExtensions&quot;: [</span><br><span class="line">        &quot;alefragnani.bookmarks&quot;,</span><br><span class="line">        &quot;bmewburn.vscode-intelephense-client&quot;,</span><br><span class="line">        &quot;bysabi.prettier-vscode-semistandard&quot;,</span><br><span class="line">        &quot;eamodio.gitlens&quot;,</span><br><span class="line">        &quot;kokororin.vscode-phpfmt&quot;,</span><br><span class="line">        &quot;mhutchie.git-graph&quot;,</span><br><span class="line">        &quot;ms-ceintl.vscode-language-pack-zh-hant&quot;,</span><br><span class="line">        &quot;neilbrayfield.php-docblocker&quot;,</span><br><span class="line">        &quot;rafamel.subtle-brackets&quot;,</span><br><span class="line">        &quot;small.php-ci&quot;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;editor.matchBrackets&quot;: false,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 此為預設值</span><br><span class="line">&#123;</span><br><span class="line">    &quot;extensions.autoUpdate&quot;: false,</span><br><span class="line">    &quot;update.mode&quot;: &quot;none&quot;,</span><br><span class="line">    &quot;remote.SSH.defaultExtensions&quot;: [</span><br><span class="line">        &quot;alefragnani.bookmarks&quot;,</span><br><span class="line">        &quot;bmewburn.vscode-intelephense-client&quot;,</span><br><span class="line">        &quot;bysabi.prettier-vscode-semistandard&quot;,</span><br><span class="line">        &quot;eamodio.gitlens&quot;,</span><br><span class="line">        &quot;kokororin.vscode-phpfmt&quot;,</span><br><span class="line">        &quot;mhutchie.git-graph&quot;,</span><br><span class="line">        &quot;ms-ceintl.vscode-language-pack-zh-hant&quot;,</span><br><span class="line">        &quot;neilbrayfield.php-docblocker&quot;,</span><br><span class="line">        &quot;rafamel.subtle-brackets&quot;,</span><br><span class="line">        &quot;small.php-ci&quot;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;editor.matchBrackets&quot;: false,</span><br><span class="line">    &quot;files.autoSave&quot;: &quot;onFocusChange&quot;,</span><br><span class="line">    &quot;editor.fontSize&quot;: 18,</span><br><span class="line">    &quot;editor.wordWrapColumn&quot;: 120,</span><br><span class="line">    &quot;files.eol&quot;: &quot;\n&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>遠端環境設定</p>
 <blockquote>
 <p>按<code>[ctrl+,]</code>選Remote</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;files.autoSave&quot;: &quot;onFocusChange&quot;,</span><br><span class="line">    &quot;editor.fontSize&quot;: 18,</span><br><span class="line">    &quot;editor.wordWrapColumn&quot;: 120</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;files.autoSave&quot;: &quot;onFocusChange&quot;,</span><br><span class="line">    &quot;editor.fontSize&quot;: 18,</span><br><span class="line">    &quot;editor.wordWrapColumn&quot;: 120,</span><br><span class="line">    &quot;files.eol&quot;: &quot;\n&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 </ol>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<h1 id="三、參考"><a href="#三、參考" class="headerlink" title="三、參考"></a>三、參考</h1><ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh" target="_blank" rel="noopener">Remote - SSH</a></li>
 <li><a href="https://code.visualstudio.com/docs/remote/ssh#_getting-started" target="_blank" rel="noopener">Remote Development using SSH</a></li>
 <li><a href="https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client" target="_blank" rel="noopener">Remote Development Tips and Tricks</a></li>
@@ -165,7 +170,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/" data-id="cjwgfrps10001p4ufryqk6oyr" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/" data-id="cjybh4pc00001ewuf77mrqkxs" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -212,23 +217,23 @@
     <ul class="sidebar-module-list">
       
         <li>
+          <a href="/2019/07/19/www-server-install/">Web伺服器安裝(LNMP)</a>
+        </li>
+      
+        <li>
+          <a href="/2019/07/03/phpunit/">使用PHPUnit進行單元測試</a>
+        </li>
+      
+        <li>
+          <a href="/2019/06/03/program-structure/">程式結構</a>
+        </li>
+      
+        <li>
           <a href="/2019/05/31/code-tracking/">程式碼追蹤定位</a>
         </li>
       
         <li>
           <a href="/2019/05/30/nodejs-install/">Node.js安裝</a>
-        </li>
-      
-        <li>
-          <a href="/2019/05/27/vscode-remote-ssh/">VS Codey遠端開發套件：Remote-SSH</a>
-        </li>
-      
-        <li>
-          <a href="/2019/05/03/coding-style-standard/">程式碼寫作風格標準-CodeStyle</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/20/github-blog/">Github Blog</a>
         </li>
       
     </ul>
@@ -238,7 +243,7 @@
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -246,7 +251,7 @@
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-javascript/">web, javascript</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-javascript/">web, javascript</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -254,7 +259,7 @@
   
   <div class="sidebar-module">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/IDE/">IDE</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/VS-Code/">VS Code</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">3</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/IDE/">IDE</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/VS-Code/">VS Code</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/">linux</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/">nginx</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">4</span></li></ul>
   </div>
 
 

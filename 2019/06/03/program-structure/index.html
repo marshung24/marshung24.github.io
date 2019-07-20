@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>程式結構 | Mars&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="說明良好的程式結構，有助不但容易閱讀理解，出問題時追蹤問題點也容易。什麼樣才算是良好的結構？其實只要尊守物件導向設計原則，並注意程式的層次性即可。 物件導向設計原則單一功能原則開閉原則里氏替換原則介面隔離原則依賴反轉原則程式的層次性參考 SOLID (物件導向設計)) 程式碼異味 談談壞味道">
+<meta name="keywords" content="coding,coding style,standard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程式結構">
+<meta property="og:url" content="https://marshung24.github.io/2019/06/03/program-structure/index.html">
+<meta property="og:site_name" content="Mars&#39;s Blog">
+<meta property="og:description" content="說明良好的程式結構，有助不但容易閱讀理解，出問題時追蹤問題點也容易。什麼樣才算是良好的結構？其實只要尊守物件導向設計原則，並注意程式的層次性即可。 物件導向設計原則單一功能原則開閉原則里氏替換原則介面隔離原則依賴反轉原則程式的層次性參考 SOLID (物件導向設計)) 程式碼異味 談談壞味道">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-03T16:26:11.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="程式結構">
+<meta name="twitter:description" content="說明良好的程式結構，有助不但容易閱讀理解，出問題時追蹤問題點也容易。什麼樣才算是良好的結構？其實只要尊守物件導向設計原則，並注意程式的層次性即可。 物件導向設計原則單一功能原則開閉原則里氏替換原則介面隔離原則依賴反轉原則程式的層次性參考 SOLID (物件導向設計)) 程式碼異味 談談壞味道">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+
+</head>
+</html>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class href="/index.html">Home</a></li>
+        
+          <li><a class href="/archives/">Archives</a></li>
+        
+          <li><a class href="https://github.com/marshung24">GitHub</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">Mars&#39;s Blog</h1>
+  
+    <p class="lead blog-description">Mars&#39;s learning record</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-program-structure" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      程式結構
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/06/03/program-structure/" class="article-date"><time datetime="2019-06-03T15:55:07.000Z" itemprop="datePublished">2019-06-03</time></a>
+</div>
+
+    
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#說明"><span class="toc-text">說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#物件導向設計原則"><span class="toc-text">物件導向設計原則</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#單一功能原則"><span class="toc-text">單一功能原則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#開閉原則"><span class="toc-text">開閉原則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#里氏替換原則"><span class="toc-text">里氏替換原則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介面隔離原則"><span class="toc-text">介面隔離原則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依賴反轉原則"><span class="toc-text">依賴反轉原則</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#程式的層次性"><span class="toc-text">程式的層次性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#參考"><span class="toc-text">參考</span></a></li></ol>
+</div>
+
+        <h1 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h1><p>良好的程式結構，有助不但容易閱讀理解，出問題時追蹤問題點也容易。什麼樣才算是良好的結構？其實只要尊守物件導向設計原則，並注意程式的層次性即可。</p>
+<h1 id="物件導向設計原則"><a href="#物件導向設計原則" class="headerlink" title="物件導向設計原則"></a>物件導向設計原則</h1><h2 id="單一功能原則"><a href="#單一功能原則" class="headerlink" title="單一功能原則"></a>單一功能原則</h2><h2 id="開閉原則"><a href="#開閉原則" class="headerlink" title="開閉原則"></a>開閉原則</h2><h2 id="里氏替換原則"><a href="#里氏替換原則" class="headerlink" title="里氏替換原則"></a>里氏替換原則</h2><h2 id="介面隔離原則"><a href="#介面隔離原則" class="headerlink" title="介面隔離原則"></a>介面隔離原則</h2><h2 id="依賴反轉原則"><a href="#依賴反轉原則" class="headerlink" title="依賴反轉原則"></a>依賴反轉原則</h2><h1 id="程式的層次性"><a href="#程式的層次性" class="headerlink" title="程式的層次性"></a>程式的層次性</h1><h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://zh.wikipedia.org/wiki/SOLID_(%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">SOLID (物件導向設計)</a>)</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E7%A0%81%E5%BC%82%E5%91%B3" target="_blank" rel="noopener">程式碼異味</a></li>
+<li><a href="http://teddy-chen-tw.blogspot.com/2014/04/1duplicated-code.html" target="_blank" rel="noopener">談談壞味道</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://marshung24.github.io/2019/06/03/program-structure/" data-id="cjybh4pc90006ewuf1zv0ky54" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding-style/">coding style</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/standard/">standard</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2019/05/31/code-tracking/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">程式碼追蹤定位</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2019/07/03/phpunit/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">使用PHPUnit進行單元測試</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2019/07/19/www-server-install/">Web伺服器安裝(LNMP)</a>
+        </li>
+      
+        <li>
+          <a href="/2019/07/03/phpunit/">使用PHPUnit進行單元測試</a>
+        </li>
+      
+        <li>
+          <a href="/2019/06/03/program-structure/">程式結構</a>
+        </li>
+      
+        <li>
+          <a href="/2019/05/31/code-tracking/">程式碼追蹤定位</a>
+        </li>
+      
+        <li>
+          <a href="/2019/05/30/nodejs-install/">Node.js安裝</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-javascript/">web, javascript</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/IDE/">IDE</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/VS-Code/">VS Code</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/">linux</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/">nginx</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">4</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">總訪問量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">訪客數<span id="busuanzi_value_site_uv"></span>人</span>
+  
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>
