@@ -5,13 +5,13 @@
   
   <title>Web伺服器安裝(LNMP) | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、說明安裝網頁執行平台，以供開發作業 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7.2 MySQL 5.7  三、安裝 虛擬機器3.1 下載 VirtualBox前往 VirtualBox 官方網站下載安裝軟體 Download VirtualBox  3.2 安裝 VirtualBox執行安裝，一直「下一步」到底即可  3.3 建立">
-<meta name="keywords" content="web,php,server,nginx,mysql,linux">
+  <meta name="description" content="一、說明安裝網頁執行平台，以供開發作業 很多人都知道，windows有不少PHP開發環境的安裝包，如xampp, appserv, wamp，但一個成熟的開發者，是不會用和線上不一樣的環境開發的，這會導至開發出來的程式有無法預期的錯誤，所以學習安裝一個LNMP環境是有必要的。 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7 MySQL 5">
+<meta name="keywords" content="web,php,nginx,linux,server,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web伺服器安裝(LNMP)">
 <meta property="og:url" content="https://marshung24.github.io/2019/07/19/www-server-install/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
-<meta property="og:description" content="一、說明安裝網頁執行平台，以供開發作業 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7.2 MySQL 5.7  三、安裝 虛擬機器3.1 下載 VirtualBox前往 VirtualBox 官方網站下載安裝軟體 Download VirtualBox  3.2 安裝 VirtualBox執行安裝，一直「下一步」到底即可  3.3 建立">
+<meta property="og:description" content="一、說明安裝網頁執行平台，以供開發作業 很多人都知道，windows有不少PHP開發環境的安裝包，如xampp, appserv, wamp，但一個成熟的開發者，是不會用和線上不一樣的環境開發的，這會導至開發出來的程式有無法預期的錯誤，所以學習安裝一個LNMP環境是有必要的。 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7 MySQL 5">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/01-download-virtualbox.png">
 <meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/02-install-virtualbox.png">
@@ -71,11 +71,13 @@
 <meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/08-install-mysql-02.png">
 <meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/08-install-mysql-03.png">
 <meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/08-install-mysql-04.png">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/2019-07-19-www-server-install/dns-resolve.png">
 <meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/09-ca-install-01.png">
-<meta property="og:updated_time" content="2019-07-20T11:59:13.812Z">
+<meta property="og:image" content="https://marshung24.github.io/2019/07/19/www-server-install/2019-07-19-www-server-install/dns-resolve.png">
+<meta property="og:updated_time" content="2019-07-21T16:01:06.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web伺服器安裝(LNMP)">
-<meta name="twitter:description" content="一、說明安裝網頁執行平台，以供開發作業 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7.2 MySQL 5.7  三、安裝 虛擬機器3.1 下載 VirtualBox前往 VirtualBox 官方網站下載安裝軟體 Download VirtualBox  3.2 安裝 VirtualBox執行安裝，一直「下一步」到底即可  3.3 建立">
+<meta name="twitter:description" content="一、說明安裝網頁執行平台，以供開發作業 很多人都知道，windows有不少PHP開發環境的安裝包，如xampp, appserv, wamp，但一個成熟的開發者，是不會用和線上不一樣的環境開發的，這會導至開發出來的程式有無法預期的錯誤，所以學習安裝一個LNMP環境是有必要的。 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7 MySQL 5">
 <meta name="twitter:image" content="https://marshung24.github.io/2019/07/19/www-server-install/01-download-virtualbox.png">
   
   
@@ -179,12 +181,13 @@
 </div>
 
         <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>安裝網頁執行平台，以供開發作業</p>
+<p>很多人都知道，windows有不少PHP開發環境的安裝包，如xampp, appserv, wamp，但一個成熟的開發者，是不會用和線上不一樣的環境開發的，這會導至開發出來的程式有無法預期的錯誤，所以學習安裝一個LNMP環境是有必要的。</p>
 <h1 id="二、環境"><a href="#二、環境" class="headerlink" title="二、環境"></a>二、環境</h1><ul>
 <li>windows</li>
 <li>virtualbox</li>
 <li>Ubuntu 16.04</li>
 <li>Nignx 1.10</li>
-<li>PHP 7.2</li>
+<li>PHP 7</li>
 <li>MySQL 5.7</li>
 </ul>
 <h1 id="三、安裝-虛擬機器"><a href="#三、安裝-虛擬機器" class="headerlink" title="三、安裝 虛擬機器"></a>三、安裝 虛擬機器</h1><h2 id="3-1-下載-VirtualBox"><a href="#3-1-下載-VirtualBox" class="headerlink" title="3.1 下載 VirtualBox"></a>3.1 下載 VirtualBox</h2><p>前往 <a href="https://www.virtualbox.org" target="_blank" rel="noopener">VirtualBox</a> 官方網站下載安裝軟體</p>
@@ -297,6 +300,9 @@
 </li>
 <li><p>輸入帳號名稱</p>
 <p><img src="05-install-ubuntu-14.png" alt></p>
+<blockquote>
+<p>輸入自己的帳號</p>
+</blockquote>
 </li>
 <li><p>輸入密碼</p>
 <p><img src="05-install-ubuntu-15.png" alt></p>
@@ -382,6 +388,9 @@
 </blockquote>
 </li>
 <li><p>登入系統查IP</p>
+<blockquote>
+<p>輸入安裝系統時建立的帳號密碼</p>
+</blockquote>
 <p><img src="06-login-server.png" alt></p>
 <blockquote>
 <ul>
@@ -508,15 +517,19 @@
 <p>設定檔內容</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">        index  index.php index.htm index.html;</span><br><span class="line">        try_files $uri $uri/ /index.php =404;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line"><span class="meta">#</span></span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">        include snippets/fastcgi-php.conf;</span><br><span class="line">        </span><br><span class="line">        # 連線過期時間</span><br><span class="line">        #fastcgi_connect_timeout 600;</span><br><span class="line">        #fastcgi_send_timeout 600;</span><br><span class="line">        #fastcgi_read_timeout 600;</span><br><span class="line"></span><br><span class="line">        # With php7.0-cgi alone:</span><br><span class="line">        #fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        # With php7.0-fpm:</span><br><span class="line">        fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> deny access to .htaccess files, if Apache's document root</span><br><span class="line"><span class="meta">#</span> concurs with nginx's one</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span>location ~ /\.ht &#123;</span><br><span class="line"><span class="meta">#</span>       deny all;</span><br><span class="line"><span class="meta">#</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 如果發生 404 可以指定到特定的頁面來顯示</span><br><span class="line">error_page 404 /404.html;</span><br><span class="line">    location = /40x.html &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">error_page 500 502 503 504 /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="5-5-5-網站設定檔"><a href="#5-5-5-網站設定檔" class="headerlink" title="5.5.5 網站設定檔"></a>5.5.5 網站設定檔</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vi /etc/nginx/sites-available/myweb.conf</span><br></pre></td></tr></table></figure>
+<h3 id="5-5-5-網站設定檔"><a href="#5-5-5-網站設定檔" class="headerlink" title="5.5.5 網站設定檔"></a>5.5.5 網站設定檔</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo vi /etc/nginx/sites-available/dev-web.conf</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>#</span><br><span class="line"><span class="meta">#</span> server configuration</span><br><span class="line"><span class="meta">#</span>#</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 域名：sql.dev.idv</span><br><span class="line">server &#123;</span><br><span class="line">        # SSL configuration</span><br><span class="line">        listen 443 ssl;</span><br><span class="line">        listen [::]:443 ssl;</span><br><span class="line"></span><br><span class="line">        root /var/www/html/phpmyadmin;</span><br><span class="line"></span><br><span class="line">        # Add index.php to the list if you are using PHP</span><br><span class="line">        index index.php;</span><br><span class="line"></span><br><span class="line">        server_name sql.dev.idv;</span><br><span class="line"></span><br><span class="line">        # SSL相關設定</span><br><span class="line">        include common.conf.d/ssl.conf;</span><br><span class="line"></span><br><span class="line">        # 共用設定</span><br><span class="line">        include common.conf.d/common.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 域名：site2.dev.idv</span><br><span class="line">server &#123;</span><br><span class="line">        # SSL configuration</span><br><span class="line">        listen 443 ssl;</span><br><span class="line">        listen [::]:443 ssl;</span><br><span class="line"></span><br><span class="line">        root /var/www/html/site2;</span><br><span class="line"></span><br><span class="line">        # Add index.php to the list if you are using PHP</span><br><span class="line">        index index.php;</span><br><span class="line"></span><br><span class="line">        server_name site2.dev.idv;</span><br><span class="line"></span><br><span class="line">        # SSL相關設定</span><br><span class="line">        include common.conf.d/ssl.conf;</span><br><span class="line"></span><br><span class="line">        # 共用設定</span><br><span class="line">        include common.conf.d/common.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 連結到啟動設定區</span><br><span class="line"><span class="meta">$</span> sudo ln -s /etc/nginx/sites-available/myweb.conf /etc/nginx/sites-enabled/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 建立site2內容</span><br><span class="line"><span class="meta">$</span> sudo mkdir -p /var/www/html/site2</span><br><span class="line"><span class="meta">$</span> echo "hello world !" | sudo tee -a /var/www/html/site2/index.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 連結到啟動設定區</span><br><span class="line"><span class="meta">$</span> sudo ln -s /etc/nginx/sites-available/dev-web.conf /etc/nginx/sites-enabled/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 建立site2內容</span><br><span class="line"><span class="meta">$</span> sudo mkdir -p /var/www/html/site2</span><br><span class="line"><span class="meta">$</span> echo "hello world !" | sudo tee -a /var/www/html/site2/index.html</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 變更/var/www/html目錄權限</span><br><span class="line"><span class="meta">$</span> sudo chmod 1777 /var/www/html</span><br></pre></td></tr></table></figure>
 <h3 id="5-5-6-啟動-Nginx"><a href="#5-5-6-啟動-Nginx" class="headerlink" title="5.5.6 啟動 Nginx"></a>5.5.6 啟動 Nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo systemctl enable nginx.service</span><br><span class="line"><span class="meta">$</span> sudo systemctl restart nginx.service</span><br></pre></td></tr></table></figure>
 <h3 id="5-5-7-查看成果"><a href="#5-5-7-查看成果" class="headerlink" title="5.5.7 查看成果"></a>5.5.7 查看成果</h3><ul>
 <li><a href="https://site2.dev.idv/" target="_blank" rel="noopener">https://site2.dev.idv/</a></li>
 </ul>
 <blockquote>
-<p>PHP還未設定完成，無法查看 <a href="https://sql.dev.idv/" target="_blank" rel="noopener">https://sql.dev.idv/</a></p>
+<ul>
+<li>PHP還未設定完成，無法查看 <a href="https://sql.dev.idv/" target="_blank" rel="noopener">https://sql.dev.idv/</a></li>
+<li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
+<li>C:\Windows\System32\drivers\etc\hosts<br><img src="2019-07-19-www-server-install/dns-resolve.png" alt></li>
+</ul>
 </blockquote>
 <h3 id="5-5-8-自簽憑証問題"><a href="#5-5-8-自簽憑証問題" class="headerlink" title="5.5.8 自簽憑証問題"></a>5.5.8 自簽憑証問題</h3><ul>
 <li>憑証不安全提示</li>
@@ -548,6 +561,12 @@
 <h3 id="5-8-1-查看成果"><a href="#5-8-1-查看成果" class="headerlink" title="5.8.1 查看成果"></a>5.8.1 查看成果</h3><ul>
 <li><a href="https://sql.dev.idv/" target="_blank" rel="noopener">https://sql.dev.idv/</a></li>
 </ul>
+<blockquote>
+<ul>
+<li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
+<li>C:\Windows\System32\drivers\etc\hosts<br><img src="2019-07-19-www-server-install/dns-resolve.png" alt></li>
+</ul>
+</blockquote>
 <h1 id="六、Linux常用指令"><a href="#六、Linux常用指令" class="headerlink" title="六、Linux常用指令"></a>六、Linux常用指令</h1><ul>
 <li>sudo 其他指令: 變換(root)權限執行指令</li>
 <li>ssh: ssh連線</li>
@@ -582,7 +601,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/19/www-server-install/" data-id="cjybh4pdd001sewufxbx5kurv" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/07/19/www-server-install/" data-id="cjyd5ifye002xa0uf4rsga70u" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -604,6 +623,13 @@
   </li>
   
   
+  <li role="presentation">
+    <a href="/2019/07/20/crud-design-01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">CRUD表單設計 Day-01 環境建置</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
 </ul>
 
 
@@ -622,23 +648,23 @@
     <ul class="sidebar-module-list">
       
         <li>
+          <a href="/2019/07/21/composer-install/">Composer安裝</a>
+        </li>
+      
+        <li>
+          <a href="/2019/07/21/git-install/">Git安裝</a>
+        </li>
+      
+        <li>
+          <a href="/2019/07/20/crud-design-01/">CRUD表單設計 Day-01 環境建置</a>
+        </li>
+      
+        <li>
           <a href="/2019/07/19/www-server-install/">Web伺服器安裝(LNMP)</a>
         </li>
       
         <li>
           <a href="/2019/07/03/phpunit/">使用PHPUnit進行單元測試</a>
-        </li>
-      
-        <li>
-          <a href="/2019/06/03/program-structure/">程式結構</a>
-        </li>
-      
-        <li>
-          <a href="/2019/05/31/code-tracking/">程式碼追蹤定位</a>
-        </li>
-      
-        <li>
-          <a href="/2019/05/30/nodejs-install/">Node.js安裝</a>
         </li>
       
     </ul>
@@ -648,7 +674,7 @@
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -656,7 +682,7 @@
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/coding/">coding</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-hexo/">web, hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web-javascript/">web, javascript</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tools/">tools</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -664,7 +690,7 @@
   
   <div class="sidebar-module">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/IDE/">IDE</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/VS-Code/">VS Code</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-style/">coding style</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/">linux</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/">nginx</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/">php</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">4</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/">git</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ide/">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/">php</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tools/">tools</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/">training</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">3</span></li></ul>
   </div>
 
 
