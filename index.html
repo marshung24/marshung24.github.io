@@ -77,13 +77,13 @@
         <div class="col-sm-8 blog-main">
           
   
-    <article id="post-dev-env-security-setting" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-account-security-setting" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/24/dev-env-security-setting/">開發環境安全設定</a>
+      <a class="article-title" href="/2019/07/24/account-security-setting/">帳號安全設定</a>
     </h1>
   
 
@@ -92,7 +92,7 @@
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/07/24/dev-env-security-setting/" class="article-date"><time datetime="2019-07-24T14:15:46.000Z" itemprop="datePublished">2019-07-24</time></a>
+  <a href="/2019/07/24/account-security-setting/" class="article-date"><time datetime="2019-07-24T14:15:46.000Z" itemprop="datePublished">2019-07-24</time></a>
 </div>
 
     <div class="article-author">Mars Hung</div>
@@ -115,10 +115,10 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#說明"><span class="toc-text">說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#目標"><span class="toc-text">目標</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#設定"><span class="toc-text">設定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Google"><span class="toc-text">Google</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#兩步驟驗證-啟用"><span class="toc-text">兩步驟驗證-啟用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#兩步驟驗證-Authenticator"><span class="toc-text">兩步驟驗證-Authenticator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitLab"><span class="toc-text">GitLab</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH金鑰認證"><span class="toc-text">SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#兩步驟驗證"><span class="toc-text">兩步驟驗證</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub"><span class="toc-text">GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH金鑰認證-1"><span class="toc-text">SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#兩步驟驗證-1"><span class="toc-text">兩步驟驗證</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#參考"><span class="toc-text">參考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#日誌"><span class="toc-text">日誌</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、目標"><span class="toc-text">二、目標</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、設定"><span class="toc-text">三、設定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Google"><span class="toc-text">3.1 Google</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-兩步驟驗證-啟用"><span class="toc-text">3.1.1 兩步驟驗證-啟用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-兩步驟驗證-Authenticator"><span class="toc-text">3.1.2 兩步驟驗證-Authenticator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-GitLab"><span class="toc-text">3.2 GitLab</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-SSH金鑰認證"><span class="toc-text">3.2.1 SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-兩步驟驗證"><span class="toc-text">3.2.2 兩步驟驗證</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-GitHub"><span class="toc-text">3.3 GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-SSH金鑰認證"><span class="toc-text">3.3.1 SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-兩步驟驗證"><span class="toc-text">3.3.2 兩步驟驗證</span></a></li></ol></li></ol></li></ol>
 </div>
 
-        <h1 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h1><p>開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google/facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的<br>安全設定如下：</p>
+        <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google/facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的<br>安全設定如下：</p>
 <ul>
 <li>可靠的密碼</li>
 <li>限定連線IP</li>
@@ -135,7 +135,7 @@
 <li>SSH金鑰認證：使用Linux、Git服務時推荐</li>
 <li>二步驗証：強烈推荐，兩步驟驗證為透過異質管道取得驗証碼，且驗証碼通常有時限，可靠度高。</li>
 </ul>
-<h1 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h1><ul>
+<h1 id="二、目標"><a href="#二、目標" class="headerlink" title="二、目標"></a>二、目標</h1><ul>
 <li>Google<ul>
 <li>兩步驟驗證</li>
 </ul>
@@ -151,7 +151,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="設定"><a href="#設定" class="headerlink" title="設定"></a>設定</h1><h2 id="Google"><a href="#Google" class="headerlink" title="Google"></a>Google</h2><h3 id="兩步驟驗證-啟用"><a href="#兩步驟驗證-啟用" class="headerlink" title="兩步驟驗證-啟用"></a>兩步驟驗證-啟用</h3><ul>
+<h1 id="三、設定"><a href="#三、設定" class="headerlink" title="三、設定"></a>三、設定</h1><h2 id="3-1-Google"><a href="#3-1-Google" class="headerlink" title="3.1 Google"></a>3.1 Google</h2><h3 id="3-1-1-兩步驟驗證-啟用"><a href="#3-1-1-兩步驟驗證-啟用" class="headerlink" title="3.1.1 兩步驟驗證-啟用"></a>3.1.1 兩步驟驗證-啟用</h3><ul>
 <li><p>前往<a href="https://www.google.com/" target="_blank" rel="noopener">Google</a>，登入個人帳號後，點擊右上角LOGO，選「Google帳戶」</p>
 <p><img src="01-google-security-01.png" alt></p>
 </li>
@@ -183,7 +183,7 @@
 <p><img src="01-google-security-10.png" alt></p>
 </li>
 </ul>
-<h3 id="兩步驟驗證-Authenticator"><a href="#兩步驟驗證-Authenticator" class="headerlink" title="兩步驟驗證-Authenticator"></a>兩步驟驗證-Authenticator</h3><ul>
+<h3 id="3-1-2-兩步驟驗證-Authenticator"><a href="#3-1-2-兩步驟驗證-Authenticator" class="headerlink" title="3.1.2 兩步驟驗證-Authenticator"></a>3.1.2 兩步驟驗證-Authenticator</h3><ul>
 <li><p>設定 Authenticator</p>
 <p><img src="01-google-security-11.png" alt></p>
 </li>
@@ -209,7 +209,50 @@
 <blockquote>
 <p><a href="https://support.google.com/accounts/answer/185839?co=GENIE.Platform%3DDesktop&amp;hl=zh-Hant" target="_blank" rel="noopener">Google兩步驟驗證教學</a></p>
 </blockquote>
-<h2 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h2><h3 id="SSH金鑰認證"><a href="#SSH金鑰認證" class="headerlink" title="SSH金鑰認證"></a>SSH金鑰認證</h3><h3 id="兩步驟驗證"><a href="#兩步驟驗證" class="headerlink" title="兩步驟驗證"></a>兩步驟驗證</h3><ul>
+<h2 id="3-2-GitLab"><a href="#3-2-GitLab" class="headerlink" title="3.2 GitLab"></a>3.2 GitLab</h2><h3 id="3-2-1-SSH金鑰認證"><a href="#3-2-1-SSH金鑰認證" class="headerlink" title="3.2.1 SSH金鑰認證"></a>3.2.1 SSH金鑰認證</h3><ul>
+<li><p>產生SSH金錀</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
+<li>私錀：id_rsa-your_email</li>
+<li>公錀：id_rsa-your_email.pub</li>
+</ul>
+</li>
+<li>家目錄位置<ul>
+<li>Windows:<ul>
+<li>C:\Users\你的帳號名\</li>
+<li>C:\使用者\你的帳號名\</li>
+</ul>
+</li>
+<li>Linux:<ul>
+<li>/home/你的帳號名/</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>複制~/.ssh/id_rsa-your_email.pub內容</li>
+<li><p>SSH-Keys設定位置</p>
+<p><img src="02-ssh-keys-01.png" alt></p>
+<blockquote>
+<ul>
+<li><a href="https://gitlab.com/help/ssh/README#generating-a-new-ssh-key-pair" target="_blank" rel="noopener">GitLab and SSH keys (英文版手冊)</a></li>
+</ul>
+</blockquote>
+</li>
+<li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<blockquote>
+<p>可以為多個主機設置配置使用的金錀</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># GitLab.com</span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-2-2-兩步驟驗證"><a href="#3-2-2-兩步驟驗證" class="headerlink" title="3.2.2 兩步驟驗證"></a>3.2.2 兩步驟驗證</h3><ul>
 <li><p>登入GitLab，設定兩步驟驗證</p>
 <p><img src="02-gitlab-security-01.png" alt></p>
 </li>
@@ -217,7 +260,53 @@
 <blockquote>
 <p><a href="https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html" target="_blank" rel="noopener">GitLab兩步驟驗證教學</a></p>
 </blockquote>
-<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><h3 id="SSH金鑰認證-1"><a href="#SSH金鑰認證-1" class="headerlink" title="SSH金鑰認證"></a>SSH金鑰認證</h3><h3 id="兩步驟驗證-1"><a href="#兩步驟驗證-1" class="headerlink" title="兩步驟驗證"></a>兩步驟驗證</h3><ul>
+<h2 id="3-3-GitHub"><a href="#3-3-GitHub" class="headerlink" title="3.3 GitHub"></a>3.3 GitHub</h2><h3 id="3-3-1-SSH金鑰認證"><a href="#3-3-1-SSH金鑰認證" class="headerlink" title="3.3.1 SSH金鑰認證"></a>3.3.1 SSH金鑰認證</h3><ul>
+<li><p>產生SSH金錀</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
+<li>私錀：id_rsa-your_email</li>
+<li>公錀：id_rsa-your_email.pub</li>
+</ul>
+</li>
+<li>家目錄位置<ul>
+<li>Windows:<ul>
+<li>C:\Users\你的帳號名\</li>
+<li>C:\使用者\你的帳號名\</li>
+</ul>
+</li>
+<li>Linux:<ul>
+<li>/home/你的帳號名/</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>複制~/.ssh/id_rsa-your_email.pub內容</li>
+<li><p>SSH-Keys設定位置</p>
+<p><img src="03-ssh-keys-01.png" alt></p>
+<blockquote>
+<ul>
+<li><a href="https://help.github.com/cn/articles/  connecting-to-github-with-ssh" target="_blank" rel="noopener">使用SSH 連接到GitHub (簡中版手冊)</a></li>
+<li><a href="https://help.github.com/en/articles/  connecting-to-github-with-ssh" target="_blank" rel="noopener">Connecting to GitHub with SSH (英文版手冊)</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<blockquote>
+<p>可以為多個主機設置配置使用的金錀</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Github.com</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-3-2-兩步驟驗證"><a href="#3-3-2-兩步驟驗證" class="headerlink" title="3.3.2 兩步驟驗證"></a>3.3.2 兩步驟驗證</h3><ul>
 <li><p>登入GitHub，設定兩步驟驗證</p>
 <p><img src="03-github-security-01.png" alt></p>
 </li>
@@ -225,7 +314,7 @@
 <blockquote>
 <p><a href="https://help.github.com/en/articles/configuring-two-factor-authentication-recovery-methods#downloading-your-two-factor-authentication-recovery-codes" target="_blank" rel="noopener">GitHub兩步驟驗證教學</a></p>
 </blockquote>
-<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><h1 id="日誌"><a href="#日誌" class="headerlink" title="日誌"></a>日誌</h1>
+
       
     </div>
 
@@ -235,7 +324,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/24/dev-env-security-setting/" data-id="cjyhgd9zb002y1gufhkdxohjx" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/07/24/account-security-setting/" data-id="cjyiwfmlw000j7suf6nxhjv64" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -352,7 +441,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/21/composer-install/" data-id="cjyhgd9y1000e1gufjbeex9pn" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/07/21/composer-install/" data-id="cjyiwfmlo000a7suf4hjyyuex" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -519,7 +608,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/21/git-install/" data-id="cjyhgd9y4000f1gufr53uhj3d" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/07/21/git-install/" data-id="cjyiwfmlq000e7suf3aywaxm9" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -626,7 +715,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/20/crud-design-01/" data-id="cjyhgd9xy000a1gufr6ewwkbz" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/07/20/crud-design-01/" data-id="cjyiwfmlr000f7sufj7unhmbg" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1104,7 +1193,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/19/www-server-install/" data-id="cjyhgd9zx00391gufbdt4b574" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/07/19/www-server-install/" data-id="cjyiwfmnp00397sufut19ubvb" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1241,7 +1330,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/03/phpunit/" data-id="cjyhgd9xo00041guf6xp6e73u" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/07/03/phpunit/" data-id="cjyiwfmln00097suf8cf4u55j" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1328,7 +1417,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/06/03/program-structure/" data-id="cjyhgd9xx00091gufe78zpbo3" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/06/03/program-structure/" data-id="cjyiwfmli00057sufcadl9jdp" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1472,7 +1561,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/05/31/code-tracking/" data-id="cjyhgd9xv00061gufmp3yd3v5" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/05/31/code-tracking/" data-id="cjyiwfmlg00047suf72bv1m46" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1557,7 +1646,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/05/30/nodejs-install/" data-id="cjyhgd9xu00051guffc9sndt9" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/05/30/nodejs-install/" data-id="cjyiwfmlk00067sufwjnt4r63" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1683,7 +1772,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/" data-id="cjyhgd9xk00011gufl02xmai6" class="article-share-link">
+      <a data-url="https://marshung24.github.io/2019/05/27/vscode-remote-ssh/" data-id="cjyiwfmlb00017sufnnaulrhk" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1716,7 +1805,7 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2019/07/24/dev-env-security-setting/">開發環境安全設定</a>
+          <a href="/2019/07/24/account-security-setting/">帳號安全設定</a>
         </li>
       
         <li>
