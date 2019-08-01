@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mars&#39;s Blog">
 <meta property="og:description" content="開發及測試要點一、說明軟體開發/維護，離開不了測試，產品品質不但直接影響用戶體驗，更代表著企業形像、信譽，極為重要。 二、RD開發及測試要點 必需知道「原由」 (故事) 必需有明確「開發目標」 (案例) 必需拆解出「工作項目」 每個「工作項目」應有對應的「測試項目」 測試項目應需有明確敘述 環境: 如有前置環境，請描述如何建構測試環境 5W1H: 對象(What)、目的(Why)、位置(Where">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T15:58:10.586Z">
+<meta property="og:updated_time" content="2019-08-01T16:40:52.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="開發及測試要點">
 <meta name="twitter:description" content="開發及測試要點一、說明軟體開發/維護，離開不了測試，產品品質不但直接影響用戶體驗，更代表著企業形像、信譽，極為重要。 二、RD開發及測試要點 必需知道「原由」 (故事) 必需有明確「開發目標」 (案例) 必需拆解出「工作項目」 每個「工作項目」應有對應的「測試項目」 測試項目應需有明確敘述 環境: 如有前置環境，請描述如何建構測試環境 5W1H: 對象(What)、目的(Why)、位置(Where">
@@ -115,7 +115,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#開發及測試要點"><span class="toc-text">開發及測試要點</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、RD開發及測試要點"><span class="toc-text">二、RD開發及測試要點</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、QA測試要點"><span class="toc-text">三、QA測試要點</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、測試分類"><span class="toc-text">四、測試分類</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-邏輯行為正確性"><span class="toc-text">4.1 邏輯行為正確性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-資料正確性"><span class="toc-text">4.2 資料正確性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-畫面正確性"><span class="toc-text">4.3 畫面正確性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-錯誤訊息"><span class="toc-text">4.4 錯誤訊息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-自動化測試"><span class="toc-text">4.5 自動化測試</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、參考"><span class="toc-text">五、參考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、Log"><span class="toc-text">六、Log</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#開發及測試要點"><span class="toc-text">開發及測試要點</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、RD開發及測試要點"><span class="toc-text">二、RD開發及測試要點</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、QA測試要點"><span class="toc-text">三、QA測試要點</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、測試分類"><span class="toc-text">四、測試分類</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、參考"><span class="toc-text">五、參考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、Log"><span class="toc-text">六、Log</span></a></li></ol>
 </div>
 
         <h1 id="開發及測試要點"><a href="#開發及測試要點" class="headerlink" title="開發及測試要點"></a>開發及測試要點</h1><h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>軟體開發/維護，離開不了測試，產品品質不但直接影響用戶體驗，更代表著企業形像、信譽，極為重要。</p>
@@ -167,19 +167,29 @@
 <blockquote>
 <p>QA是RD與User間的橋樑，不但需要求程式正確性，還需注意使用者體驗<br>QA的全名為Quality Assurance engineer，即品質保證工程師，其中最核心的任務並非是測試，而是保證產品交付的品質</p>
 </blockquote>
-<h1 id="四、測試分類"><a href="#四、測試分類" class="headerlink" title="四、測試分類"></a>四、測試分類</h1><h2 id="4-1-邏輯行為正確性"><a href="#4-1-邏輯行為正確性" class="headerlink" title="4.1 邏輯行為正確性"></a>4.1 邏輯行為正確性</h2><ul>
+<h1 id="四、測試分類"><a href="#四、測試分類" class="headerlink" title="四、測試分類"></a>四、測試分類</h1><ul>
+<li><p>邏輯行為正確性</p>
+<ul>
 <li>步驟(Create, Read, Update, Delete, Search, Export, Import)</li>
 </ul>
-<h2 id="4-2-資料正確性"><a href="#4-2-資料正確性" class="headerlink" title="4.2 資料正確性"></a>4.2 資料正確性</h2><ul>
+</li>
+<li><p>資料正確性</p>
+<ul>
 <li>資料內容、計算規則、計算數值</li>
 </ul>
-<h2 id="4-3-畫面正確性"><a href="#4-3-畫面正確性" class="headerlink" title="4.3 畫面正確性"></a>4.3 畫面正確性</h2><ul>
+</li>
+<li><p>畫面正確性</p>
+<ul>
 <li>前端顯示內容、版面、順序、習慣</li>
 </ul>
-<h2 id="4-4-錯誤訊息"><a href="#4-4-錯誤訊息" class="headerlink" title="4.4 錯誤訊息"></a>4.4 錯誤訊息</h2><ul>
+</li>
+<li><p>錯誤訊息</p>
+<ul>
 <li>錯誤訊息處理&amp;顯示</li>
 </ul>
-<h2 id="4-5-自動化測試"><a href="#4-5-自動化測試" class="headerlink" title="4.5 自動化測試"></a>4.5 自動化測試</h2><ul>
+</li>
+<li><p>自動化測試</p>
+<ul>
 <li>前端自動化測試<ul>
 <li>行為測試(BDD)</li>
 </ul>
@@ -187,6 +197,8 @@
 <li>後端自動化測試<ul>
 <li>單元測試(unit test)</li>
 <li>功能測試(function test)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
