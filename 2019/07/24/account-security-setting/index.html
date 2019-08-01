@@ -9,36 +9,36 @@
 <meta name="keywords" content="dev,security,env,account">
 <meta property="og:type" content="article">
 <meta property="og:title" content="帳號安全設定">
-<meta property="og:url" content="https://marshung24.github.io/2019/07/24/account-security-setting/index.html">
+<meta property="og:url" content="https://blog.mars-world.net/2019/07/24/account-security-setting/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
 <meta property="og:description" content="一、說明開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google/facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的安全設定如下：  可靠的密碼 限定連線IP SSH金鑰認證 (Authorized_keys) 兩步驟驗證">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-01.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-02.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-03.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-04.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-05.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-06.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-07.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-08.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-09.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-10.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-11.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-12.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-13.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-14.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-15.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-16.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-17.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/02-ssh-keys-01.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/02-gitlab-security-01.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/03-ssh-keys-01.png">
-<meta property="og:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/03-github-security-01.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-01.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-02.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-03.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-04.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-05.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-06.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-07.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-08.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-09.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-10.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-11.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-12.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-13.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-14.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-15.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-16.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-17.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/02-ssh-keys-01.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/02-gitlab-security-01.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-ssh-keys-01.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-github-security-01.png">
 <meta property="og:updated_time" content="2019-08-01T16:00:16.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="帳號安全設定">
 <meta name="twitter:description" content="一、說明開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google/facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的安全設定如下：  可靠的密碼 限定連線IP SSH金鑰認證 (Authorized_keys) 兩步驟驗證">
-<meta name="twitter:image" content="https://marshung24.github.io/2019/07/24/account-security-setting/01-google-security-01.png">
+<meta name="twitter:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-01.png">
   
   
   
@@ -346,7 +346,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://marshung24.github.io/2019/07/24/account-security-setting/" data-id="cjysv4kev000q24ufb0s6kz47" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cjysv4kev000q24ufb0s6kz47" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
