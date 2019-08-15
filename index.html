@@ -324,7 +324,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cjzct5o1k000qlcufn5ggq8nu" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cjzcta0pz000qbcuf2txiwpoj" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -441,7 +441,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="cjzct5o1e000jlcuf2bb57jko" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="cjzcta0pv000jbcufae1fcvhp" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -608,7 +608,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="cjzct5o1h000llcufv5hjd8m1" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="cjzcta0px000lbcuf1ocyi3ed" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -716,7 +716,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="cjzct5o1b000flcufym0h67a2" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="cjzcta0pr000ebcuf88de1mwa" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -811,7 +811,11 @@
 <li><p>建立完成，並設定光碟機</p>
 <p><img src="04-create-virtual-machine-7.png" alt></p>
 <blockquote>
-<p>下拉scrollbar，並點選 存放位置 光碟機</p>
+<ul>
+<li>請先下載 Ubuntu ISO檔</li>
+<li>下拉scrollbar，並點選 存放位置 光碟機</li>
+<li>選擇磁碟映像，指定之前下載的ISO檔</li>
+</ul>
 </blockquote>
 </li>
 <li><p>設定網路</p>
@@ -819,10 +823,16 @@
 <li>虛擬機器可連線internet，且虛擬機器之間可互連</li>
 </ul>
 <p><img src="04-create-virtual-machine-8.png" alt></p>
+<blockquote>
+<p>選擇「NAT」時，無法和其他機器互連，但選擇「NAT網路」的機器之間是可以互連的</p>
+</blockquote>
 <ul>
 <li>讓主機端可連線虛擬機器</li>
 </ul>
 <p><img src="04-create-virtual-machine-9.png" alt></p>
+<blockquote>
+<p>主機端無法透過「NAT」、「NAT網路」連線到虛擬機器，因此要增加介面卡「僅限主機介面卡」</p>
+</blockquote>
 </li>
 <li><p>啟動虛擬機器</p>
 <p><img src="04-create-virtual-machine-10.png" alt></p>
@@ -894,7 +904,10 @@
 <li><p>輸入帳號名稱</p>
 <p><img src="05-install-ubuntu-14.png" alt></p>
 <blockquote>
-<p>輸入自己的帳號</p>
+<ul>
+<li>輸入自己的帳號</li>
+<li>安裝時建立的帳號可當成除root外最高權限帳號，建議平時使用別的帳號</li>
+</ul>
 </blockquote>
 </li>
 <li><p>輸入密碼</p>
@@ -965,6 +978,16 @@
 </li>
 <li><p>開機完成</p>
 <p><img src="05-install-ubuntu-30.png" alt></p>
+<blockquote>
+<p>關機步驟：  </p>
+<ul>
+<li>登入 (用安裝時建立的帳號)</li>
+<li>關機指令： sudo shutdown -h -t now<blockquote>
+<p>使用sudo執行命令時，需再輸入一次當前帳號的密碼</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
 </li>
 <li><p>關機，製作快照</p>
 <p><img src="05-install-ubuntu-31.png" alt></p>
@@ -980,7 +1003,7 @@
 <p>或使用其他SSH連線程式</p>
 </blockquote>
 </li>
-<li><p>登入系統查IP</p>
+<li><p>開機並登入系統查IP</p>
 <blockquote>
 <p>輸入安裝系統時建立的帳號密碼</p>
 </blockquote>
@@ -1001,12 +1024,24 @@
 <p><img src="06-server-ip-2-1.png" alt></p>
 <blockquote>
 <p>指令： sudo vi /etc/network/interfaces</p>
+<blockquote>
+<p>小貼士：打指令打個開頭後按tab鍵，會自動指令補完，如果連按二下tab會顯示所有可能的選擇</p>
+</blockquote>
 </blockquote>
 <p><img src="06-server-ip-2-2.png" alt></p>
 <blockquote>
 <ul>
-<li>增加第二張網卡設定</li>
-<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi 快速入門</a></li>
+<li>增加第二張網卡「enp0s8」設定</li>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi 快速入門</a><ul>
+<li>在命令模式中按「a」鍵可進入編輯模式，再按「Esc」鍵可回到命令模式</li>
+<li>在命令模式中按「:wq」可儲存離開</li>
+<li>在命令模式中按「:q!」可強制離開</li>
+<li>在命令模式中按「u」鍵可還原編輯內容；按「y」可重做編輯內容</li>
+<li>在命令模式中按「yy」為複制一行；「dd」為刪除一行；「p」為貼上複制內容；「2yy」為複制二行；「3dd」為刪除3行</li>
+<li>在命令模式中按「gg」為跳到第一行；「G」為跳到最後一行；「:12」為跳到第12行</li>
+<li>在命令模式中按「/」+字串為尋找字串；尋找模式中再按n為尋找下一個；再按N為尋找上一個</li>
+</ul>
+</li>
 </ul>
 </blockquote>
 </li>
@@ -1023,7 +1058,9 @@
 </li>
 </ul>
 <blockquote>
-<p>從VirtualBox介面登入就像是在伺服器前用KVM登入使用一樣，從SSH登入使用才是遠端使用</p>
+<ul>
+<li>從VirtualBox介面登入就像是在伺服器前用KVM登入使用一樣，從SSH登入使用才是遠端使用</li>
+</ul>
 </blockquote>
 <ul>
 <li>建立帳號 dev<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 建立帳號dev</span><br><span class="line"><span class="meta">$</span> sudo useradd -m dev</span><br><span class="line"><span class="meta">#</span> 設定密碼</span><br><span class="line"><span class="meta">$</span> sudo passwd dev</span><br><span class="line">Enter new UNIX password:    # 輸入密碼</span><br><span class="line">Retype new UNIX password:   # 確認密碼</span><br><span class="line">passwd: password updated successfully</span><br></pre></td></tr></table></figure>
@@ -1125,7 +1162,7 @@
 <ul>
 <li>PHP還未設定完成，無法查看 <a href="https://sql.dev.idv/" target="_blank" rel="noopener">https://sql.dev.idv/</a></li>
 <li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
-<li>C:\Windows\System32\drivers\etc\hosts<br><img src="2019-07-19-www-server-install/dns-resolve.png" alt></li>
+<li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<br><img src="dns-resolve.png" alt></li>
 </ul>
 </blockquote>
 <h3 id="5-5-8-自簽憑証問題"><a href="#5-5-8-自簽憑証問題" class="headerlink" title="5.5.8 自簽憑証問題"></a>5.5.8 自簽憑証問題</h3><ul>
@@ -1161,7 +1198,7 @@
 <blockquote>
 <ul>
 <li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
-<li>C:\Windows\System32\drivers\etc\hosts<br><img src="2019-07-19-www-server-install/dns-resolve.png" alt></li>
+<li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<br><img src="dns-resolve.png" alt></li>
 </ul>
 </blockquote>
 <h1 id="六、Linux常用指令"><a href="#六、Linux常用指令" class="headerlink" title="六、Linux常用指令"></a>六、Linux常用指令</h1><ul>
@@ -1176,6 +1213,7 @@
 <li>pwd: 顯示目前目錄路徑</li>
 <li>ifconfig: 查看網路介面</li>
 <li>netstat -tln: 查看服務監聽狀況</li>
+<li>指令補完： tab鍵</li>
 </ul>
 <h1 id="七、參考："><a href="#七、參考：" class="headerlink" title="七、參考："></a>七、參考：</h1><ul>
 <li><a href="http://linux.vbird.org/" target="_blank" rel="noopener">鳥哥的Linux 私房菜</a></li>
@@ -1198,7 +1236,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="cjzct5o3l003tlcuff4c7crnq" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="cjzcta0rt003tbcufl4wiighi" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1335,7 +1373,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="cjzct5o19000elcufrsbqrryf" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="cjzcta0ps000fbcufz778jjii" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1422,7 +1460,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/06/03/program-structure/" data-id="cjzct5o17000alcufim2dsqt1" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/06/03/program-structure/" data-id="cjzcta0po000abcufhkvf07ud" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1566,7 +1604,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/31/code-tracking/" data-id="cjzct5o130006lcuf4pkblslj" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/31/code-tracking/" data-id="cjzcta0pe0004bcufh70h5ubm" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1651,7 +1689,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/30/nodejs-install/" data-id="cjzct5o0x0005lcufm4qid693" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/30/nodejs-install/" data-id="cjzcta0pm0009bcufgdpngx20" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1777,7 +1815,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/" data-id="cjzct5o150009lcuf1ey3si2t" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/" data-id="cjzcta0pj0005bcufxahx61g4" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
