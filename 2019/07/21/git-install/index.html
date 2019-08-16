@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/21/git-install/git-download-windows.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/21/git-install/git-win-install-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/21/git-install/git-win-install-02.png">
-<meta property="og:updated_time" content="2019-07-21T15:49:29.750Z">
+<meta property="og:updated_time" content="2019-08-16T14:42:00.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git安裝">
 <meta name="twitter:description" content="一、說明版本控制在軟體開發中非常重要，有了版本控制不但可以記錄軟體變動脈絡，還能多線開發、合併、摘取、回遡、差異比對等功能，在團隊合作中尤其重要。 二、安裝2.1 Windows 下載並安裝 Git  基本上一直按「下一步」到底就可以了   下載Git GUI管理軟體 TortoiseGit  下載主程式和語言包 (建議不裝中文，看習慣英文)基本上設定個人資訊前一直按「下一步」就可以了    2.">
@@ -158,6 +158,14 @@
 <p>原因是 git log 預設是使用 less 這個工具來瀏覽，所以需要額外設定編碼。</p>
 </blockquote>
 </li>
+<li><p>Git參數設定</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 編輯git時使用vim編輯器</span><br><span class="line"><span class="meta">$</span> git config --global core.editor vim</span><br><span class="line"><span class="meta">#</span> 設定Git操作者的名子與信箱</span><br><span class="line"><span class="meta">$</span> git config --global user.name &#123;我的名子&#125;</span><br><span class="line"><span class="meta">$</span> git config --global user.email &#123;我的信箱&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>{我的名子}、{我的信箱}替換成自己的英文名子和電子信箱</li>
+</ul>
+</blockquote>
+</li>
 </ul>
 <h1 id="三、常用指令"><a href="#三、常用指令" class="headerlink" title="三、常用指令"></a>三、常用指令</h1><ul>
 <li>下載repository: git clone &lt;repo&gt; (repo格式：<a href="mailto:git@xxx.xx" target="_blank" rel="noopener">git@xxx.xx</a>:xxx/xxx.git)</li>
@@ -232,7 +240,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="cjzcta0px000lbcuf1ocyi3ed" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="cjze8qyy3001beouf0yp8jc8h" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       

@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mars&#39;s Blog">
 <meta property="og:description" content="一、說明Composer是PHP套件管理器，將特定功能的函式庫/專案拆分成套件，透過套件管理器安裝使用，好處有：  統一維護程式碼 支援版本控制 自動管理依賴函式庫  使用Composer管理套件，讓您的開發更方便順利。 二、安裝2.1 Windows 下載 Composer-Setup.exe 並安裝下載並執行 Composer-Setup.exe。 它會安裝最新版本的 Composer 並設置">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T16:00:56.761Z">
+<meta property="og:updated_time" content="2019-08-16T14:51:30.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Composer安裝">
 <meta name="twitter:description" content="一、說明Composer是PHP套件管理器，將特定功能的函式庫/專案拆分成套件，透過套件管理器安裝使用，好處有：  統一維護程式碼 支援版本控制 自動管理依賴函式庫  使用Composer管理套件，讓您的開發更方便順利。 二、安裝2.1 Windows 下載 Composer-Setup.exe 並安裝下載並執行 Composer-Setup.exe。 它會安裝最新版本的 Composer 並設置">
@@ -133,7 +133,7 @@
 </ul>
 <h2 id="2-2-Linux-Ubuntu16-04TLS"><a href="#2-2-Linux-Ubuntu16-04TLS" class="headerlink" title="2.2 Linux(Ubuntu16.04TLS)"></a>2.2 Linux(Ubuntu16.04TLS)</h2><ul>
 <li><p>安裝Composer</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 下載安裝程式</span><br><span class="line"><span class="meta">$</span> sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 驗証安裝檔是否正確 - 如果不正確，會砍下載檔</span><br><span class="line"><span class="meta">$</span> sudo php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') &#123; echo 'Installer verified'; &#125; else &#123; echo 'Installer corrupt'; unlink('composer-setup.php'); &#125; echo PHP_EOL;"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 執行安裝</span><br><span class="line"><span class="meta">$</span> sudo php composer-setup.php</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 刪除安裝檔</span><br><span class="line"><span class="meta">$</span> sudo php -r "unlink('composer-setup.php');"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 移動Composer命令至全域執行路徑</span><br><span class="line"><span class="meta">$</span> sudo mv composer.phar /usr/local/bin/composer</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 查看Composer版本</span><br><span class="line"><span class="meta">$</span> composer --version</span><br><span class="line">Composer version 1.8.6 2019-06-11 15:03:05</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 下載安裝程式</span><br><span class="line"><span class="meta">$</span> sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 執行安裝</span><br><span class="line"><span class="meta">$</span> sudo php composer-setup.php</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 刪除安裝檔</span><br><span class="line"><span class="meta">$</span> sudo php -r "unlink('composer-setup.php');"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 移動Composer命令至全域執行路徑</span><br><span class="line"><span class="meta">$</span> sudo mv composer.phar /usr/local/bin/composer</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 查看Composer版本</span><br><span class="line"><span class="meta">$</span> composer --version</span><br><span class="line">Composer version 1.8.6 2019-06-11 15:03:05</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Composer依賴PHP，所以必需有安裝PHP</p>
 </blockquote>
@@ -178,7 +178,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="cjzcta0pv000jbcufae1fcvhp" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="cjze8qyxz0016eouf9pzce4wm" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
