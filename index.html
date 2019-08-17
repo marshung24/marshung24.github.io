@@ -77,6 +77,148 @@
         <div class="col-sm-8 blog-main">
           
   
+    <article id="post-php-training" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/16/php-training/">PHP培訓-CRUD</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/08/16/php-training/" class="article-date"><time datetime="2019-08-16T15:10:30.000Z" itemprop="datePublished">2019-08-16</time></a>
+</div>
+
+    <div class="article-author">Mars Hung</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/training/">training</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#開發環境"><span class="toc-text">開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本要求"><span class="toc-text">基本要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#進階要求"><span class="toc-text">進階要求</span></a></li></ol>
+</div>
+
+        <h1 id="開發環境"><a href="#開發環境" class="headerlink" title="開發環境"></a>開發環境</h1><p>建議開發環境</p>
+<ul>
+<li><a href="/2019/07/19/www-server-install/">LNMP</a>, LAMP, XAMPP</li>
+<li>範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向</li>
+</ul>
+<h1 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h1><ol>
+<li>請建構一個 帳號新增 的基本CRUD表單，欄位有：<ul>
+<li>帳號 varchar</li>
+<li>姓名 varchar</li>
+<li>性別 varchar</li>
+<li>生日 date</li>
+<li>信箱 varchar</li>
+<li>備註 text<blockquote>
+<p>資料表名稱 account_info<br>需自行建立資料表</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>需要用到PHP物件、繼承、介面等物件導向技巧<ul>
+<li>自行定義物件並展示繼承、介面，本題不算第三方程式物件的使用</li>
+</ul>
+</li>
+<li>清單頁 - 顯示已存在資料</li>
+<li>新增/編輯/刪除(需二次確認) - 資料編輯用</li>
+<li>需用到jQuery</li>
+<li>需用到AJAX</li>
+<li>使用彈窗(Dialog)方式開啟 新增/編輯表單頁<ul>
+<li>可使用套件 Bootstrap Modal, jQuery UI Dialog</li>
+</ul>
+</li>
+<li>支援搜尋、排序功能</li>
+<li>每頁顯示數量、分頁(Pagination)</li>
+<li>資料驗証 (任擇二項)<ul>
+<li>必填：帳號、姓名、性別、生日、信箱</li>
+<li>帳號格式：英文+數字</li>
+<li>日期格式：生日</li>
+<li>信箱格式：信箱</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>基本要求共10題，測試基礎能力</p>
+</blockquote>
+<div style="page-break-after: always;"></div>
+
+<h1 id="進階要求"><a href="#進階要求" class="headerlink" title="進階要求"></a>進階要求</h1><p>以下需求 ++<strong>依個人能力</strong>++ 選擇項目完成</p>
+<ol start="11">
+<li>使用PHP Framework<ul>
+<li>如：CodeIgniter3, Yii2, Laravel</li>
+</ul>
+</li>
+<li>使用RWD Framework<ul>
+<li>如：Bootstrap</li>
+</ul>
+</li>
+<li>編碼風格：PSR-1 &amp; PSR-2 &amp; PHPDoc註釋</li>
+<li>PSR-4 &amp; 使用Namespace<ul>
+<li>自行開發spl_autoload_register()或用composer autoload輔助</li>
+</ul>
+</li>
+<li>AJAX使用 RESTful style傳送資料，並且回傳支援 HTTP Status Code</li>
+<li>資料處理<ul>
+<li>帳號：字母全部轉小寫</li>
+<li>性別：顯示時為 男/女 ，資料庫儲存為 1/0</li>
+<li>生日：顯示時格式 2019年2月15日 ，資料庫儲存格式為 2019-02-15</li>
+</ul>
+</li>
+<li>Javascript使用物件寫法</li>
+<li>批次刪除功能</li>
+<li>匯出資料(text or excel)</li>
+<li>匯入資料(批次新增 or 批次修改)</li>
+</ol>
+<blockquote>
+<p>進階要求共10題</p>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="cjzey37vv003ty4ufhl12pgf0" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/training/">training</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-account-security-setting" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -324,7 +466,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cjze8qyy6001deoufvstw1zk5" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cjzey37ui000oy4ufd9j7edy5" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -441,7 +583,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="cjze8qyxz0016eouf9pzce4wm" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="cjzey37ud000jy4uf3qibo51u" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -616,7 +758,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="cjze8qyy3001beouf0yp8jc8h" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="cjzey37ue000ky4uf0si18s8q" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -670,7 +812,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、工作目錄設置"><span class="toc-text">三、工作目錄設置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-建立工作目錄"><span class="toc-text">3.1 建立工作目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-建立Nginx-Virtual-Host"><span class="toc-text">3.2 建立Nginx Virtual Host</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、工作目錄設置"><span class="toc-text">三、工作目錄設置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-建立工作目錄"><span class="toc-text">3.1 建立工作目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-建立Nginx-Virtual-Host"><span class="toc-text">3.2 建立Nginx Virtual Host</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、使用IDE：VSCode"><span class="toc-text">四、使用IDE：VSCode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、培訓題目"><span class="toc-text">五、培訓題目</span></a></li></ol>
 </div>
 
         <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>CRUD行為(新增/讀取/修改/刪除)是一切資料處理的基本行為，例如使用者上網時看到的網頁(read)，是由瀏覽器向伺服器，再向資料庫「讀取」資料而得到的，可用下圖表示：</p>
@@ -712,7 +854,21 @@
 </ul>
 </li>
 </ul>
-<hr>
+<h1 id="四、使用IDE：VSCode"><a href="#四、使用IDE：VSCode" class="headerlink" title="四、使用IDE：VSCode"></a>四、使用IDE：VSCode</h1><ol>
+<li><p>打開VSCode，連線至伺服器dev.idv</p>
+<p><img src="04-vscode-connect.png" alt></p>
+</li>
+<li><p>切換開發目錄</p>
+<p><img src="04-vscode-open-dir.png" alt></p>
+</li>
+<li><p>遠端目錄清單</p>
+<p><img src="04-vscode-remote-ssh-list.png" alt></p>
+<blockquote>
+<p>連線過一次後，遠端目錄就會出現在清單中</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="五、培訓題目"><a href="#五、培訓題目" class="headerlink" title="五、培訓題目"></a>五、培訓題目</h1><p><a href="/2019/08/16/php-training/">PHP培訓-CRUD</a></p>
 <p><strong>未完待續….</strong></p>
 
       
@@ -724,7 +880,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="cjze8qyy00017eoufcybz28xz" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="cjzey37u4000fy4ufm7y9xrhy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1245,7 +1401,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="cjze8qyzd003heouf5m2gvy99" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="cjzey37we0045y4ufnokmmysq" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1382,7 +1538,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="cjze8qyxx0013eoufomh1ygco" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="cjzey37u3000ey4uf4n9i3jge" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1469,7 +1625,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/06/03/program-structure/" data-id="cjze8qyxu0011eoufc66jucb4" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/06/03/program-structure/" data-id="cjzey37tz0009y4ufq6uar461" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1613,7 +1769,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/31/code-tracking/" data-id="cjze8qyxw0012eoufuifs3c8a" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/31/code-tracking/" data-id="cjzey37u1000ay4ufzwv7iy3c" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1698,160 +1854,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/30/nodejs-install/" data-id="cjze8qyxr000yeoufjj361lfb" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/30/nodejs-install/" data-id="cjzey37tw0005y4ufjp5qpofy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vscode-remote-ssh" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/27/vscode-remote-ssh/">VS Code遠端開發套件：Remote-SSH</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2019/05/27/vscode-remote-ssh/" class="article-date"><time datetime="2019-05-27T13:13:47.000Z" itemprop="datePublished">2019-05-27</time></a>
-</div>
-
-    <div class="article-author">Mars Hung, Gunter.Chou</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tools/">tools</a>
-  </div>
-
-
-    <div class="article-reading">
-  
-  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
-  
-</div>
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-<div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、安裝"><span class="toc-text">二、安裝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、VS-Code環境設定"><span class="toc-text">三、VS Code環境設定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-本地使用者-環境設定檔"><span class="toc-text">3.1 本地使用者 環境設定檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-遠端-環境設定檔"><span class="toc-text">3.2 遠端 環境設定檔</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、常用快速鍵"><span class="toc-text">四、常用快速鍵</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、參考"><span class="toc-text">五、參考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、Log"><span class="toc-text">六、Log</span></a></li></ol>
-</div>
-
-        <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>使用VS Codey套件Remote-SSH實現遠端開發</p>
-<h1 id="二、安裝"><a href="#二、安裝" class="headerlink" title="二、安裝"></a>二、安裝</h1><ol>
-<li><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">下載並安裝VS Code</a></p>
-</li>
-<li><p>安裝VS Code套件Remote - SSH<br><img src="install-remote-ssh.png" alt></p>
-</li>
-<li><p>建立SSH Key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>設定SSH config<br>In VS Code, run Remote-SSH: Open Configuration File<br><img src="config-ssh.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line"></span><br><span class="line">Host &#123;dev.idv&#125;</span><br><span class="line">    User &#123;user_name&#125;</span><br><span class="line">    HostName &#123;dev.idv&#125;</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa-remote-ssh</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<ul>
-<li><strong>{user_name}</strong>替換成自己的帳號</li>
-<li>Host {dev.idv} 中的{dev.idv}是伺服器的alias name (可以跟HostName不一樣)</li>
-<li>HostName {dev.idv} 中的{dev.idv}是伺服器域名，也可以使用IP位址</li>
-</ul>
-</blockquote>
-<ol start="5">
-<li><p>安裝SSH Key至遠端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id -i ~/.ssh/id_rsa-remote-ssh.pub &#123;user_name&#125;@&#123;dev.idv&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>連線至遠端<br>In VS Code, run Remote-SSH: Connect to Host</p>
-<blockquote>
-<p>第一次連線會自動安裝遠端套件<br><img src="connect-to-remote.png" alt></p>
-</blockquote>
-</li>
-</ol>
-<h1 id="三、VS-Code環境設定"><a href="#三、VS-Code環境設定" class="headerlink" title="三、VS Code環境設定"></a>三、VS Code環境設定</h1><h2 id="3-1-本地使用者-環境設定檔"><a href="#3-1-本地使用者-環境設定檔" class="headerlink" title="3.1 本地使用者 環境設定檔"></a>3.1 本地使用者 環境設定檔</h2><ul>
-<li>按<code>[ctrl+,]</code>選使用者，再選右上角<strong>{}</strong>符號</li>
-</ul>
-<p><img src="set-config.png" alt></p>
-<ul>
-<li>貼上下列設定值後儲存(ctrl+s)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;extensions.autoUpdate&quot;: true,</span><br><span class="line">    &quot;update.enableWindowsBackgroundUpdates&quot;: false,</span><br><span class="line">    &quot;update.mode&quot;: &quot;manual&quot;,</span><br><span class="line"></span><br><span class="line">    &quot;remote.SSH.defaultExtensions&quot;: [</span><br><span class="line">        &quot;alefragnani.bookmarks&quot;,</span><br><span class="line">        &quot;berublan.vscode-log-viewer&quot;,</span><br><span class="line">        &quot;bmewburn.vscode-intelephense-client&quot;,</span><br><span class="line">        &quot;bysabi.prettier-vscode-standard&quot;,</span><br><span class="line">        &quot;eamodio.gitlens&quot;,</span><br><span class="line">        &quot;kokororin.vscode-phpfmt&quot;,</span><br><span class="line">        &quot;mhutchie.git-graph&quot;,</span><br><span class="line">        &quot;ms-ceintl.vscode-language-pack-zh-hant&quot;,</span><br><span class="line">        &quot;mutantdino.resourcemonitor&quot;,</span><br><span class="line">        &quot;neilbrayfield.php-docblocker&quot;,</span><br><span class="line">        &quot;rafamel.subtle-brackets&quot;,</span><br><span class="line">        &quot;small.php-ci&quot;,</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    &quot;editor.fontSize&quot;: 16,</span><br><span class="line">    &quot;editor.wordSeparators&quot;: &quot;`~!@#%^&amp;*()=+-[&#123;]&#125;\\|;:&apos;\&quot;,.&lt;&gt;/?，。&quot;,</span><br><span class="line">    &quot;editor.renderControlCharacters&quot;: true,</span><br><span class="line">    &quot;editor.renderWhitespace&quot;: &quot;all&quot;,</span><br><span class="line">    &quot;editor.matchBrackets&quot;: false,</span><br><span class="line"></span><br><span class="line">    &quot;files.maxMemoryForLargeFilesMB&quot;: 5120,</span><br><span class="line">    &quot;files.autoSave&quot;: &quot;onFocusChange&quot;,</span><br><span class="line">    &quot;files.eol&quot;: &quot;\n&quot;,</span><br><span class="line">    &quot;files.watcherExclude&quot;: &#123;</span><br><span class="line">        &quot;**/bs&quot;: true,</span><br><span class="line">        &quot;**/ckeditor&quot;: true,</span><br><span class="line">        &quot;**/vendor/**&quot;: true,</span><br><span class="line">        &quot;**/outer/**&quot;: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;files.exclude&quot;: &#123;</span><br><span class="line">        &quot;**/.git&quot;: true,</span><br><span class="line">        &quot;**/.svn&quot;: true,</span><br><span class="line">        &quot;**/.hg&quot;: true,</span><br><span class="line">        &quot;**/CVS&quot;: true,</span><br><span class="line">        &quot;**/.DS_Store&quot;: true,</span><br><span class="line">        &quot;**/uploads&quot;: true,</span><br><span class="line">        &quot;**/tmp&quot;: true,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;breadcrumbs.enabled&quot;: true,</span><br><span class="line">    &quot;diffEditor.ignoreTrimWhitespace&quot;: false,</span><br><span class="line">    &quot;window.zoomLevel&quot;: 0,</span><br><span class="line"></span><br><span class="line">    &quot;typescript.npm&quot;: &quot;‪C:/Program Files/nodejs/npm.cmd&quot;,</span><br><span class="line">    &quot;typescript.preferences.quoteStyle&quot;: &quot;single&quot;,</span><br><span class="line">    &quot;javascript.implicitProjectConfig.checkJs&quot;: true,</span><br><span class="line">    &quot;javascript.preferences.quoteStyle&quot;: &quot;single&quot;,</span><br><span class="line">    &quot;javascript.referencesCodeLens.enabled&quot;: true,</span><br><span class="line">    &quot;javascript.format.insertSpaceBeforeFunctionParenthesis&quot;: true,</span><br><span class="line">    &quot;javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis&quot;: true,</span><br><span class="line"></span><br><span class="line">    &quot;[php]&quot;: &#123;</span><br><span class="line">        &quot;editor.defaultFormatter&quot;: &quot;bmewburn.vscode-intelephense-client&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;[javascript]&quot;: &#123;</span><br><span class="line">        &quot;editor.defaultFormatter&quot;: &quot;bysabi.prettier-vscode-standard&quot;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;git.confirmSync&quot;: false,</span><br><span class="line">    &quot;gitlens.views.lineHistory.enabled&quot;: false,</span><br><span class="line">    &quot;gitlens.hovers.annotations.over&quot;: &quot;annotation&quot;,</span><br><span class="line">    &quot;gitlens.advanced.fileHistoryFollowsRenames&quot;: false,</span><br><span class="line">    &quot;gitlens.advanced.similarityThreshold&quot;: 50,</span><br><span class="line">    &quot;gitlens.codeLens.scopes&quot;: [</span><br><span class="line">        &quot;document&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;gitlens.advanced.messages&quot;: &#123;</span><br><span class="line">        &quot;suppressCommitHasNoPreviousCommitWarning&quot;: true,</span><br><span class="line">        &quot;suppressShowKeyBindingsNotice&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;gitlens.blame.highlight.locations&quot;: [</span><br><span class="line">        &quot;gutter&quot;,</span><br><span class="line">        &quot;line&quot;,</span><br><span class="line">        &quot;overview&quot;</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    &quot;subtleBrackets.style&quot;: &#123;</span><br><span class="line">        &quot;color&quot;: &quot;#528BFF&quot;,</span><br><span class="line">        &quot;borderWidth&quot;: &quot;1px&quot;,</span><br><span class="line">        &quot;borderStyle&quot;: &quot;none none solid none&quot;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;phpfmt.smart_linebreak_after_curly&quot;: true,</span><br><span class="line">    &quot;phpfmt.passes&quot;: [</span><br><span class="line">        &quot;GeneratePHPDoc&quot;,</span><br><span class="line">        &quot;PHPDocTypesToFunctionTypehint&quot;,</span><br><span class="line">        &quot;PrettyPrintDocBlocks&quot;,</span><br><span class="line">        &quot;ReindentSwitchBlocks&quot;,</span><br><span class="line">        &quot;DocBlockToComment&quot;,</span><br><span class="line">        &quot;EliminateDuplicatedEmptyLines&quot;,</span><br><span class="line">        &quot;PSR2EmptyFunction&quot;,</span><br><span class="line">        &quot;AlignPHPCode&quot;,</span><br><span class="line">        &quot;RTrim&quot;,</span><br><span class="line">        &quot;IndentTernaryConditions&quot;,</span><br><span class="line">        &quot;MergeElseIf&quot;,</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    &quot;intelephense.completion.fullyQualifyGlobalConstantsAndFunctions&quot;: true,</span><br><span class="line">    &quot;intelephense.files.maxSize&quot;: 5242880,</span><br><span class="line">    &quot;intelephense.files.exclude&quot;: [</span><br><span class="line">        &quot;**/.git/**&quot;,</span><br><span class="line">        &quot;**/.svn/**&quot;,</span><br><span class="line">        &quot;**/.hg/**&quot;,</span><br><span class="line">        &quot;**/CVS/**&quot;,</span><br><span class="line">        &quot;**/.DS_Store/**&quot;,</span><br><span class="line">        &quot;**/node_modules/**&quot;,</span><br><span class="line">        &quot;**/bower_components/**&quot;,</span><br><span class="line">        &quot;**/vendor/**/&#123;Test,test,Tests,tests&#125;/**&quot;,</span><br><span class="line">        &quot;**/outer/**&quot;,</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    &quot;prettier.singleQuote&quot;: true,</span><br><span class="line">    &quot;prettier.parser&quot;: &quot;flow&quot;,</span><br><span class="line">    &quot;prettier.trailingComma&quot;: &quot;es5&quot;,</span><br><span class="line">    &quot;prettier.printWidth&quot;: 100,</span><br><span class="line"></span><br><span class="line">    &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;,</span><br><span class="line">    &quot;explorer.confirmDelete&quot;: false,</span><br><span class="line">    &quot;terminal.external.windowsExec&quot;: &quot;C:\\Program Files\\Git\\git-bash.exe&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Gunter.Chou提供</p>
-</blockquote>
-<h2 id="3-2-遠端-環境設定檔"><a href="#3-2-遠端-環境設定檔" class="headerlink" title="3.2 遠端 環境設定檔"></a>3.2 遠端 環境設定檔</h2><ul>
-<li>按<code>[ctrl+,]</code>選遠端[SSH:XXXX]，再選右上角<strong>{}</strong>符號</li>
-<li>貼上下列設定值後儲存(ctrl+s)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;php.validate.executablePath&quot;: &quot;/usr/bin/php7.0&quot;,</span><br><span class="line">    &quot;typescript.npm&quot;: &quot;/usr/local/bin/npm&quot;,</span><br><span class="line">    &quot;CI.other&quot;: [</span><br><span class="line">        &quot;system/core/Common.php&quot;,</span><br><span class="line">        &quot;system/database/DB_query_builder.php&quot;,</span><br><span class="line">        &quot;application/models/My_model.php&quot;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;resmon.show.battery&quot;: false,</span><br><span class="line">    &quot;logViewer.watch&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;title&quot;: &quot;CI Log&quot;,</span><br><span class="line">            &quot;pattern&quot;: &quot;./application/logs/*.php&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Gunter.Chou提供</p>
-</blockquote>
-<h1 id="四、常用快速鍵"><a href="#四、常用快速鍵" class="headerlink" title="四、常用快速鍵"></a>四、常用快速鍵</h1><ul>
-<li>開啟工作資料夾： ctrl+k ctrl+o (雙組合鍵)</li>
-<li>切換工作資料夾： ctrl+r (已開過間切換)</li>
-<li>呼叫/關閉終端機： ctrl+`</li>
-<li>打開/關閉檔案總管： ctrl+b</li>
-<li>程式碼格式化： alt+shift+f</li>
-<li>專案內檔案尋找： ctrl+p</li>
-<li>整列註解切換： ctrl+/</li>
-<li>成對括號尋找： ctrl+shift+\</li>
-<li>增加選取列縮排： ctrl+]</li>
-<li>減少選取列縮排： ctrl+[]</li>
-<li>刪除整列： ctrl+shift+k</li>
-<li>複制： ctrl+c</li>
-<li>剪下： ctrl+x</li>
-<li>還原： ctrl+z</li>
-<li>重做： ctrl+y</li>
-<li>搜尋： ctrl+f</li>
-<li>取代： ctrl+h</li>
-<li>行數跳躍： ctrl+g</li>
-<li>分割視窗： ctrl+\</li>
-<li>選取同一段字詞： ctrl+d</li>
-</ul>
-<h1 id="五、參考"><a href="#五、參考" class="headerlink" title="五、參考"></a>五、參考</h1><ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh" target="_blank" rel="noopener">Remote - SSH</a></li>
-<li><a href="https://code.visualstudio.com/docs/remote/ssh#_getting-started" target="_blank" rel="noopener">Remote Development using SSH</a></li>
-<li><a href="https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client" target="_blank" rel="noopener">Remote Development Tips and Tricks</a></li>
-</ul>
-<h1 id="六、Log"><a href="#六、Log" class="headerlink" title="六、Log"></a>六、Log</h1><ul>
-<li>2019-05-27 Mars Hung編輯</li>
-<li>2019-07-03 加入Gunter Chou提供環境設定</li>
-<li>2019-07-24 加入Gunter Chou提供環境設定</li>
-</ul>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/" data-id="cjze8qyxo000xeouf17uye5cc" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ide/">ide</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
 
 
     </footer>
@@ -1879,6 +1887,10 @@
     <ul class="sidebar-module-list">
       
         <li>
+          <a href="/2019/08/16/php-training/">PHP培訓-CRUD</a>
+        </li>
+      
+        <li>
           <a href="/2019/07/24/account-security-setting/">帳號安全設定</a>
         </li>
       
@@ -1894,10 +1906,6 @@
           <a href="/2019/07/20/crud-design-01/">CRUD表單設計 Day-01 環境建置</a>
         </li>
       
-        <li>
-          <a href="/2019/07/19/www-server-install/">Web伺服器安裝(LNMP)</a>
-        </li>
-      
     </ul>
   </div>
 
@@ -1905,7 +1913,7 @@
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
 
 
@@ -1913,7 +1921,7 @@
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tools/">tools</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tools/">tools</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -1921,7 +1929,7 @@
   
   <div class="sidebar-module">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/account/">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/doc/">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/env/">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/">git</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ide/">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/">php</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sop/">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tools/">tools</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/">training</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">3</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/account/">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/">dev</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/doc/">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/env/">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/">git</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ide/">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/">javascript</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/">php</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/">server</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sop/">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tools/">tools</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/">training</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/">web</a><span class="sidebar-module-list-count">4</span></li></ul>
   </div>
 
 

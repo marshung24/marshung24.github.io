@@ -3,18 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Tag: tools | Mars&#39;s Blog</title>
+  <title>PHP培訓-CRUD | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Record Mars&apos;s learning experiences and experiences">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mars&#39;s Blog">
-<meta property="og:url" content="https://blog.mars-world.net/tags/tools/index.html">
+  <meta name="description" content="開發環境建議開發環境  LNMP, LAMP, XAMPP 範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向  基本要求 請建構一個 帳號新增 的基本CRUD表單，欄位有： 帳號 varchar 姓名 varchar 性別 varchar 生日 date 信箱 varchar 備註 text 資料表名稱 account_info需自行建立資料表     需要用到PHP物">
+<meta name="keywords" content="web,dev,php,training">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP培訓-CRUD">
+<meta property="og:url" content="https://blog.mars-world.net/2019/08/16/php-training/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
-<meta property="og:description" content="Record Mars&apos;s learning experiences and experiences">
+<meta property="og:description" content="開發環境建議開發環境  LNMP, LAMP, XAMPP 範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向  基本要求 請建構一個 帳號新增 的基本CRUD表單，欄位有： 帳號 varchar 姓名 varchar 性別 varchar 生日 date 信箱 varchar 備註 text 資料表名稱 account_info需自行建立資料表     需要用到PHP物">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-16T15:14:55.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mars&#39;s Blog">
-<meta name="twitter:description" content="Record Mars&apos;s learning experiences and experiences">
+<meta name="twitter:title" content="PHP培訓-CRUD">
+<meta name="twitter:description" content="開發環境建議開發環境  LNMP, LAMP, XAMPP 範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向  基本要求 請建構一個 帳號新增 的基本CRUD表單，欄位有： 帳號 varchar 姓名 varchar 性別 varchar 生日 date 信箱 varchar 備註 text 資料表名稱 account_info需自行建立資料表     需要用到PHP物">
   
   
   
@@ -75,120 +77,159 @@
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-  
+          <article id="post-php-training" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
     
+  
+    <h1 class="article-title" itemprop="name">
+      PHP培訓-CRUD
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/08/16/php-training/" class="article-date"><time datetime="2019-08-16T15:10:30.000Z" itemprop="datePublished">2019-08-16</time></a>
+</div>
+
+    <div class="article-author">Mars Hung</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/training/">training</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#開發環境"><span class="toc-text">開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本要求"><span class="toc-text">基本要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#進階要求"><span class="toc-text">進階要求</span></a></li></ol>
+</div>
+
+        <h1 id="開發環境"><a href="#開發環境" class="headerlink" title="開發環境"></a>開發環境</h1><p>建議開發環境</p>
+<ul>
+<li><a href="/2019/07/19/www-server-install/">LNMP</a>, LAMP, XAMPP</li>
+<li>範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向</li>
+</ul>
+<h1 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h1><ol>
+<li>請建構一個 帳號新增 的基本CRUD表單，欄位有：<ul>
+<li>帳號 varchar</li>
+<li>姓名 varchar</li>
+<li>性別 varchar</li>
+<li>生日 date</li>
+<li>信箱 varchar</li>
+<li>備註 text<blockquote>
+<p>資料表名稱 account_info<br>需自行建立資料表</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>需要用到PHP物件、繼承、介面等物件導向技巧<ul>
+<li>自行定義物件並展示繼承、介面，本題不算第三方程式物件的使用</li>
+</ul>
+</li>
+<li>清單頁 - 顯示已存在資料</li>
+<li>新增/編輯/刪除(需二次確認) - 資料編輯用</li>
+<li>需用到jQuery</li>
+<li>需用到AJAX</li>
+<li>使用彈窗(Dialog)方式開啟 新增/編輯表單頁<ul>
+<li>可使用套件 Bootstrap Modal, jQuery UI Dialog</li>
+</ul>
+</li>
+<li>支援搜尋、排序功能</li>
+<li>每頁顯示數量、分頁(Pagination)</li>
+<li>資料驗証 (任擇二項)<ul>
+<li>必填：帳號、姓名、性別、生日、信箱</li>
+<li>帳號格式：英文+數字</li>
+<li>日期格式：生日</li>
+<li>信箱格式：信箱</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>基本要求共10題，測試基礎能力</p>
+</blockquote>
+<div style="page-break-after: always;"></div>
+
+<h1 id="進階要求"><a href="#進階要求" class="headerlink" title="進階要求"></a>進階要求</h1><p>以下需求 ++<strong>依個人能力</strong>++ 選擇項目完成</p>
+<ol start="11">
+<li>使用PHP Framework<ul>
+<li>如：CodeIgniter3, Yii2, Laravel</li>
+</ul>
+</li>
+<li>使用RWD Framework<ul>
+<li>如：Bootstrap</li>
+</ul>
+</li>
+<li>編碼風格：PSR-1 &amp; PSR-2 &amp; PHPDoc註釋</li>
+<li>PSR-4 &amp; 使用Namespace<ul>
+<li>自行開發spl_autoload_register()或用composer autoload輔助</li>
+</ul>
+</li>
+<li>AJAX使用 RESTful style傳送資料，並且回傳支援 HTTP Status Code</li>
+<li>資料處理<ul>
+<li>帳號：字母全部轉小寫</li>
+<li>性別：顯示時為 男/女 ，資料庫儲存為 1/0</li>
+<li>生日：顯示時格式 2019年2月15日 ，資料庫儲存格式為 2019-02-15</li>
+</ul>
+</li>
+<li>Javascript使用物件寫法</li>
+<li>批次刪除功能</li>
+<li>匯出資料(text or excel)</li>
+<li>匯入資料(批次新增 or 批次修改)</li>
+</ol>
+<blockquote>
+<p>進階要求共10題</p>
+</blockquote>
+
+      
+    </div>
+
     
       
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="cjzey37vv003ty4ufhl12pgf0" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/training/">training</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+
+    </footer>
+  </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/21/composer-install/">Composer安裝</a>
-    </h1>
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
   
+  <li role="presentation">
+    <a href="/2019/07/24/account-security-setting/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">帳號安全設定</span>
+    </a>
+  </li>
+  
+  
+</ul>
 
 
-    <div class="article-datetime">
-  <a href="/2019/07/21/composer-install/" class="archive-article-date"><time datetime="2019-07-21T02:42:40.000Z" itemprop="datePublished">July 21st</time></a>
-</div>
-
-  </header>
+  
 </article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/21/git-install/">Git安裝</a>
-    </h1>
-  
-
-
-    <div class="article-datetime">
-  <a href="/2019/07/21/git-install/" class="archive-article-date"><time datetime="2019-07-21T02:42:29.000Z" itemprop="datePublished">July 21st</time></a>
-</div>
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/03/phpunit/">使用PHPUnit進行單元測試</a>
-    </h1>
-  
-
-
-    <div class="article-datetime">
-  <a href="/2019/07/03/phpunit/" class="archive-article-date"><time datetime="2019-07-03T14:18:23.000Z" itemprop="datePublished">July 3rd</time></a>
-</div>
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/30/nodejs-install/">Node.js安裝</a>
-    </h1>
-  
-
-
-    <div class="article-datetime">
-  <a href="/2019/05/30/nodejs-install/" class="archive-article-date"><time datetime="2019-05-30T15:20:44.000Z" itemprop="datePublished">May 30th</time></a>
-</div>
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/27/vscode-remote-ssh/">VS Code遠端開發套件：Remote-SSH</a>
-    </h1>
-  
-
-
-    <div class="article-datetime">
-  <a href="/2019/05/27/vscode-remote-ssh/" class="archive-article-date"><time datetime="2019-05-27T13:13:47.000Z" itemprop="datePublished">May 27th</time></a>
-</div>
-
-  </header>
-</article>
-
-  
-  
-    </div></section>
-  
 
 
 
