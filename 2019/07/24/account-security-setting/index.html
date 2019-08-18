@@ -30,11 +30,13 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-15.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-16.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-17.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/ssh-keygen-had-email.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/02-ssh-keys-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/02-gitlab-security-01.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/ssh-keygen-had-email.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-ssh-keys-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-github-security-01.png">
-<meta property="og:updated_time" content="2019-08-01T16:00:16.494Z">
+<meta property="og:updated_time" content="2019-08-18T05:22:12.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="帳號安全設定">
 <meta name="twitter:description" content="一、說明開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google/facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的安全設定如下：  可靠的密碼 限定連線IP SSH金鑰認證 (Authorized_keys) 兩步驟驗證">
@@ -234,8 +236,11 @@
 <h2 id="3-2-GitLab"><a href="#3-2-GitLab" class="headerlink" title="3.2 GitLab"></a>3.2 GitLab</h2><h3 id="3-2-1-SSH金鑰認證"><a href="#3-2-1-SSH金鑰認證" class="headerlink" title="3.2.1 SSH金鑰認證"></a>3.2.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<p><img src="ssh-keygen-had-email.png" alt></p>
 <blockquote>
 <ul>
+<li>產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入密碼</li>
+<li>在<strong>非共用電腦上</strong>使用的ssh key，密碼通常不設，自行保管好即可</li>
 <li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
 <li>私錀：id_rsa-your_email</li>
 <li>公錀：id_rsa-your_email.pub</li>
@@ -268,10 +273,15 @@
 </blockquote>
 </li>
 <li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前往家目錄下的ssh設定資料夾</span><br><span class="line"><span class="meta">$</span> cd ~/.ssh/</span><br><span class="line"><span class="meta">#</span> 編輯ssh config</span><br><span class="line"><span class="meta">$</span> vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># GitLab.com</span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<p>config內容如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> GitLab.com</span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>IdentityFile 指定ssh私鑰路徑</p>
+</blockquote>
 </li>
 </ul>
 <h3 id="3-2-2-兩步驟驗證"><a href="#3-2-2-兩步驟驗證" class="headerlink" title="3.2.2 兩步驟驗證"></a>3.2.2 兩步驟驗證</h3><ul>
@@ -285,8 +295,11 @@
 <h2 id="3-3-GitHub"><a href="#3-3-GitHub" class="headerlink" title="3.3 GitHub"></a>3.3 GitHub</h2><h3 id="3-3-1-SSH金鑰認證"><a href="#3-3-1-SSH金鑰認證" class="headerlink" title="3.3.1 SSH金鑰認證"></a>3.3.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<p><img src="ssh-keygen-had-email.png" alt></p>
 <blockquote>
 <ul>
+<li>產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入密碼</li>
+<li>在<strong>非共用電腦上</strong>使用的ssh key，密碼通常不設，自行保管好即可</li>
 <li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
 <li>私錀：id_rsa-your_email</li>
 <li>公錀：id_rsa-your_email.pub</li>
@@ -322,10 +335,15 @@
 </ul>
 <ul>
 <li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前往家目錄下的ssh設定資料夾</span><br><span class="line"><span class="meta">$</span> cd ~/.ssh/</span><br><span class="line"><span class="meta">#</span> 編輯ssh config</span><br><span class="line"><span class="meta">$</span> vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
+<p>config內容如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Github.com</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>IdentityFile 指定ssh私鑰路徑</p>
+</blockquote>
 </li>
 </ul>
 <h3 id="3-3-2-兩步驟驗證"><a href="#3-3-2-兩步驟驗證" class="headerlink" title="3.3.2 兩步驟驗證"></a>3.3.2 兩步驟驗證</h3><ul>
@@ -346,7 +364,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cjzfnlvtr000l80uf2g99nxq8" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cjzgasjnz000qskufloc9kk20" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
