@@ -76,7 +76,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/dns-resolve.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/09-ca-install-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/dns-resolve.png">
-<meta property="og:updated_time" content="2019-08-17T14:49:05.380Z">
+<meta property="og:updated_time" content="2019-09-11T15:12:52.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web伺服器安裝(LNMP)">
 <meta name="twitter:description" content="一、說明安裝網頁執行平台，以供開發作業 很多人都知道，windows有不少PHP開發環境的安裝包，如xampp, appserv, wamp，但一個成熟的開發者，是不會用和線上不一樣的環境開發的，這會導至開發出來的程式有無法預期的錯誤，所以學習安裝一個LNMP環境是有必要的。 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7 MySQL 5">
@@ -574,7 +574,14 @@
 <li>PHP還未設定完成，無法查看 <a href="https://sql.dev.idv/" target="_blank" rel="noopener">https://sql.dev.idv/</a></li>
 <li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
 <li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<br><img src="dns-resolve.png" alt></li>
+<li>在檔案最下方增加二行設定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;   192.168.56.102 sql.dev.idv</span><br><span class="line">&gt;   192.168.56.102 site2.dev.idv</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>上述設定的IP: 192.168.56.102 是 單元<a href="#4-3-登入-Ubuntu-Server">登入 Ubuntu Server</a>中查到的IP中用來連線SSH的IP</p>
+</blockquote>
 </blockquote>
 <h3 id="5-5-8-自簽憑証問題"><a href="#5-5-8-自簽憑証問題" class="headerlink" title="5.5.8 自簽憑証問題"></a>5.5.8 自簽憑証問題</h3><ul>
 <li>憑証不安全提示</li>
@@ -610,7 +617,14 @@
 <ul>
 <li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
 <li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<br><img src="dns-resolve.png" alt></li>
+<li>在檔案最下方增加二行設定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;   192.168.56.102 sql.dev.idv</span><br><span class="line">&gt;   192.168.56.102 site2.dev.idv</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>上述設定的IP: 192.168.56.102 是 單元<a href="#4-3-登入-Ubuntu-Server">登入 Ubuntu Server</a>中查到的IP中用來連線SSH的IP</p>
+</blockquote>
 </blockquote>
 <h1 id="六、Linux常用指令"><a href="#六、Linux常用指令" class="headerlink" title="六、Linux常用指令"></a>六、Linux常用指令</h1><ul>
 <li>sudo 其他指令: 變換(root)權限執行指令</li>
@@ -647,7 +661,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="cjzmyohoz004tk0ufzn0nc54w" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="cjztyjbly004tlguf8fxu111k" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
