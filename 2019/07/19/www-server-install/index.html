@@ -22,6 +22,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/04-create-virtual-machine-5.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/04-create-virtual-machine-6.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/04-create-virtual-machine-7.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/04-nat-network.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/04-create-virtual-machine-8.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/04-create-virtual-machine-9.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/04-create-virtual-machine-10.png">
@@ -76,7 +77,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/dns-resolve.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/09-ca-install-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/dns-resolve.png">
-<meta property="og:updated_time" content="2019-09-11T15:21:14.020Z">
+<meta property="og:updated_time" content="2019-10-24T14:22:21.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web伺服器安裝(LNMP)">
 <meta name="twitter:description" content="一、說明安裝網頁執行平台，以供開發作業 很多人都知道，windows有不少PHP開發環境的安裝包，如xampp, appserv, wamp，但一個成熟的開發者，是不會用和線上不一樣的環境開發的，這會導至開發出來的程式有無法預期的錯誤，所以學習安裝一個LNMP環境是有必要的。 二、環境 windows virtualbox Ubuntu 16.04 Nignx 1.10 PHP 7 MySQL 5">
@@ -229,19 +230,22 @@
 </li>
 <li><p>設定網路</p>
 <ul>
-<li>虛擬機器可連線internet，且虛擬機器之間可互連</li>
-</ul>
+<li><p>增加NAT網路<br>點擊左上角 檔案 =&gt; 喜好設定 =&gt; 網路</p>
+<p><img src="04-nat-network.png" alt></p>
+</li>
+<li><p>虛擬機器可連線internet，且虛擬機器之間可互連</p>
 <p><img src="04-create-virtual-machine-8.png" alt></p>
 <blockquote>
 <p>選擇「NAT」時，無法和其他機器互連，但選擇「NAT網路」的機器之間是可以互連的</p>
 </blockquote>
-<ul>
-<li>讓主機端可連線虛擬機器</li>
-</ul>
+</li>
+<li><p>讓主機端可連線虛擬機器</p>
 <p><img src="04-create-virtual-machine-9.png" alt></p>
 <blockquote>
 <p>主機端無法透過「NAT」、「NAT網路」連線到虛擬機器，因此要增加介面卡「僅限主機介面卡」</p>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p>啟動虛擬機器</p>
 <p><img src="04-create-virtual-machine-10.png" alt></p>
@@ -441,7 +445,7 @@
 <blockquote>
 <ul>
 <li>增加第二張網卡「enp0s8」設定</li>
-<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi 快速入門</a><ul>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi/vim 快速入門</a><ul>
 <li>在命令模式中按「a」鍵可進入編輯模式，再按「Esc」鍵可回到命令模式</li>
 <li>在命令模式中按「:wq」可儲存離開</li>
 <li>在命令模式中按「:q!」可強制離開</li>
@@ -472,9 +476,9 @@
 </ul>
 </blockquote>
 <ul>
-<li>建立帳號 dev<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 建立帳號dev</span><br><span class="line"><span class="meta">$</span> sudo useradd -m -s /bin/bash dev</span><br><span class="line"><span class="meta">#</span> 設定密碼</span><br><span class="line"><span class="meta">$</span> sudo passwd dev</span><br><span class="line">Enter new UNIX password:    # 輸入密碼</span><br><span class="line">Retype new UNIX password:   # 確認密碼</span><br><span class="line">passwd: password updated successfully</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 設定帳號dev的sudo權限</span><br><span class="line"><span class="meta">$</span> sudo vi /etc/group</span><br><span class="line"><span class="meta">#</span> 在 sudo:x:27:web 後面加入 ,dev</span><br></pre></td></tr></table></figure>
-</li>
+<li>建立帳號 dev<br>Ubuntu安裝時設定的帳號是系統的第一個帳號，在部份設定中有特殊意思，建議平時使用時重新重新建立一個帳號</li>
 </ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 建立帳號dev</span><br><span class="line"><span class="meta">$</span> sudo useradd -m -s /bin/bash dev</span><br><span class="line"><span class="meta">#</span> 設定密碼</span><br><span class="line"><span class="meta">$</span> sudo passwd dev</span><br><span class="line">Enter new UNIX password:    # 輸入密碼</span><br><span class="line">Retype new UNIX password:   # 確認密碼</span><br><span class="line">passwd: password updated successfully</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 設定帳號dev的sudo權限</span><br><span class="line"><span class="meta">$</span> sudo vi /etc/group</span><br><span class="line"><span class="meta">#</span> 在 sudo:x:27:web 後面加入 ,dev</span><br></pre></td></tr></table></figure>
 <p><img src="06-ssh-login-3.png" alt></p>
 <h1 id="五、安裝-LNMP-Server"><a href="#五、安裝-LNMP-Server" class="headerlink" title="五、安裝 LNMP Server"></a>五、安裝 LNMP Server</h1><h2 id="5-1-更新套件"><a href="#5-1-更新套件" class="headerlink" title="5.1 更新套件"></a>5.1 更新套件</h2><ul>
 <li>更新apt資料庫</li>
@@ -634,13 +638,23 @@
 <li>showdown -h now: 關機</li>
 <li>reboot: 重開機</li>
 <li>logout: 登出 (或ctrl+D)</li>
-<li>vi 檔案路徑: 使用linux文字編輯器編輯檔案</li>
 <li>cd 目錄名稱: 前往目錄</li>
 <li>ls: 顯示目前目錄內容</li>
 <li>pwd: 顯示目前目錄路徑</li>
 <li>ifconfig: 查看網路介面</li>
 <li>netstat -tln: 查看服務監聽狀況</li>
 <li>指令補完： tab鍵</li>
+<li>vi/vim 檔案路徑: 使用linux文字編輯器編輯檔案</li>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi/vim 快速入門</a><ul>
+<li>在命令模式中按「a」鍵可進入編輯模式，再按「Esc」鍵可回到命令模式</li>
+<li>在命令模式中按「:wq」可儲存離開</li>
+<li>在命令模式中按「:q!」可強制離開</li>
+<li>在命令模式中按「u」鍵可還原編輯內容；按「y」可重做編輯內容</li>
+<li>在命令模式中按「yy」為複制一行；「dd」為刪除一行；「p」為貼上複制內容；「2yy」為複制二行；「3dd」為刪除3行</li>
+<li>在命令模式中按「gg」為跳到第一行；「G」為跳到最後一行；「:12」為跳到第12行</li>
+<li>在命令模式中按「/」+字串為尋找字串；尋找模式中再按n為尋找下一個；再按N為尋找上一個</li>
+</ul>
+</li>
 </ul>
 <h1 id="七、參考："><a href="#七、參考：" class="headerlink" title="七、參考："></a>七、參考：</h1><ul>
 <li><a href="http://linux.vbird.org/" target="_blank" rel="noopener">鳥哥的Linux 私房菜</a></li>
@@ -663,7 +677,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="ck24s0ocq004qi4ufpjfxzqqp" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="ck24u3bae004rvgufrzohw95z" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       

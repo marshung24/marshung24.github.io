@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/config-ssh.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/connect-to-remote.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/set-config.png">
-<meta property="og:updated_time" content="2019-08-18T01:40:37.042Z">
+<meta property="og:updated_time" content="2019-10-24T14:54:58.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VS Code遠端開發套件：Remote-SSH">
 <meta name="twitter:description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key打開git bash，輸入下列指令 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh    產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入">
@@ -162,6 +162,22 @@
 </blockquote>
 </li>
 </ol>
+<blockquote>
+<ul>
+<li>VS Code 遠端開發說明<ul>
+<li>VS Code IDE 編輯器安裝在本機電腦上，透過 Remote-SSH 套件使用SSH遠端連線協定連線到遠端Ubuntu(Linux)伺服器上編輯程式檔，此為遠端開發。</li>
+</ul>
+</li>
+<li>SSH連線金鑰<ul>
+<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-remote-ssh, id_rsa-remote-ssh.pub</li>
+<li>id_rsa-remote-ssh是私鑰，存放於本機端</li>
+<li>id_rsa-remote-ssh.pub是公鑰，透過指令ssh-copy-id存放於遠端伺服器</li>
+<li>設定config指定連線參數與使用金鑰檔</li>
+<li>此時使用SSH連線到遠端伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <h1 id="三、VS-Code環境設定"><a href="#三、VS-Code環境設定" class="headerlink" title="三、VS Code環境設定"></a>三、VS Code環境設定</h1><h2 id="3-1-本地使用者-環境設定檔"><a href="#3-1-本地使用者-環境設定檔" class="headerlink" title="3.1 本地使用者 環境設定檔"></a>3.1 本地使用者 環境設定檔</h2><ul>
 <li><p>按<code>[ctrl+,]</code>選使用者，再選右上角<strong>{}</strong>符號</p>
 <p><img src="set-config.png" alt></p>
@@ -223,7 +239,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/" data-id="ck24s0o9t0005i4ufvuui8clc" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/" data-id="ck24u3b9l004dvgufj99kvg9t" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       

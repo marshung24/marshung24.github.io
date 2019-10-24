@@ -330,7 +330,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck24s0ocs004si4uff8y8d05n" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck24u3bag004tvgufx3ogrrp8" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -481,7 +481,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck24s0oag000vi4uffwvatmc9" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck24u3b88000vvgufzdf8mtuu" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -671,7 +671,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck24s0oak000yi4uf3s98qc2p" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck24u3b86000svguf5p3fonrq" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -886,7 +886,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck24s0oaf000si4ufwmqy9m7o" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck24u3b83000qvgufll6udblg" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1085,6 +1085,18 @@
 </blockquote>
 </li>
 </ul>
+<blockquote>
+<ul>
+<li>Git SSH連線金鑰<ul>
+<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-your_email, id_rsa-your_email.pub</li>
+<li>id_rsa-your_email是私鑰，存放於本機端</li>
+<li>id_rsa-your_email.pub是公鑰，存放於Git伺服器</li>
+<li>設定config指定連線參數與使用金鑰檔</li>
+<li>此時使用SSH連線到Git伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <h3 id="3-2-2-兩步驟驗證"><a href="#3-2-2-兩步驟驗證" class="headerlink" title="3.2.2 兩步驟驗證"></a>3.2.2 兩步驟驗證</h3><ul>
 <li><p>登入GitLab，設定兩步驟驗證</p>
 <p><img src="02-gitlab-security-01.png" alt></p>
@@ -1147,6 +1159,18 @@
 </blockquote>
 </li>
 </ul>
+<blockquote>
+<ul>
+<li>Git SSH連線金鑰<ul>
+<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-your_email, id_rsa-your_email.pub</li>
+<li>id_rsa-your_email是私鑰，存放於本機端</li>
+<li>id_rsa-your_email.pub是公鑰，存放於Git伺服器</li>
+<li>設定config指定連線參數與使用金鑰檔</li>
+<li>此時使用SSH連線到Git伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <h3 id="3-3-2-兩步驟驗證"><a href="#3-3-2-兩步驟驗證" class="headerlink" title="3.3.2 兩步驟驗證"></a>3.3.2 兩步驟驗證</h3><ul>
 <li><p>登入GitHub，設定兩步驟驗證</p>
 <p><img src="03-github-security-01.png" alt></p>
@@ -1165,7 +1189,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck24s0oac000qi4ufjyss5ynw" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck24u3b7z000jvgufpbiqzofx" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1282,7 +1306,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck24s0oa8000ji4ufk4vs5au5" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck24u3b7x000fvgufnllm9ly8" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1422,12 +1446,12 @@
 <li>變基: git rebase -i &lt;commit&gt;</li>
 <li>切換分支: git checkout &lt;branch&gt;</li>
 <li>清除變動檔案: git checkout &lt;file&gt;</li>
-<li>清除分支所有變動: git checkout – .</li>
+<li>清除分支所有變動: git checkout -- .</li>
 <li>變更工作目錄至commit: git reset &lt;commit&gt;<blockquote>
 <p>只移動branch位置，不變動檔案</p>
 </blockquote>
 </li>
-<li>變更工作目錄至commit: git reset –hard &lt;commit&gt;<blockquote>
+<li>變更工作目錄至commit: git reset --hard &lt;commit&gt;<blockquote>
 <p>移動branch位置，並重置檔案</p>
 </blockquote>
 </li>
@@ -1444,6 +1468,7 @@
 </li>
 </ul>
 <h1 id="四、參考"><a href="#四、參考" class="headerlink" title="四、參考"></a>四、參考</h1><ul>
+<li><a href="https://gitbook.tw/#git--1" target="_blank" rel="noopener">Git學習</a></li>
 <li><a href="https://git-scm.com/book/zh-tw/v2" target="_blank" rel="noopener">git-scm</a></li>
 <li><a href="https://backlog.com/git-tutorial/tw/" target="_blank" rel="noopener">連猴子都能懂的Git入門指南</a></li>
 </ul>
@@ -1457,7 +1482,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck24s0oa5000fi4ufeirta22w" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck24u3b81000lvgufhm6kk7i9" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1511,7 +1536,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、工作目錄設置"><span class="toc-text">三、工作目錄設置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-建立工作目錄"><span class="toc-text">3.1 建立工作目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-建立Nginx-Virtual-Host"><span class="toc-text">3.2 建立Nginx Virtual Host</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、使用IDE：VSCode"><span class="toc-text">四、使用IDE：VSCode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、培訓題目"><span class="toc-text">五、培訓題目</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、工作目錄設置"><span class="toc-text">三、工作目錄設置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-建立工作目錄"><span class="toc-text">3.1 建立工作目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-建立Nginx-Virtual-Host"><span class="toc-text">3.2 建立Nginx Virtual Host</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、使用IDE：VSCode"><span class="toc-text">四、使用IDE：VSCode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、培訓題目"><span class="toc-text">五、培訓題目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、Linux常用指令"><span class="toc-text">六、Linux常用指令</span></a></li></ol>
 </div>
 
         <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>CRUD行為(新增/讀取/修改/刪除)是一切資料處理的基本行為，例如使用者上網時看到的網頁(read)，是由瀏覽器向伺服器，再向資料庫「讀取」資料而得到的，可用下圖表示：</p>
@@ -1568,6 +1593,30 @@
 </li>
 </ol>
 <h1 id="五、培訓題目"><a href="#五、培訓題目" class="headerlink" title="五、培訓題目"></a>五、培訓題目</h1><p><a href="/2019/08/16/php-training/">PHP培訓-CRUD</a></p>
+<h1 id="六、Linux常用指令"><a href="#六、Linux常用指令" class="headerlink" title="六、Linux常用指令"></a>六、Linux常用指令</h1><ul>
+<li>sudo 其他指令: 變換(root)權限執行指令</li>
+<li>ssh: ssh連線</li>
+<li>showdown -h now: 關機</li>
+<li>reboot: 重開機</li>
+<li>logout: 登出 (或ctrl+D)</li>
+<li>cd 目錄名稱: 前往目錄</li>
+<li>ls: 顯示目前目錄內容</li>
+<li>pwd: 顯示目前目錄路徑</li>
+<li>ifconfig: 查看網路介面</li>
+<li>netstat -tln: 查看服務監聽狀況</li>
+<li>指令補完： tab鍵</li>
+<li>vi/vim 檔案路徑: 使用linux文字編輯器編輯檔案</li>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi/vim 快速入門</a><ul>
+<li>在命令模式中按「a」鍵可進入編輯模式，再按「Esc」鍵可回到命令模式</li>
+<li>在命令模式中按「:wq」可儲存離開</li>
+<li>在命令模式中按「:q!」可強制離開</li>
+<li>在命令模式中按「u」鍵可還原編輯內容；按「y」可重做編輯內容</li>
+<li>在命令模式中按「yy」為複制一行；「dd」為刪除一行；「p」為貼上複制內容；「2yy」為複制二行；「3dd」為刪除3行</li>
+<li>在命令模式中按「gg」為跳到第一行；「G」為跳到最後一行；「:12」為跳到第12行</li>
+<li>在命令模式中按「/」+字串為尋找字串；尋找模式中再按n為尋找下一個；再按N為尋找上一個</li>
+</ul>
+</li>
+</ul>
 <hr>
 <p><strong>未完待續：</strong> <a href="/2019/08/16/crud-design-02/">CRUD表單設計 Day-02 安裝PHP Framework</a></p>
 
@@ -1580,7 +1629,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck24s0oa9000li4uf8s9nwbi9" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck24u3b7v000evguf49glvdrs" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1684,19 +1733,22 @@
 </li>
 <li><p>設定網路</p>
 <ul>
-<li>虛擬機器可連線internet，且虛擬機器之間可互連</li>
-</ul>
+<li><p>增加NAT網路<br>點擊左上角 檔案 =&gt; 喜好設定 =&gt; 網路</p>
+<p><img src="04-nat-network.png" alt></p>
+</li>
+<li><p>虛擬機器可連線internet，且虛擬機器之間可互連</p>
 <p><img src="04-create-virtual-machine-8.png" alt></p>
 <blockquote>
 <p>選擇「NAT」時，無法和其他機器互連，但選擇「NAT網路」的機器之間是可以互連的</p>
 </blockquote>
-<ul>
-<li>讓主機端可連線虛擬機器</li>
-</ul>
+</li>
+<li><p>讓主機端可連線虛擬機器</p>
 <p><img src="04-create-virtual-machine-9.png" alt></p>
 <blockquote>
 <p>主機端無法透過「NAT」、「NAT網路」連線到虛擬機器，因此要增加介面卡「僅限主機介面卡」</p>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p>啟動虛擬機器</p>
 <p><img src="04-create-virtual-machine-10.png" alt></p>
@@ -1896,7 +1948,7 @@
 <blockquote>
 <ul>
 <li>增加第二張網卡「enp0s8」設定</li>
-<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi 快速入門</a><ul>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi/vim 快速入門</a><ul>
 <li>在命令模式中按「a」鍵可進入編輯模式，再按「Esc」鍵可回到命令模式</li>
 <li>在命令模式中按「:wq」可儲存離開</li>
 <li>在命令模式中按「:q!」可強制離開</li>
@@ -1927,9 +1979,9 @@
 </ul>
 </blockquote>
 <ul>
-<li>建立帳號 dev<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 建立帳號dev</span><br><span class="line"><span class="meta">$</span> sudo useradd -m -s /bin/bash dev</span><br><span class="line"><span class="meta">#</span> 設定密碼</span><br><span class="line"><span class="meta">$</span> sudo passwd dev</span><br><span class="line">Enter new UNIX password:    # 輸入密碼</span><br><span class="line">Retype new UNIX password:   # 確認密碼</span><br><span class="line">passwd: password updated successfully</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 設定帳號dev的sudo權限</span><br><span class="line"><span class="meta">$</span> sudo vi /etc/group</span><br><span class="line"><span class="meta">#</span> 在 sudo:x:27:web 後面加入 ,dev</span><br></pre></td></tr></table></figure>
-</li>
+<li>建立帳號 dev<br>Ubuntu安裝時設定的帳號是系統的第一個帳號，在部份設定中有特殊意思，建議平時使用時重新重新建立一個帳號</li>
 </ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 建立帳號dev</span><br><span class="line"><span class="meta">$</span> sudo useradd -m -s /bin/bash dev</span><br><span class="line"><span class="meta">#</span> 設定密碼</span><br><span class="line"><span class="meta">$</span> sudo passwd dev</span><br><span class="line">Enter new UNIX password:    # 輸入密碼</span><br><span class="line">Retype new UNIX password:   # 確認密碼</span><br><span class="line">passwd: password updated successfully</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 設定帳號dev的sudo權限</span><br><span class="line"><span class="meta">$</span> sudo vi /etc/group</span><br><span class="line"><span class="meta">#</span> 在 sudo:x:27:web 後面加入 ,dev</span><br></pre></td></tr></table></figure>
 <p><img src="06-ssh-login-3.png" alt></p>
 <h1 id="五、安裝-LNMP-Server"><a href="#五、安裝-LNMP-Server" class="headerlink" title="五、安裝 LNMP Server"></a>五、安裝 LNMP Server</h1><h2 id="5-1-更新套件"><a href="#5-1-更新套件" class="headerlink" title="5.1 更新套件"></a>5.1 更新套件</h2><ul>
 <li>更新apt資料庫</li>
@@ -2089,13 +2141,23 @@
 <li>showdown -h now: 關機</li>
 <li>reboot: 重開機</li>
 <li>logout: 登出 (或ctrl+D)</li>
-<li>vi 檔案路徑: 使用linux文字編輯器編輯檔案</li>
 <li>cd 目錄名稱: 前往目錄</li>
 <li>ls: 顯示目前目錄內容</li>
 <li>pwd: 顯示目前目錄路徑</li>
 <li>ifconfig: 查看網路介面</li>
 <li>netstat -tln: 查看服務監聽狀況</li>
 <li>指令補完： tab鍵</li>
+<li>vi/vim 檔案路徑: 使用linux文字編輯器編輯檔案</li>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi/vim 快速入門</a><ul>
+<li>在命令模式中按「a」鍵可進入編輯模式，再按「Esc」鍵可回到命令模式</li>
+<li>在命令模式中按「:wq」可儲存離開</li>
+<li>在命令模式中按「:q!」可強制離開</li>
+<li>在命令模式中按「u」鍵可還原編輯內容；按「y」可重做編輯內容</li>
+<li>在命令模式中按「yy」為複制一行；「dd」為刪除一行；「p」為貼上複制內容；「2yy」為複制二行；「3dd」為刪除3行</li>
+<li>在命令模式中按「gg」為跳到第一行；「G」為跳到最後一行；「:12」為跳到第12行</li>
+<li>在命令模式中按「/」+字串為尋找字串；尋找模式中再按n為尋找下一個；再按N為尋找上一個</li>
+</ul>
+</li>
 </ul>
 <h1 id="七、參考："><a href="#七、參考：" class="headerlink" title="七、參考："></a>七、參考：</h1><ul>
 <li><a href="http://linux.vbird.org/" target="_blank" rel="noopener">鳥哥的Linux 私房菜</a></li>
@@ -2118,7 +2180,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="ck24s0ocq004qi4ufpjfxzqqp" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="ck24u3bae004rvgufrzohw95z" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2255,7 +2317,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="ck24s0oa3000ei4uf0oa91tmu" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="ck24u3b7s000avgufsghih2dy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       

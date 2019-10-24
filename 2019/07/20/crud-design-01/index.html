@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/20/crud-design-01/04-vscode-connect.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/20/crud-design-01/04-vscode-open-dir.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/20/crud-design-01/04-vscode-remote-ssh-list.png">
-<meta property="og:updated_time" content="2019-08-17T14:47:45.417Z">
+<meta property="og:updated_time" content="2019-10-24T14:23:17.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CRUD表單設計 Day-01 環境建置">
 <meta name="twitter:description" content="一、說明CRUD行為(新增/讀取/修改/刪除)是一切資料處理的基本行為，例如使用者上網時看到的網頁(read)，是由瀏覽器向伺服器，再向資料庫「讀取」資料而得到的，可用下圖表示：  在此以練習網頁+資料庫的CRUD行為做為程式學習入門 二、環境建置工欲善其事，必先利其器，先裝好工作環境吧….  LNMP web server Git安裝 Composer安裝 Node.js安裝 IDE&amp;amp;遠">
@@ -121,7 +121,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、工作目錄設置"><span class="toc-text">三、工作目錄設置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-建立工作目錄"><span class="toc-text">3.1 建立工作目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-建立Nginx-Virtual-Host"><span class="toc-text">3.2 建立Nginx Virtual Host</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、使用IDE：VSCode"><span class="toc-text">四、使用IDE：VSCode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、培訓題目"><span class="toc-text">五、培訓題目</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、工作目錄設置"><span class="toc-text">三、工作目錄設置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-建立工作目錄"><span class="toc-text">3.1 建立工作目錄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-建立Nginx-Virtual-Host"><span class="toc-text">3.2 建立Nginx Virtual Host</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、使用IDE：VSCode"><span class="toc-text">四、使用IDE：VSCode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、培訓題目"><span class="toc-text">五、培訓題目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、Linux常用指令"><span class="toc-text">六、Linux常用指令</span></a></li></ol>
 </div>
 
         <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>CRUD行為(新增/讀取/修改/刪除)是一切資料處理的基本行為，例如使用者上網時看到的網頁(read)，是由瀏覽器向伺服器，再向資料庫「讀取」資料而得到的，可用下圖表示：</p>
@@ -178,6 +178,30 @@
 </li>
 </ol>
 <h1 id="五、培訓題目"><a href="#五、培訓題目" class="headerlink" title="五、培訓題目"></a>五、培訓題目</h1><p><a href="/2019/08/16/php-training/">PHP培訓-CRUD</a></p>
+<h1 id="六、Linux常用指令"><a href="#六、Linux常用指令" class="headerlink" title="六、Linux常用指令"></a>六、Linux常用指令</h1><ul>
+<li>sudo 其他指令: 變換(root)權限執行指令</li>
+<li>ssh: ssh連線</li>
+<li>showdown -h now: 關機</li>
+<li>reboot: 重開機</li>
+<li>logout: 登出 (或ctrl+D)</li>
+<li>cd 目錄名稱: 前往目錄</li>
+<li>ls: 顯示目前目錄內容</li>
+<li>pwd: 顯示目前目錄路徑</li>
+<li>ifconfig: 查看網路介面</li>
+<li>netstat -tln: 查看服務監聽狀況</li>
+<li>指令補完： tab鍵</li>
+<li>vi/vim 檔案路徑: 使用linux文字編輯器編輯檔案</li>
+<li><a href="http://www.study-area.org/cyril/opentools/opentools/x62.html" target="_blank" rel="noopener">vi/vim 快速入門</a><ul>
+<li>在命令模式中按「a」鍵可進入編輯模式，再按「Esc」鍵可回到命令模式</li>
+<li>在命令模式中按「:wq」可儲存離開</li>
+<li>在命令模式中按「:q!」可強制離開</li>
+<li>在命令模式中按「u」鍵可還原編輯內容；按「y」可重做編輯內容</li>
+<li>在命令模式中按「yy」為複制一行；「dd」為刪除一行；「p」為貼上複制內容；「2yy」為複制二行；「3dd」為刪除3行</li>
+<li>在命令模式中按「gg」為跳到第一行；「G」為跳到最後一行；「:12」為跳到第12行</li>
+<li>在命令模式中按「/」+字串為尋找字串；尋找模式中再按n為尋找下一個；再按N為尋找上一個</li>
+</ul>
+</li>
+</ul>
 <hr>
 <p><strong>未完待續：</strong> <a href="/2019/08/16/crud-design-02/">CRUD表單設計 Day-02 安裝PHP Framework</a></p>
 
@@ -190,7 +214,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck24s0oa9000li4uf8s9nwbi9" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck24u3b7v000evguf49glvdrs" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
