@@ -159,7 +159,7 @@
 </blockquote>
 </li>
 <li><p>寫入內容</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">defined(<span class="string">'BASEPATH'</span>) <span class="keyword">or</span> <span class="keyword">exit</span>(<span class="string">'No direct script access allowed'</span>);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap 4 Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/node_modules/bootstrap/dist/css/bootstrap.min.css"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/node_modules/jquery/dist/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/node_modules/bootstrap/dist/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- Font Awesome Icon --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&lt;?= JS_DIR; ?&gt;jsTraining/jsTraining.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- Title --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-12"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Javascript Training<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- Controll Form --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-12"</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-warning float-right ctrl-btn"</span>&gt;</span>新增<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- Table --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped table-bordered table-hover ctrl-table"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- Message box --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"ctrl-message"</span> <span class="attr">class</span>=<span class="string">"text-danger ctrl-message"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">defined(&apos;BASEPATH&apos;) or exit(&apos;No direct script access allowed&apos;);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;Bootstrap 4 Example&lt;/title&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">	&lt;link rel=&quot;stylesheet&quot; href=&quot;/node_modules/bootstrap/dist/css/bootstrap.min.css&quot;&gt;</span><br><span class="line">	&lt;script src=&quot;/node_modules/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script src=&quot;/node_modules/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;!-- Font Awesome Icon --&gt;</span><br><span class="line">	&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;&lt;?= JS_DIR; ?&gt;jsTraining/jsTraining.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">	&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">		&lt;!-- Title --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;col-sm-12&quot;&gt;</span><br><span class="line">				&lt;h1&gt;Javascript Training&lt;/h1&gt;</span><br><span class="line">				&lt;hr&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- Controll Form --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;col-sm-12&quot;&gt;&lt;button class=&quot;btn btn-warning float-right ctrl-btn&quot;&gt;新增&lt;/button&gt;&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- Table --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;table class=&quot;table table-striped table-bordered table-hover ctrl-table&quot;&gt;</span><br><span class="line">			&lt;/table&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- Message box --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;div id=&quot;ctrl-message&quot; class=&quot;text-danger ctrl-message&quot;&gt;&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="3-4-建立JS檔"><a href="#3-4-建立JS檔" class="headerlink" title="3.4 建立JS檔"></a>3.4 建立JS檔</h2><ul>
@@ -330,7 +330,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck0t2al0v005bowufqo9jimfo" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck24s0ocs004si4uff8y8d05n" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -481,7 +481,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck0t2aky9000yowuf30h16h32" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck24s0oag000vi4uffwvatmc9" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -535,7 +535,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、開發環境"><span class="toc-text">一、開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、基本要求"><span class="toc-text">二、基本要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、進階要求"><span class="toc-text">三、進階要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、參考"><span class="toc-text">四、參考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官網"><span class="toc-text">官網</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#教程"><span class="toc-text">教程</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、開發環境"><span class="toc-text">一、開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、基本要求"><span class="toc-text">二、基本要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、進階要求"><span class="toc-text">三、進階要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、套件練習"><span class="toc-text">四、套件練習</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、參考"><span class="toc-text">五、參考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官網"><span class="toc-text">官網</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#教程"><span class="toc-text">教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#套件"><span class="toc-text">套件</span></a></li></ol></li></ol>
 </div>
 
         <h1 id="一、開發環境"><a href="#一、開發環境" class="headerlink" title="一、開發環境"></a>一、開發環境</h1><p>建議開發環境</p>
@@ -561,29 +561,43 @@
 </ul>
 </li>
 <li>清單頁 - 顯示已存在資料</li>
-<li>新增/編輯/刪除(需二次確認) - 資料編輯用</li>
-<li>需用到jQuery</li>
-<li>需用到AJAX</li>
-<li>使用彈窗(Dialog)方式開啟 新增/編輯表單頁<ul>
+<li>新增 / 編輯 / 刪除(需二次確認) - 資料編輯用</li>
+<li>需用到 jQuery, AJAX</li>
+<li>帳號欄位是唯一值，不可重複</li>
+<li>使用彈窗(Dialog)方式開啟 新增/編輯表單頁/確認視窗<ul>
 <li>可使用套件 Bootstrap Modal, jQuery UI Dialog</li>
 </ul>
 </li>
-<li>支援搜尋、排序功能</li>
+<li>支援 搜尋、排序 功能</li>
 <li>每頁顯示數量、分頁(Pagination)</li>
-<li>資料驗証 (任擇二項)<ul>
+<li>資料驗証<ul>
 <li>必填：帳號、姓名、性別、生日、信箱</li>
-<li>帳號格式：英文+數字</li>
+<li>帳號格式：英數混合(不分大小寫)，位數為5~15碼</li>
 <li>日期格式：生日</li>
-<li>信箱格式：信箱</li>
+<li>信箱格式：信箱<blockquote>
+<p>前後端皆要驗証</p>
+</blockquote>
+</li>
 </ul>
 </li>
 </ol>
 <blockquote>
-<p>基本要求共10題，測試基礎能力</p>
+<ul>
+<li>基本要求共10題，測試基礎能力</li>
+<li>可使用套件<ul>
+<li><a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 3</a></li>
+<li><a href="https://jquery.com" target="_blank" rel="noopener">jQuery</a></li>
+<li><a href="https://nakupanda.github.io/bootstrap3-dialog/" target="_blank" rel="noopener">BootstrapDialog</a></li>
+<li><a href="https://github.com/Rusta/rustaMsgBox" target="_blank" rel="noopener">rustaMsgBox</a></li>
+</ul>
+</li>
+<li>實作 搜尋、排序、每頁顯示數量、分頁 時不可使用套件 (除jQuery,Bootstrap)</li>
+<li>不可使用到 四、套件練習 中的套件</li>
+</ul>
 </blockquote>
 <div style="page-break-after: always;"></div>
 
-<h1 id="三、進階要求"><a href="#三、進階要求" class="headerlink" title="三、進階要求"></a>三、進階要求</h1><p>以下需求 ++<strong>依個人能力</strong>++ 選擇項目完成</p>
+<h1 id="三、進階要求"><a href="#三、進階要求" class="headerlink" title="三、進階要求"></a>三、進階要求</h1><p>以下需求 <strong>依個人能力</strong> 選擇項目完成</p>
 <ol start="11">
 <li>使用PHP Framework<ul>
 <li>如：CodeIgniter3, Yii2, Laravel</li>
@@ -593,14 +607,13 @@
 <li>如：Bootstrap</li>
 </ul>
 </li>
-<li>編碼風格：PSR-1 &amp; PSR-2 &amp; PHPDoc註釋</li>
-<li>PSR-4 &amp; 使用Namespace<ul>
+<li>編碼風格：PSR-1 &amp; PSR-2 &amp; PHPDoc註釋 &amp; PSR-4 &amp; 使用Namespace<ul>
 <li>自行開發spl_autoload_register()或用composer autoload輔助</li>
 </ul>
 </li>
-<li>AJAX使用 RESTful style傳送資料，並且回傳支援 HTTP Status Code</li>
+<li>AJAX使用 RESTful style傳送資料，並且回傳支援 <a href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81" target="_blank" rel="noopener">HTTP Status Code</a></li>
 <li>資料處理<ul>
-<li>帳號：字母全部轉小寫</li>
+<li>帳號：字母全部轉<strong>小寫</strong>才寫入資料庫</li>
 <li>性別：顯示時為 男/女 ，資料庫儲存為 1/0</li>
 <li>生日：顯示時格式 2019年2月15日 ，資料庫儲存格式為 2019-02-15</li>
 </ul>
@@ -609,11 +622,23 @@
 <li>批次刪除功能</li>
 <li>匯出資料(text or excel)</li>
 <li>匯入資料(批次新增 or 批次修改)</li>
+<li>匯入處理要求<ul>
+<li>匯入時做差異處理，帳號存在者為更新，帳號不存在者為新增</li>
+<li>匯入時，也需驗証，當有一筆錯誤時，該次匯入不處理，且需返回錯誤訊息</li>
+</ul>
+</li>
 </ol>
 <blockquote>
-<p>進階要求共10題</p>
+<ul>
+<li>進階要求共10題</li>
+<li>可使用<a href="https://github.com/marshung24/io" target="_blank" rel="noopener">Excel匯出匯入模組</a></li>
+<li>不可使用到 四、套件練習 中的套件</li>
+</ul>
 </blockquote>
-<h1 id="四、參考"><a href="#四、參考" class="headerlink" title="四、參考"></a>四、參考</h1><h2 id="官網"><a href="#官網" class="headerlink" title="官網"></a>官網</h2><ul>
+<h1 id="四、套件練習"><a href="#四、套件練習" class="headerlink" title="四、套件練習"></a>四、套件練習</h1><ol start="21">
+<li>使用 DataTables 取代自行實作的 搜尋、排序、每頁顯示數量、分頁 功能</li>
+</ol>
+<h1 id="五、參考"><a href="#五、參考" class="headerlink" title="五、參考"></a>五、參考</h1><h2 id="官網"><a href="#官網" class="headerlink" title="官網"></a>官網</h2><ul>
 <li><a href="https://codeigniter.com/" target="_blank" rel="noopener">CodeIgniter</a></li>
 <li><a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a></li>
 <li><a href="https://jquery.com" target="_blank" rel="noopener">jQuery</a></li>
@@ -630,6 +655,12 @@
 <li><a href="http://tw.gitbook.net/mysql/index.html" target="_blank" rel="noopener">MySQL基礎教程</a></li>
 <li><a href="http://tw.gitbook.net/php/index.html" target="_blank" rel="noopener">PHP基礎教程</a></li>
 </ul>
+<h2 id="套件"><a href="#套件" class="headerlink" title="套件"></a>套件</h2><ul>
+<li><a href="https://github.com/marshung24/io" target="_blank" rel="noopener">Excel匯出匯入模組</a></li>
+<li><a href="https://nakupanda.github.io/bootstrap3-dialog/" target="_blank" rel="noopener">BootstrapDialog</a></li>
+<li><a href="https://github.com/Rusta/rustaMsgBox" target="_blank" rel="noopener">rustaMsgBox</a></li>
+<li><a href="https://datatables.net/" target="_blank" rel="noopener">DataTables</a></li>
+</ul>
 
       
     </div>
@@ -640,7 +671,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck0t2aky7000uowufqbtyretd" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck24s0oak000yi4uf3s98qc2p" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -855,7 +886,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck0t2aky5000qowufr2qm6x4e" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck24s0oaf000si4ufwmqy9m7o" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1134,7 +1165,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck0t2aky2000oowufb5pev8bw" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck24s0oac000qi4ufjyss5ynw" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1251,7 +1282,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck0t2aky0000jowufmycczg59" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck24s0oa8000ji4ufk4vs5au5" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1426,7 +1457,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck0t2aky1000kowuf8sjgqyll" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck24s0oa5000fi4ufeirta22w" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1549,7 +1580,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck0t2akxy000fowuflb5t7bp1" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck24s0oa9000li4uf8s9nwbi9" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2087,7 +2118,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="ck0t2al0c004sowufncdjl76w" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="ck24s0ocq004qi4ufpjfxzqqp" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2224,7 +2255,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="ck0t2akxv000aowufwjkmos6o" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/03/phpunit/" data-id="ck24s0oa3000ei4uf0oa91tmu" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       

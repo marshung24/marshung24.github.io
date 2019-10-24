@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mars&#39;s Blog">
 <meta property="og:description" content="一、開發環境建議開發環境  LNMP, LAMP, XAMPP 範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向  二、基本要求 請建構一個 帳號新增 的基本CRUD表單，欄位有： 帳號 varchar 姓名 varchar 性別 varchar 生日 date 信箱 varchar 備註 text 資料表名稱 account_info需自行建立資料表     需要用到">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-19T14:03:19.793Z">
+<meta property="og:updated_time" content="2019-10-24T14:02:45.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP培訓-CRUD">
 <meta name="twitter:description" content="一、開發環境建議開發環境  LNMP, LAMP, XAMPP 範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向  二、基本要求 請建構一個 帳號新增 的基本CRUD表單，欄位有： 帳號 varchar 姓名 varchar 性別 varchar 生日 date 信箱 varchar 備註 text 資料表名稱 account_info需自行建立資料表     需要用到">
@@ -115,7 +115,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、開發環境"><span class="toc-text">一、開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、基本要求"><span class="toc-text">二、基本要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、進階要求"><span class="toc-text">三、進階要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、參考"><span class="toc-text">四、參考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官網"><span class="toc-text">官網</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#教程"><span class="toc-text">教程</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、開發環境"><span class="toc-text">一、開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、基本要求"><span class="toc-text">二、基本要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、進階要求"><span class="toc-text">三、進階要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、套件練習"><span class="toc-text">四、套件練習</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、參考"><span class="toc-text">五、參考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#官網"><span class="toc-text">官網</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#教程"><span class="toc-text">教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#套件"><span class="toc-text">套件</span></a></li></ol></li></ol>
 </div>
 
         <h1 id="一、開發環境"><a href="#一、開發環境" class="headerlink" title="一、開發環境"></a>一、開發環境</h1><p>建議開發環境</p>
@@ -141,29 +141,43 @@
 </ul>
 </li>
 <li>清單頁 - 顯示已存在資料</li>
-<li>新增/編輯/刪除(需二次確認) - 資料編輯用</li>
-<li>需用到jQuery</li>
-<li>需用到AJAX</li>
-<li>使用彈窗(Dialog)方式開啟 新增/編輯表單頁<ul>
+<li>新增 / 編輯 / 刪除(需二次確認) - 資料編輯用</li>
+<li>需用到 jQuery, AJAX</li>
+<li>帳號欄位是唯一值，不可重複</li>
+<li>使用彈窗(Dialog)方式開啟 新增/編輯表單頁/確認視窗<ul>
 <li>可使用套件 Bootstrap Modal, jQuery UI Dialog</li>
 </ul>
 </li>
-<li>支援搜尋、排序功能</li>
+<li>支援 搜尋、排序 功能</li>
 <li>每頁顯示數量、分頁(Pagination)</li>
-<li>資料驗証 (任擇二項)<ul>
+<li>資料驗証<ul>
 <li>必填：帳號、姓名、性別、生日、信箱</li>
-<li>帳號格式：英文+數字</li>
+<li>帳號格式：英數混合(不分大小寫)，位數為5~15碼</li>
 <li>日期格式：生日</li>
-<li>信箱格式：信箱</li>
+<li>信箱格式：信箱<blockquote>
+<p>前後端皆要驗証</p>
+</blockquote>
+</li>
 </ul>
 </li>
 </ol>
 <blockquote>
-<p>基本要求共10題，測試基礎能力</p>
+<ul>
+<li>基本要求共10題，測試基礎能力</li>
+<li>可使用套件<ul>
+<li><a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 3</a></li>
+<li><a href="https://jquery.com" target="_blank" rel="noopener">jQuery</a></li>
+<li><a href="https://nakupanda.github.io/bootstrap3-dialog/" target="_blank" rel="noopener">BootstrapDialog</a></li>
+<li><a href="https://github.com/Rusta/rustaMsgBox" target="_blank" rel="noopener">rustaMsgBox</a></li>
+</ul>
+</li>
+<li>實作 搜尋、排序、每頁顯示數量、分頁 時不可使用套件 (除jQuery,Bootstrap)</li>
+<li>不可使用到 四、套件練習 中的套件</li>
+</ul>
 </blockquote>
 <div style="page-break-after: always;"></div>
 
-<h1 id="三、進階要求"><a href="#三、進階要求" class="headerlink" title="三、進階要求"></a>三、進階要求</h1><p>以下需求 ++<strong>依個人能力</strong>++ 選擇項目完成</p>
+<h1 id="三、進階要求"><a href="#三、進階要求" class="headerlink" title="三、進階要求"></a>三、進階要求</h1><p>以下需求 <strong>依個人能力</strong> 選擇項目完成</p>
 <ol start="11">
 <li>使用PHP Framework<ul>
 <li>如：CodeIgniter3, Yii2, Laravel</li>
@@ -173,14 +187,13 @@
 <li>如：Bootstrap</li>
 </ul>
 </li>
-<li>編碼風格：PSR-1 &amp; PSR-2 &amp; PHPDoc註釋</li>
-<li>PSR-4 &amp; 使用Namespace<ul>
+<li>編碼風格：PSR-1 &amp; PSR-2 &amp; PHPDoc註釋 &amp; PSR-4 &amp; 使用Namespace<ul>
 <li>自行開發spl_autoload_register()或用composer autoload輔助</li>
 </ul>
 </li>
-<li>AJAX使用 RESTful style傳送資料，並且回傳支援 HTTP Status Code</li>
+<li>AJAX使用 RESTful style傳送資料，並且回傳支援 <a href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81" target="_blank" rel="noopener">HTTP Status Code</a></li>
 <li>資料處理<ul>
-<li>帳號：字母全部轉小寫</li>
+<li>帳號：字母全部轉<strong>小寫</strong>才寫入資料庫</li>
 <li>性別：顯示時為 男/女 ，資料庫儲存為 1/0</li>
 <li>生日：顯示時格式 2019年2月15日 ，資料庫儲存格式為 2019-02-15</li>
 </ul>
@@ -189,11 +202,23 @@
 <li>批次刪除功能</li>
 <li>匯出資料(text or excel)</li>
 <li>匯入資料(批次新增 or 批次修改)</li>
+<li>匯入處理要求<ul>
+<li>匯入時做差異處理，帳號存在者為更新，帳號不存在者為新增</li>
+<li>匯入時，也需驗証，當有一筆錯誤時，該次匯入不處理，且需返回錯誤訊息</li>
+</ul>
+</li>
 </ol>
 <blockquote>
-<p>進階要求共10題</p>
+<ul>
+<li>進階要求共10題</li>
+<li>可使用<a href="https://github.com/marshung24/io" target="_blank" rel="noopener">Excel匯出匯入模組</a></li>
+<li>不可使用到 四、套件練習 中的套件</li>
+</ul>
 </blockquote>
-<h1 id="四、參考"><a href="#四、參考" class="headerlink" title="四、參考"></a>四、參考</h1><h2 id="官網"><a href="#官網" class="headerlink" title="官網"></a>官網</h2><ul>
+<h1 id="四、套件練習"><a href="#四、套件練習" class="headerlink" title="四、套件練習"></a>四、套件練習</h1><ol start="21">
+<li>使用 DataTables 取代自行實作的 搜尋、排序、每頁顯示數量、分頁 功能</li>
+</ol>
+<h1 id="五、參考"><a href="#五、參考" class="headerlink" title="五、參考"></a>五、參考</h1><h2 id="官網"><a href="#官網" class="headerlink" title="官網"></a>官網</h2><ul>
 <li><a href="https://codeigniter.com/" target="_blank" rel="noopener">CodeIgniter</a></li>
 <li><a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a></li>
 <li><a href="https://jquery.com" target="_blank" rel="noopener">jQuery</a></li>
@@ -210,6 +235,12 @@
 <li><a href="http://tw.gitbook.net/mysql/index.html" target="_blank" rel="noopener">MySQL基礎教程</a></li>
 <li><a href="http://tw.gitbook.net/php/index.html" target="_blank" rel="noopener">PHP基礎教程</a></li>
 </ul>
+<h2 id="套件"><a href="#套件" class="headerlink" title="套件"></a>套件</h2><ul>
+<li><a href="https://github.com/marshung24/io" target="_blank" rel="noopener">Excel匯出匯入模組</a></li>
+<li><a href="https://nakupanda.github.io/bootstrap3-dialog/" target="_blank" rel="noopener">BootstrapDialog</a></li>
+<li><a href="https://github.com/Rusta/rustaMsgBox" target="_blank" rel="noopener">rustaMsgBox</a></li>
+<li><a href="https://datatables.net/" target="_blank" rel="noopener">DataTables</a></li>
+</ul>
 
       
     </div>
@@ -220,7 +251,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck0t2aky7000uowufqbtyretd" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck24s0oak000yi4uf3s98qc2p" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
