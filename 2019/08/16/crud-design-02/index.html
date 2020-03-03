@@ -6,7 +6,7 @@
   <title>CRUD表單設計 Day-02 安裝PHP Framework | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、說明一個優秀的PHP框架，能幫助我們的程式編寫更合理，更便於維護，框架題供的工具函式，也可以大量簡化我們的開發步驟，而在團隊開發中，框架更提供一個共同的規範讓團隊依循。  在此使用框架 CodeIngiter 3  二、建立Git repository 前往GitHub註冊帳號 建立repository: crud-training  點選右上角頭像旁的＋號，再選「New repository">
-<meta name="keywords" content="web,dev,php,training,git,codeingiter">
+<meta name="keywords" content="dev,web,php,training,git,codeingiter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CRUD表單設計 Day-02 安裝PHP Framework">
 <meta property="og:url" content="https://blog.mars-world.net/2019/08/16/crud-design-02/index.html">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/08/16/crud-design-02/07-cteate_user-2.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/08/16/crud-design-02/07-cteate_user-3.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/08/16/crud-design-02/07-db-setting.png">
-<meta property="og:updated_time" content="2020-03-03T13:28:03.877Z">
+<meta property="og:updated_time" content="2020-03-03T14:08:50.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CRUD表單設計 Day-02 安裝PHP Framework">
 <meta name="twitter:description" content="一、說明一個優秀的PHP框架，能幫助我們的程式編寫更合理，更便於維護，框架題供的工具函式，也可以大量簡化我們的開發步驟，而在團隊開發中，框架更提供一個共同的規範讓團隊依循。  在此使用框架 CodeIngiter 3  二、建立Git repository 前往GitHub註冊帳號 建立repository: crud-training  點選右上角頭像旁的＋號，再選「New repository">
@@ -284,57 +284,63 @@
 <h1 id="七、資料庫存取"><a href="#七、資料庫存取" class="headerlink" title="七、資料庫存取"></a>七、資料庫存取</h1><p>本教學中選用MySQL資料庫</p>
 <h2 id="7-1-資料設計"><a href="#7-1-資料設計" class="headerlink" title="7.1 資料設計"></a>7.1 資料設計</h2><p>使用者在網頁前端輸入的資料，傳送到後端處理完後，必需存到資料庫中，以待後續取用。但資料要如何存取才符合需求並有好的效率，資料庫設計至關重要。</p>
 <h3 id="7-1-1-建構原則"><a href="#7-1-1-建構原則" class="headerlink" title="7.1.1 建構原則"></a>7.1.1 建構原則</h3><ul>
-<li>編碼使用 utf8_unicode_ci<ul>
-<li>如果資料欄位可能為中英夾雜，使用utf8_unicode_ci</li>
-<li>如果可以確定欄位為純ASCII可用ascii_bin (進階)</li>
-</ul>
+<li>編碼使用 utf8_unicode_ci<blockquote>
+<p>如果資料欄位可能為中英夾雜，使用utf8_unicode_ci<br>如果可以確定欄位為純ASCII可用ascii_bin (進階)  </p>
+</blockquote>
 </li>
-<li>使用小寫英文命名，單字用底線分隔  <ul>
-<li>不使用大寫及其他符號</li>
-</ul>
+<li>使用小寫英文命名，單字用底線分隔  <blockquote>
+<p>不使用大寫及其他符號</p>
+</blockquote>
 </li>
-<li>資料表名稱不宜太長，以 4 個字以下為原則<ul>
-<li>字元過多可用縮寫代稱</li>
-</ul>
+<li>資料表名稱不宜太長，以 4 個字以下為原則<blockquote>
+<p>字元過多可用縮寫代稱</p>
+</blockquote>
 </li>
-<li>欄位名稱不宜太長，以4個字以下為原則<ul>
-<li>字元過多可用縮寫代稱</li>
-</ul>
+<li>欄位名稱不宜太長，以4個字以下為原則<blockquote>
+<p>字元過多可用縮寫代稱</p>
+</blockquote>
 </li>
 <li>資料表及欄位需有備註</li>
-<li>每個資料表需有主鍵、索引鍵<ul>
-<li>建議擁有auto_increment型態的主鍵，以便使用where in精確查詢</li>
-</ul>
+<li>每個資料表需有主鍵、索引鍵<blockquote>
+<p>建議擁有auto_increment型態的主鍵，以便使用where in精確查詢</p>
+</blockquote>
 </li>
-<li>資料表建議有資料識別欄位<ul>
-<li>建立日、建立者、更新日、更新者、軟刪日、軟刪者、資料狀態</li>
-</ul>
-</li>
-</ul>
-<h3 id="7-1-2-常用格式"><a href="#7-1-2-常用格式" class="headerlink" title="7.1.2 常用格式"></a>7.1.2 常用格式</h3><h4 id="數字型態"><a href="#數字型態" class="headerlink" title="數字型態"></a>數字型態</h4><ul>
-<li>TINYINT[(M)] : 1 byte<ul>
-<li>Signed: -128 to 127 (-27 to 27-1)</li>
-<li>Unsigned: 0 to 255 (0 to 28-1)</li>
-</ul>
-</li>
-<li>INT[(M)] : 4 byte<ul>
-<li>Signed: -2147483648 to 2147483647 (-231 to 231-1)</li>
-<li>Unsigned: 0 to 4294967295 (0 to 232-1)</li>
-</ul>
-</li>
-<li>BIGINT[(M)] : 8 byte<ul>
-<li>Signed: -9223372036854775808 to 9223372036854775807 (-263 to 263-1)</li>
-<li>Unsigned: 0 to 18446744073709551615 (0 to 264-1)</li>
-</ul>
-</li>
-<li>DECIMAL[(M[,D])] : M+2 byte<ul>
-<li>依 M 與 D 值而定</li>
-<li>M是數字的最大數(精度)</li>
-<li>D是小數點右側數字的數目(標度)</li>
-<li>decimal(5,2) 為 xxx.xx</li>
-</ul>
+<li>資料表建議有資料識別欄位<blockquote>
+<p>建立日、建立者、更新日、更新者、軟刪日、軟刪者、資料狀態</p>
+</blockquote>
 </li>
 </ul>
+<h3 id="7-1-2-常用格式"><a href="#7-1-2-常用格式" class="headerlink" title="7.1.2 常用格式"></a>7.1.2 常用格式</h3><h4 id="數字型態"><a href="#數字型態" class="headerlink" title="數字型態"></a>數字型態</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">格式名稱</th>
+<th style="text-align:center">位元數</th>
+<th style="text-align:center">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">TINYINT[(M)]</td>
+<td style="text-align:center">1 byte</td>
+<td style="text-align:center">Signed: -128 to 127 (-2^7 to 2^7-1)<br>Unsigned: 0 to 255 (0 to 2^8-1)</td>
+</tr>
+<tr>
+<td style="text-align:center">INT[(M)]</td>
+<td style="text-align:center">4 byte</td>
+<td style="text-align:center">Signed: -2^31 to 2^31-1 <br>Unsigned: 0 to 2^32-1</td>
+</tr>
+<tr>
+<td style="text-align:center">BIGINT[(M)]</td>
+<td style="text-align:center">8 byte</td>
+<td style="text-align:center">Signed: -2^63 to 2^63-1<br>Unsigned: 0 to 2^64-1</td>
+</tr>
+<tr>
+<td style="text-align:center">DECIMAL[(M[,D])]</td>
+<td style="text-align:center">M+2 byte</td>
+<td style="text-align:center">M是數字的最大數(精度)<br>D是小數點右側數字的數目(標度)<br>decimal(5,2) 為 xxx.xx</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>上表中的 M 代表「最大顯示寬度」</p>
 </blockquote>
@@ -591,7 +597,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7bxwjoi005zncuf03ye66sl" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7byx320005uhwufurbemi9f" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
