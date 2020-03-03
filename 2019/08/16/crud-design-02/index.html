@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/08/16/crud-design-02/07-cteate_user-2.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/08/16/crud-design-02/07-cteate_user-3.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/08/16/crud-design-02/07-db-setting.png">
-<meta property="og:updated_time" content="2020-03-03T14:08:50.259Z">
+<meta property="og:updated_time" content="2020-03-03T14:17:03.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CRUD表單設計 Day-02 安裝PHP Framework">
 <meta name="twitter:description" content="一、說明一個優秀的PHP框架，能幫助我們的程式編寫更合理，更便於維護，框架題供的工具函式，也可以大量簡化我們的開發步驟，而在團隊開發中，框架更提供一個共同的規範讓團隊依循。  在此使用框架 CodeIngiter 3  二、建立Git repository 前往GitHub註冊帳號 建立repository: crud-training  點選右上角頭像旁的＋號，再選「New repository">
@@ -344,51 +344,92 @@
 <blockquote>
 <p>上表中的 M 代表「最大顯示寬度」</p>
 </blockquote>
-<h4 id="字串型態"><a href="#字串型態" class="headerlink" title="字串型態"></a>字串型態</h4><ul>
-<li>VARCHAR(M) : L+1 bytes<ul>
-<li>最大長度 M bytes</li>
-</ul>
-</li>
-<li>TEXT : L+2 bytes<ul>
-<li>最大長度 2^16-1 bytes</li>
-</ul>
-</li>
-<li>MEDIUMTEXT : L+3 bytes<ul>
-<li>最大長度 2^24-1 bytes</li>
-</ul>
-</li>
-<li>LONGTEXT  : L+4 bytes<ul>
-<li>最大長度 2^32-1 bytes</li>
-</ul>
-</li>
-</ul>
+<h4 id="字串型態"><a href="#字串型態" class="headerlink" title="字串型態"></a>字串型態</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">格式名稱</th>
+<th style="text-align:center">位元數</th>
+<th style="text-align:center">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">VARCHAR(M)</td>
+<td style="text-align:center">L+1 bytes</td>
+<td style="text-align:center">最大長度 M bytes</td>
+</tr>
+<tr>
+<td style="text-align:center">TEXT</td>
+<td style="text-align:center">L+2 bytes</td>
+<td style="text-align:center">最大長度 2^16-1 bytes</td>
+</tr>
+<tr>
+<td style="text-align:center">MEDIUMTEXT</td>
+<td style="text-align:center">L+3 bytes</td>
+<td style="text-align:center">最大長度 2^24-1 bytes</td>
+</tr>
+<tr>
+<td style="text-align:center">LONGTEXT</td>
+<td style="text-align:center">L+4 bytes</td>
+<td style="text-align:center">最大長度 2^32-1 bytes</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>上表中的 L 代表「實際儲存的空間大小」</p>
 </blockquote>
-<h4 id="時間型態"><a href="#時間型態" class="headerlink" title="時間型態"></a>時間型態</h4><ul>
-<li>DATE : 3 bytes<ul>
-<li>‘0000-01-01’ to ‘9999-12-31’</li>
-</ul>
-</li>
-<li>TIME : 3 bytes<ul>
-<li>‘-838:59:59’ to ‘838:59:59’</li>
-</ul>
-</li>
-<li>DATETIME : 8 bytes<ul>
-<li>‘1000-01-01 00:00:00’ to ‘9999-12-31 23:59:59’</li>
-</ul>
-</li>
-<li>TIMESTAMP : 4 bytes<ul>
-<li>自 1970 年起，至 2037 年的某時</li>
-</ul>
-</li>
-</ul>
-<h4 id="列舉型態"><a href="#列舉型態" class="headerlink" title="列舉型態"></a>列舉型態</h4><ul>
-<li>ENUM : 1 or 2 bytes<ul>
-<li>65535 個成員</li>
-</ul>
-</li>
-</ul>
+<h4 id="時間型態"><a href="#時間型態" class="headerlink" title="時間型態"></a>時間型態</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">格式名稱</th>
+<th style="text-align:center">位元數</th>
+<th style="text-align:center">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DATE</td>
+<td style="text-align:center">3 bytes</td>
+<td style="text-align:center">‘0000-01-01’ to ‘9999-12-31’</td>
+</tr>
+<tr>
+<td style="text-align:center">TIME</td>
+<td style="text-align:center">3 bytes</td>
+<td style="text-align:center">‘-838:59:59’ to ‘838:59:59’</td>
+</tr>
+<tr>
+<td style="text-align:center">DATETIME</td>
+<td style="text-align:center">8 bytes</td>
+<td style="text-align:center">1000-01-01 00:00:00 to<br>9999-12-31 23:59:59</td>
+</tr>
+<tr>
+<td style="text-align:center">TIMESTAMP</td>
+<td style="text-align:center">4 bytes</td>
+<td style="text-align:center">自 1970 年起，至 2037 年的某時</td>
+</tr>
+</tbody>
+</table>
+<h4 id="列舉型態"><a href="#列舉型態" class="headerlink" title="列舉型態"></a>列舉型態</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">格式名稱</th>
+<th style="text-align:center">位元數</th>
+<th style="text-align:center">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ENUM</td>
+<td style="text-align:center">1~2 bytes</td>
+<td style="text-align:center">65535 個成員，單選</td>
+</tr>
+<tr>
+<td style="text-align:center">SET</td>
+<td style="text-align:center">1~8 bytes</td>
+<td style="text-align:center">64 個成員，可以多選</td>
+</tr>
+</tbody>
+</table>
 <h3 id="7-1-3-需求假設"><a href="#7-1-3-需求假設" class="headerlink" title="7.1.3 需求假設"></a>7.1.3 需求假設</h3><p>有一部門管理介面，需要可填寫 部門代碼、部門名稱、部門層級、開始時間、結束時間、備註 ，其中部門代碼維一</p>
 <p>欄位整理：</p>
 <ul>
@@ -597,7 +638,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7byx320005uhwufurbemi9f" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7bz8k86005tdwuf6wgvjfis" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       

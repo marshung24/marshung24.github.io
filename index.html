@@ -342,7 +342,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="ck7byx2yy000yhwuf6a7ev287" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="ck7bz8k6w004edwufg418efvd" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -471,7 +471,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="ck7byx2yw000vhwuft0h7jgtc" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="ck7bz8k4g000vdwufvzh5ce5l" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -748,7 +748,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck7byx31f0053hwufsskb0rxe" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck7bz8k7m0054dwufa0i6866p" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -899,7 +899,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck7byx2yu000shwuf597s6pxr" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck7bz8k4d000sdwuf0956a8p7" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1089,7 +1089,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck7byx2yr000qhwufp0ykjp24" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck7bz8k46000qdwufnlfcqyd2" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1350,51 +1350,92 @@
 <blockquote>
 <p>上表中的 M 代表「最大顯示寬度」</p>
 </blockquote>
-<h4 id="字串型態"><a href="#字串型態" class="headerlink" title="字串型態"></a>字串型態</h4><ul>
-<li>VARCHAR(M) : L+1 bytes<ul>
-<li>最大長度 M bytes</li>
-</ul>
-</li>
-<li>TEXT : L+2 bytes<ul>
-<li>最大長度 2^16-1 bytes</li>
-</ul>
-</li>
-<li>MEDIUMTEXT : L+3 bytes<ul>
-<li>最大長度 2^24-1 bytes</li>
-</ul>
-</li>
-<li>LONGTEXT  : L+4 bytes<ul>
-<li>最大長度 2^32-1 bytes</li>
-</ul>
-</li>
-</ul>
+<h4 id="字串型態"><a href="#字串型態" class="headerlink" title="字串型態"></a>字串型態</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">格式名稱</th>
+<th style="text-align:center">位元數</th>
+<th style="text-align:center">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">VARCHAR(M)</td>
+<td style="text-align:center">L+1 bytes</td>
+<td style="text-align:center">最大長度 M bytes</td>
+</tr>
+<tr>
+<td style="text-align:center">TEXT</td>
+<td style="text-align:center">L+2 bytes</td>
+<td style="text-align:center">最大長度 2^16-1 bytes</td>
+</tr>
+<tr>
+<td style="text-align:center">MEDIUMTEXT</td>
+<td style="text-align:center">L+3 bytes</td>
+<td style="text-align:center">最大長度 2^24-1 bytes</td>
+</tr>
+<tr>
+<td style="text-align:center">LONGTEXT</td>
+<td style="text-align:center">L+4 bytes</td>
+<td style="text-align:center">最大長度 2^32-1 bytes</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>上表中的 L 代表「實際儲存的空間大小」</p>
 </blockquote>
-<h4 id="時間型態"><a href="#時間型態" class="headerlink" title="時間型態"></a>時間型態</h4><ul>
-<li>DATE : 3 bytes<ul>
-<li>‘0000-01-01’ to ‘9999-12-31’</li>
-</ul>
-</li>
-<li>TIME : 3 bytes<ul>
-<li>‘-838:59:59’ to ‘838:59:59’</li>
-</ul>
-</li>
-<li>DATETIME : 8 bytes<ul>
-<li>‘1000-01-01 00:00:00’ to ‘9999-12-31 23:59:59’</li>
-</ul>
-</li>
-<li>TIMESTAMP : 4 bytes<ul>
-<li>自 1970 年起，至 2037 年的某時</li>
-</ul>
-</li>
-</ul>
-<h4 id="列舉型態"><a href="#列舉型態" class="headerlink" title="列舉型態"></a>列舉型態</h4><ul>
-<li>ENUM : 1 or 2 bytes<ul>
-<li>65535 個成員</li>
-</ul>
-</li>
-</ul>
+<h4 id="時間型態"><a href="#時間型態" class="headerlink" title="時間型態"></a>時間型態</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">格式名稱</th>
+<th style="text-align:center">位元數</th>
+<th style="text-align:center">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DATE</td>
+<td style="text-align:center">3 bytes</td>
+<td style="text-align:center">‘0000-01-01’ to ‘9999-12-31’</td>
+</tr>
+<tr>
+<td style="text-align:center">TIME</td>
+<td style="text-align:center">3 bytes</td>
+<td style="text-align:center">‘-838:59:59’ to ‘838:59:59’</td>
+</tr>
+<tr>
+<td style="text-align:center">DATETIME</td>
+<td style="text-align:center">8 bytes</td>
+<td style="text-align:center">1000-01-01 00:00:00 to<br>9999-12-31 23:59:59</td>
+</tr>
+<tr>
+<td style="text-align:center">TIMESTAMP</td>
+<td style="text-align:center">4 bytes</td>
+<td style="text-align:center">自 1970 年起，至 2037 年的某時</td>
+</tr>
+</tbody>
+</table>
+<h4 id="列舉型態"><a href="#列舉型態" class="headerlink" title="列舉型態"></a>列舉型態</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">格式名稱</th>
+<th style="text-align:center">位元數</th>
+<th style="text-align:center">備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ENUM</td>
+<td style="text-align:center">1~2 bytes</td>
+<td style="text-align:center">65535 個成員，單選</td>
+</tr>
+<tr>
+<td style="text-align:center">SET</td>
+<td style="text-align:center">1~8 bytes</td>
+<td style="text-align:center">64 個成員，可以多選</td>
+</tr>
+</tbody>
+</table>
 <h3 id="7-1-3-需求假設"><a href="#7-1-3-需求假設" class="headerlink" title="7.1.3 需求假設"></a>7.1.3 需求假設</h3><p>有一部門管理介面，需要可填寫 部門代碼、部門名稱、部門層級、開始時間、結束時間、備註 ，其中部門代碼維一</p>
 <p>欄位整理：</p>
 <ul>
@@ -1603,7 +1644,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7byx320005uhwufurbemi9f" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7bz8k86005tdwuf6wgvjfis" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1906,7 +1947,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck7byx2yp000lhwufktmm1b44" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck7bz8k42000jdwufj9hi2zwd" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2023,7 +2064,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck7byx2yj000ehwuf4y4n1dgr" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck7bz8k40000fdwuf2vqogej2" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2199,7 +2240,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck7byx2yn000jhwuf1whs6wrm" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck7bz8k44000ldwufsn8fkgaj" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2354,7 +2395,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck7byx2yl000fhwuf4663zpjl" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck7bz8k3z000edwufunwcbg1m" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
