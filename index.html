@@ -342,7 +342,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="ck7bz8k6w004edwufg418efvd" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="ck7bzseb8004dcwufsfxyhrok" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -471,7 +471,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="ck7bz8k4g000vdwufvzh5ce5l" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="ck7bzse95000ucwuf0ny6lnrt" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -748,7 +748,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck7bz8k7m0054dwufa0i6866p" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ck7bzsecm0053cwuf8u8a14cg" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -899,7 +899,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck7bz8k4d000sdwuf0956a8p7" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ck7bzse93000qcwufu0oo5eje" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1089,7 +1089,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck7bz8k46000qdwufnlfcqyd2" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ck7bzse90000ocwufb9dcbijm" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1306,7 +1306,7 @@
 <p>字元過多可用縮寫代稱</p>
 </blockquote>
 </li>
-<li>資料表及欄位需有備註</li>
+<li>資料表及欄位需有備註(COMMENT)</li>
 <li>每個資料表需有主鍵、索引鍵<blockquote>
 <p>建議擁有auto_increment型態的主鍵，以便使用where in精確查詢</p>
 </blockquote>
@@ -1438,22 +1438,55 @@
 </table>
 <h3 id="7-1-3-需求假設"><a href="#7-1-3-需求假設" class="headerlink" title="7.1.3 需求假設"></a>7.1.3 需求假設</h3><p>有一部門管理介面，需要可填寫 部門代碼、部門名稱、部門層級、開始時間、結束時間、備註 ，其中部門代碼維一</p>
 <p>欄位整理：</p>
-<ul>
-<li>系統序號</li>
-<li>代碼</li>
-<li>名稱</li>
-<li>層級</li>
-<li>開始日</li>
-<li>結束日</li>
-<li>備註</li>
-<li>建立日</li>
-<li>建立者</li>
-<li>更新日</li>
-<li>更新者</li>
-<li>軟刪日</li>
-<li>軟刪者</li>
-<li>資料狀態</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">主鍵欄位</th>
+<th style="text-align:center">資料欄位</th>
+<th style="text-align:center">管理欄位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">系統序號</td>
+<td style="text-align:center">代碼</td>
+<td style="text-align:center">建立日</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">名稱</td>
+<td style="text-align:center">建立者</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">層級</td>
+<td style="text-align:center">更新日</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">開始日</td>
+<td style="text-align:center">更新者</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">結束日</td>
+<td style="text-align:center">軟刪日</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">備註</td>
+<td style="text-align:center">軟刪者</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">資料狀態</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>管理欄位視狀況選用</p>
+</blockquote>
 <h3 id="7-1-4-需求設計"><a href="#7-1-4-需求設計" class="headerlink" title="7.1.4 需求設計"></a>7.1.4 需求設計</h3><ul>
 <li>資料表 : dept_info 單位資料</li>
 <li>欄位</li>
@@ -1571,6 +1604,20 @@
 <li>建構語法<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`dept_info`</span> (</span><br><span class="line">  <span class="string">`d_id`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">UNSIGNED</span> AUTO_INCREMENT <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'系統序號'</span>,</span><br><span class="line">  <span class="string">`d_code`</span> <span class="built_in">varchar</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'代碼'</span>,</span><br><span class="line">  <span class="string">`d_name`</span> <span class="built_in">varchar</span>(<span class="number">60</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'名稱'</span>,</span><br><span class="line">  <span class="string">`d_level`</span> <span class="built_in">varchar</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'層級'</span>,</span><br><span class="line">  <span class="string">`date_start`</span> <span class="built_in">date</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'開始日'</span>,</span><br><span class="line">  <span class="string">`date_end`</span> <span class="built_in">date</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'9999-12-31'</span> <span class="keyword">COMMENT</span> <span class="string">'結束日'</span>,</span><br><span class="line">  <span class="string">`remark`</span> <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'備註'</span>,</span><br><span class="line">  <span class="string">`date_create`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'建立日'</span>,</span><br><span class="line">  <span class="string">`user_create`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'建立者'</span>,</span><br><span class="line">  <span class="string">`date_update`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'更新日'</span>,</span><br><span class="line">  <span class="string">`user_update`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'更新者'</span>,</span><br><span class="line">  <span class="string">`date_delete`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'軟刪日'</span>,</span><br><span class="line">  <span class="string">`user_delete`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'軟刪者'</span>,</span><br><span class="line">  <span class="string">`rec_status`</span> <span class="built_in">tinyint</span>(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'1'</span> <span class="keyword">COMMENT</span> <span class="string">'資料狀態	無效(0) 有效(1)'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`d_id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`d_code`</span> (<span class="string">`d_code`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COMMENT</span>=<span class="string">'單位資料'</span>;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<blockquote>
+<ul>
+<li>在本表中除主鍵d_id外，另增加一組索引d_code</li>
+<li>索引建立原則為<ul>
+<li>主鍵/外鍵必須有索引</li>
+<li>查詢常用條件</li>
+<li>識別性夠高</li>
+<li>資料表間聯合查詢常用</li>
+<li>長度小的欄位，如TEXT就不適合</li>
+<li>頻繁進行資料操作的表，不要建立太多的索引</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <h2 id="7-2-資料庫建構"><a href="#7-2-資料庫建構" class="headerlink" title="7.2 資料庫建構"></a>7.2 資料庫建構</h2><h3 id="7-2-1-phpmyadmin管理"><a href="#7-2-1-phpmyadmin管理" class="headerlink" title="7.2.1 phpmyadmin管理"></a>7.2.1 phpmyadmin管理</h3><p>登入管理介面</p>
 <ul>
 <li>XAMPP版：<a href="http://localhost/phpmyadmin/" target="_blank" rel="noopener">http://localhost/phpmyadmin/</a></li>
@@ -1644,7 +1691,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7bz8k86005tdwuf6wgvjfis" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ck7bzsed5005scwufvt655sx8" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1947,7 +1994,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck7bz8k42000jdwufj9hi2zwd" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ck7bzse8y000kcwufbtqgpono" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2064,7 +2111,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck7bz8k40000fdwuf2vqogej2" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ck7bzse8w000jcwufzk08a82h" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2240,7 +2287,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck7bz8k44000ldwufsn8fkgaj" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ck7bzse8s000fcwufs9bptela" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2395,7 +2442,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck7bz8k3z000edwufunwcbg1m" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/20/crud-design-01/" data-id="ck7bzse8q000ecwufrtnni0iv" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
