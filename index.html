@@ -77,94 +77,6 @@
         <div class="col-sm-8 blog-main">
           
   
-    <article id="post-mysql-microsecond" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2019/12/07/mysql-microsecond/" class="article-date"><time datetime="2019-12-07T12:56:34.000Z" itemprop="datePublished">2019-12-07</time></a>
-</div>
-
-    <div class="article-author">Mars Hung</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/mysql/">mysql</a>
-  </div>
-
-
-    <div class="article-reading">
-  
-  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
-  
-</div>
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-<div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-時間型態"><span class="toc-text">2.1 時間型態</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建立資料表"><span class="toc-text">2.2 建立資料表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-插入測試資料"><span class="toc-text">2.3 插入測試資料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#參考"><span class="toc-text">參考</span></a></li></ol></li></ol>
-</div>
-
-        <h2 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h2><p>平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。  </p>
-<p>如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。</p>
-<h2 id="二、環境建置"><a href="#二、環境建置" class="headerlink" title="二、環境建置"></a>二、環境建置</h2><h3 id="2-1-時間型態"><a href="#2-1-時間型態" class="headerlink" title="2.1 時間型態"></a>2.1 時間型態</h3><p><img src="datatype-datetime.png" alt></p>
-<h3 id="2-2-建立資料表"><a href="#2-2-建立資料表" class="headerlink" title="2.2 建立資料表"></a>2.2 建立資料表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_microsecond`</span>(</span><br><span class="line">  <span class="string">`pk`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`batch`</span> <span class="built_in">SMALLINT</span>(<span class="number">5</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">  <span class="string">`time1`</span> <span class="built_in">TIMESTAMP</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time2`</span> DATETIME <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time3`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time4`</span> DATETIME(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time5`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time6`</span> DATETIME(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time7`</span> DATETIME(<span class="number">6</span>) <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="string">`pk`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`time6`</span>(<span class="string">`time6`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span> <span class="keyword">CHARSET</span> = utf8;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>欄位 <code>time7</code> 可採用預設值方式自動獲取內容</p>
-</blockquote>
-<h3 id="2-3-插入測試資料"><a href="#2-3-插入測試資料" class="headerlink" title="2.3 插入測試資料"></a>2.3 插入測試資料</h3><p><strong>一次查詢中插入一筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
-<p><strong>一次查詢中插入二筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
-</blockquote>
-<p><strong>一次查詢中插入三筆 - SYSDATE()</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>SYSDATE()取得的是系統時間，不同於CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
-</blockquote>
-<p><img src="datatype-data.png" alt></p>
-<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
-<li><a href="https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html" target="_blank" rel="noopener">Data Type Storage Requirements</a></li>
-<li><a href="https://kknews.cc/zh-tw/code/65pe38v.html" target="_blank" rel="noopener">每日頭條-mysql 時間精確到毫秒微秒的處理方法</a></li>
-</ul>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/12/07/mysql-microsecond/" data-id="ckh0szums000z94uf02kxmhhd" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-git-learning" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -431,12 +343,100 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="ckh0szumr000y94uft3wklfj1" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="ckh0t37fv0010ewufjj6p2bb9" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mysql-microsecond" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/12/07/mysql-microsecond/" class="article-date"><time datetime="2019-12-07T12:56:34.000Z" itemprop="datePublished">2019-12-07</time></a>
+</div>
+
+    <div class="article-author">Mars Hung</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-時間型態"><span class="toc-text">2.1 時間型態</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建立資料表"><span class="toc-text">2.2 建立資料表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-插入測試資料"><span class="toc-text">2.3 插入測試資料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、參考"><span class="toc-text">三、參考</span></a></li></ol>
+</div>
+
+        <h2 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h2><p>平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。  </p>
+<p>如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。</p>
+<h2 id="二、環境建置"><a href="#二、環境建置" class="headerlink" title="二、環境建置"></a>二、環境建置</h2><h3 id="2-1-時間型態"><a href="#2-1-時間型態" class="headerlink" title="2.1 時間型態"></a>2.1 時間型態</h3><p><img src="datatype-datetime.png" alt></p>
+<h3 id="2-2-建立資料表"><a href="#2-2-建立資料表" class="headerlink" title="2.2 建立資料表"></a>2.2 建立資料表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_microsecond`</span>(</span><br><span class="line">  <span class="string">`pk`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`batch`</span> <span class="built_in">SMALLINT</span>(<span class="number">5</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">  <span class="string">`time1`</span> <span class="built_in">TIMESTAMP</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time2`</span> DATETIME <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time3`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time4`</span> DATETIME(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time5`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time6`</span> DATETIME(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time7`</span> DATETIME(<span class="number">6</span>) <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="string">`pk`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`time6`</span>(<span class="string">`time6`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span> <span class="keyword">CHARSET</span> = utf8;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>欄位 <code>time7</code> 可採用預設值方式自動獲取內容</p>
+</blockquote>
+<h3 id="2-3-插入測試資料"><a href="#2-3-插入測試資料" class="headerlink" title="2.3 插入測試資料"></a>2.3 插入測試資料</h3><p><strong>一次查詢中插入一筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong>一次查詢中插入二筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
+</blockquote>
+<p><strong>一次查詢中插入三筆 - SYSDATE()</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>SYSDATE()取得的是系統時間，不同於CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
+</blockquote>
+<p><img src="datatype-data.png" alt></p>
+<h2 id="三、參考"><a href="#三、參考" class="headerlink" title="三、參考"></a>三、參考</h2><ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html" target="_blank" rel="noopener">Data Type Storage Requirements</a></li>
+<li><a href="https://kknews.cc/zh-tw/code/65pe38v.html" target="_blank" rel="noopener">每日頭條-mysql 時間精確到毫秒微秒的處理方法</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.mars-world.net/2019/12/07/mysql-microsecond/" data-id="ckh0t37fs000vewufwpx9u0b1" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
 
 
     </footer>
@@ -560,7 +560,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="ckh0szumo000u94ufrp9cb0ez" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="ckh0t37fu000yewuf29fugxk9" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -837,7 +837,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ckh0szupc005b94ufgtsq3ybu" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ckh0t37ic005eewuf5okxq6uu" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -988,7 +988,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ckh0szumm000s94ufv2j1wwoq" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ckh0t37fq000sewufliyw6wk7" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1178,7 +1178,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ckh0szuml000q94ufz7p73p0x" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ckh0t37fn000qewufqou285ke" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1780,7 +1780,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ckh0szupu006094uf1ebk8ka7" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ckh0t37jc0063ewufmx7qe0ue" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2083,7 +2083,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ckh0szumi000l94uf5e1wi27d" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ckh0t37fk000jewuf0vns16kd" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2200,7 +2200,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ckh0szumg000j94ufeqjbl91r" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ckh0t37fm000lewufot33hbn6" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2376,7 +2376,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ckh0szumd000f94uf272lav3j" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ckh0t37fi000fewuf6xmv3xy0" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2409,11 +2409,11 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
         </li>
       
         <li>
-          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
+          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
         </li>
       
         <li>

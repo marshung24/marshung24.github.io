@@ -6,7 +6,7 @@
   <title>MySQL時間型態的毫秒與微秒 | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、說明平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。   如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。 二、環境建置2.1 時間型態 2.2 建立資料表12345678910111213CREATE TABLE `test_microsecon">
-<meta name="keywords" content="mysql,db,time">
+<meta name="keywords" content="db,mysql,time">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL時間型態的毫秒與微秒">
 <meta property="og:url" content="https://blog.mars-world.net/2019/12/07/mysql-microsecond/index.html">
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://blog.mars-world.net/2019/12/07/mysql-microsecond/datatype-datetime.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/12/07/mysql-microsecond/datatype-data.png">
-<meta property="og:updated_time" content="2020-11-02T17:14:01.873Z">
+<meta property="og:updated_time" content="2020-11-02T17:16:48.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL時間型態的毫秒與微秒">
 <meta name="twitter:description" content="一、說明平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。   如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。 二、環境建置2.1 時間型態 2.2 建立資料表12345678910111213CREATE TABLE `test_microsecon">
@@ -118,7 +118,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-時間型態"><span class="toc-text">2.1 時間型態</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建立資料表"><span class="toc-text">2.2 建立資料表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-插入測試資料"><span class="toc-text">2.3 插入測試資料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#參考"><span class="toc-text">參考</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-時間型態"><span class="toc-text">2.1 時間型態</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建立資料表"><span class="toc-text">2.2 建立資料表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-插入測試資料"><span class="toc-text">2.3 插入測試資料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、參考"><span class="toc-text">三、參考</span></a></li></ol>
 </div>
 
         <h2 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h2><p>平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。  </p>
@@ -138,7 +138,7 @@
 <p>SYSDATE()取得的是系統時間，不同於CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
 </blockquote>
 <p><img src="datatype-data.png" alt></p>
-<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<h2 id="三、參考"><a href="#三、參考" class="headerlink" title="三、參考"></a>三、參考</h2><ul>
 <li><a href="https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html" target="_blank" rel="noopener">Data Type Storage Requirements</a></li>
 <li><a href="https://kknews.cc/zh-tw/code/65pe38v.html" target="_blank" rel="noopener">每日頭條-mysql 時間精確到毫秒微秒的處理方法</a></li>
 </ul>
@@ -152,7 +152,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/12/07/mysql-microsecond/" data-id="ckh0szums000z94uf02kxmhhd" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/12/07/mysql-microsecond/" data-id="ckh0t37fs000vewufwpx9u0b1" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -167,12 +167,19 @@
 <ul id="article-nav" class="nav nav-pills nav-justified">
   
   <li role="presentation">
-    <a href="/2019/12/07/git-learning/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/14/web-server-xampp-install/" id="article-nav-older" class="article-nav-link-wrap">
       <i class="fa fa-chevron-left pull-left"></i>
-      <span class="article-nav-link-title">Git常用指令學習</span>
+      <span class="article-nav-link-title">Web伺服器安裝(XAMPP)-Windows</span>
     </a>
   </li>
   
+  
+  <li role="presentation">
+    <a href="/2019/12/07/git-learning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">Git常用指令學習</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
   
 </ul>
 
@@ -192,11 +199,11 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
         </li>
       
         <li>
-          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
+          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
         </li>
       
         <li>
