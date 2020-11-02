@@ -3,20 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Node.js安裝 | Mars&#39;s Blog</title>
+  <title>MySQL時間型態的毫秒與微秒 | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、說明在Linux和Windows中安裝Node.js 二、安裝2.1 Windows 前往官網下載Node.js安裝檔 安裝Node.js  2.2 Linux(Ubuntu 16.04LTS) 安裝Node.js1$ sudo apt-get install nodejs nodejs-legacy npm   三、常用指令3.1 查詢版本12$ nodejs -v$ npm -v 四、常用">
-<meta name="keywords" content="dev,tools,nodejs,javascript">
+  <meta name="description" content="一、說明平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。   如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。 二、環境建置2.1 時間型態 2.2 建立資料表12345678910111213CREATE TABLE `test_microsecon">
+<meta name="keywords" content="mysql,db,time">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Node.js安裝">
-<meta property="og:url" content="https://blog.mars-world.net/2019/05/30/nodejs-install/index.html">
+<meta property="og:title" content="MySQL時間型態的毫秒與微秒">
+<meta property="og:url" content="https://blog.mars-world.net/2019/12/07/mysql-microsecond/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
-<meta property="og:description" content="一、說明在Linux和Windows中安裝Node.js 二、安裝2.1 Windows 前往官網下載Node.js安裝檔 安裝Node.js  2.2 Linux(Ubuntu 16.04LTS) 安裝Node.js1$ sudo apt-get install nodejs nodejs-legacy npm   三、常用指令3.1 查詢版本12$ nodejs -v$ npm -v 四、常用">
+<meta property="og:description" content="一、說明平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。   如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。 二、環境建置2.1 時間型態 2.2 建立資料表12345678910111213CREATE TABLE `test_microsecon">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-02T13:00:05.944Z">
+<meta property="og:image" content="https://blog.mars-world.net/2019/12/07/mysql-microsecond/datatype-datetime.png">
+<meta property="og:image" content="https://blog.mars-world.net/2019/12/07/mysql-microsecond/datatype-data.png">
+<meta property="og:updated_time" content="2020-11-02T17:14:01.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node.js安裝">
-<meta name="twitter:description" content="一、說明在Linux和Windows中安裝Node.js 二、安裝2.1 Windows 前往官網下載Node.js安裝檔 安裝Node.js  2.2 Linux(Ubuntu 16.04LTS) 安裝Node.js1$ sudo apt-get install nodejs nodejs-legacy npm   三、常用指令3.1 查詢版本12$ nodejs -v$ npm -v 四、常用">
+<meta name="twitter:title" content="MySQL時間型態的毫秒與微秒">
+<meta name="twitter:description" content="一、說明平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。   如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。 二、環境建置2.1 時間型態 2.2 建立資料表12345678910111213CREATE TABLE `test_microsecon">
+<meta name="twitter:image" content="https://blog.mars-world.net/2019/12/07/mysql-microsecond/datatype-datetime.png">
   
   
   
@@ -77,13 +80,13 @@
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          <article id="post-nodejs-install" class="article article-type-post" itemscope itemprop="blogPost">
+          <article id="post-mysql-microsecond" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 class="article-title" itemprop="name">
-      Node.js安裝
+      MySQL時間型態的毫秒與微秒
     </h1>
   
 
@@ -92,13 +95,13 @@
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/05/30/nodejs-install/" class="article-date"><time datetime="2019-05-30T15:20:44.000Z" itemprop="datePublished">2019-05-30</time></a>
+  <a href="/2019/12/07/mysql-microsecond/" class="article-date"><time datetime="2019-12-07T12:56:34.000Z" itemprop="datePublished">2019-12-07</time></a>
 </div>
 
     <div class="article-author">Mars Hung</div>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/tools/">tools</a>
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
   </div>
 
 
@@ -115,26 +118,29 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、安裝"><span class="toc-text">二、安裝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Windows"><span class="toc-text">2.1 Windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Linux-Ubuntu-16-04LTS"><span class="toc-text">2.2 Linux(Ubuntu 16.04LTS)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、常用指令"><span class="toc-text">三、常用指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-查詢版本"><span class="toc-text">3.1 查詢版本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、常用套件"><span class="toc-text">四、常用套件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、參考"><span class="toc-text">五、參考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-時間型態"><span class="toc-text">2.1 時間型態</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建立資料表"><span class="toc-text">2.2 建立資料表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-插入測試資料"><span class="toc-text">2.3 插入測試資料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#參考"><span class="toc-text">參考</span></a></li></ol></li></ol>
 </div>
 
-        <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>在Linux和Windows中安裝Node.js</p>
-<h1 id="二、安裝"><a href="#二、安裝" class="headerlink" title="二、安裝"></a>二、安裝</h1><h2 id="2-1-Windows"><a href="#2-1-Windows" class="headerlink" title="2.1 Windows"></a>2.1 Windows</h2><ul>
-<li>前往官網<a href="https://nodejs.org/en/" target="_blank" rel="noopener">下載Node.js</a>安裝檔</li>
-<li>安裝Node.js</li>
-</ul>
-<h2 id="2-2-Linux-Ubuntu-16-04LTS"><a href="#2-2-Linux-Ubuntu-16-04LTS" class="headerlink" title="2.2 Linux(Ubuntu 16.04LTS)"></a>2.2 Linux(Ubuntu 16.04LTS)</h2><ul>
-<li>安裝Node.js<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install nodejs nodejs-legacy npm</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="三、常用指令"><a href="#三、常用指令" class="headerlink" title="三、常用指令"></a>三、常用指令</h1><h2 id="3-1-查詢版本"><a href="#3-1-查詢版本" class="headerlink" title="3.1 查詢版本"></a>3.1 查詢版本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nodejs -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
-<h1 id="四、常用套件"><a href="#四、常用套件" class="headerlink" title="四、常用套件"></a>四、常用套件</h1><ul>
-<li>gulp 開源自動化構建工具</li>
-<li>webpack 個開源的前端打包工具</li>
-</ul>
-<h1 id="五、參考"><a href="#五、參考" class="headerlink" title="五、參考"></a>五、參考</h1><ul>
-<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js官網</a></li>
-<li><a href="https://nodejs.org/en/docs/" target="_blank" rel="noopener">Node.js官網-Doc</a></li>
+        <h2 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h2><p>平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。  </p>
+<p>如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。</p>
+<h2 id="二、環境建置"><a href="#二、環境建置" class="headerlink" title="二、環境建置"></a>二、環境建置</h2><h3 id="2-1-時間型態"><a href="#2-1-時間型態" class="headerlink" title="2.1 時間型態"></a>2.1 時間型態</h3><p><img src="datatype-datetime.png" alt></p>
+<h3 id="2-2-建立資料表"><a href="#2-2-建立資料表" class="headerlink" title="2.2 建立資料表"></a>2.2 建立資料表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_microsecond`</span>(</span><br><span class="line">  <span class="string">`pk`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`batch`</span> <span class="built_in">SMALLINT</span>(<span class="number">5</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">  <span class="string">`time1`</span> <span class="built_in">TIMESTAMP</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time2`</span> DATETIME <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time3`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time4`</span> DATETIME(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time5`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time6`</span> DATETIME(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time7`</span> DATETIME(<span class="number">6</span>) <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="string">`pk`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`time6`</span>(<span class="string">`time6`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span> <span class="keyword">CHARSET</span> = utf8;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>欄位 <code>time7</code> 可採用預設值方式自動獲取內容</p>
+</blockquote>
+<h3 id="2-3-插入測試資料"><a href="#2-3-插入測試資料" class="headerlink" title="2.3 插入測試資料"></a>2.3 插入測試資料</h3><p><strong>一次查詢中插入一筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong>一次查詢中插入二筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
+</blockquote>
+<p><strong>一次查詢中插入三筆 - SYSDATE()</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>SYSDATE()取得的是系統時間，不同於CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
+</blockquote>
+<p><img src="datatype-data.png" alt></p>
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html" target="_blank" rel="noopener">Data Type Storage Requirements</a></li>
+<li><a href="https://kknews.cc/zh-tw/code/65pe38v.html" target="_blank" rel="noopener">每日頭條-mysql 時間精確到毫秒微秒的處理方法</a></li>
 </ul>
 
       
@@ -146,12 +152,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/30/nodejs-install/" data-id="ckh0szum1000594uf58ckzwzm" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/12/07/mysql-microsecond/" data-id="ckh0szums000z94uf02kxmhhd" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
 
 
     </footer>
@@ -161,19 +167,12 @@
 <ul id="article-nav" class="nav nav-pills nav-justified">
   
   <li role="presentation">
-    <a href="/2019/05/27/vscode-remote-ssh/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/12/07/git-learning/" id="article-nav-older" class="article-nav-link-wrap">
       <i class="fa fa-chevron-left pull-left"></i>
-      <span class="article-nav-link-title">VS Code遠端開發套件：Remote-SSH</span>
+      <span class="article-nav-link-title">Git常用指令學習</span>
     </a>
   </li>
   
-  
-  <li role="presentation">
-    <a href="/2019/05/31/code-tracking/" id="article-nav-newer" class="article-nav-link-wrap">
-      <span class="article-nav-link-title">程式碼追蹤定位</span>
-      <i class="fa fa-chevron-right pull-right"></i>
-    </a>
-  </li>
   
 </ul>
 
