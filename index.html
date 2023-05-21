@@ -77,6 +77,94 @@
         <div class="col-sm-8 blog-main">
           
   
+    <article id="post-mysql-microsecond" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/12/07/mysql-microsecond/" class="article-date"><time datetime="2019-12-07T12:56:34.000Z" itemprop="datePublished">2019-12-07</time></a>
+</div>
+
+    <div class="article-author">Mars Hung</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-時間型態"><span class="toc-text">2.1 時間型態</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建立資料表"><span class="toc-text">2.2 建立資料表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-插入測試資料"><span class="toc-text">2.3 插入測試資料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、參考"><span class="toc-text">三、參考</span></a></li></ol>
+</div>
+
+        <h2 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h2><p>平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。  </p>
+<p>如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。</p>
+<h2 id="二、環境建置"><a href="#二、環境建置" class="headerlink" title="二、環境建置"></a>二、環境建置</h2><h3 id="2-1-時間型態"><a href="#2-1-時間型態" class="headerlink" title="2.1 時間型態"></a>2.1 時間型態</h3><p><img src="datatype-datetime.png" alt></p>
+<h3 id="2-2-建立資料表"><a href="#2-2-建立資料表" class="headerlink" title="2.2 建立資料表"></a>2.2 建立資料表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_microsecond`</span>(</span><br><span class="line">  <span class="string">`pk`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`batch`</span> <span class="built_in">SMALLINT</span>(<span class="number">5</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">  <span class="string">`time1`</span> <span class="built_in">TIMESTAMP</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time2`</span> DATETIME <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time3`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time4`</span> DATETIME(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time5`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time6`</span> DATETIME(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time7`</span> DATETIME(<span class="number">6</span>) <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="string">`pk`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`time6`</span>(<span class="string">`time6`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span> <span class="keyword">CHARSET</span> = utf8;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>欄位 <code>time7</code> 可採用預設值方式自動獲取內容</p>
+</blockquote>
+<h3 id="2-3-插入測試資料"><a href="#2-3-插入測試資料" class="headerlink" title="2.3 插入測試資料"></a>2.3 插入測試資料</h3><p><strong>一次查詢中插入一筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong>一次查詢中插入二筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
+</blockquote>
+<p><strong>一次查詢中插入三筆 - SYSDATE()</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>SYSDATE()取得的是系統時間，不同於CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
+</blockquote>
+<p><img src="datatype-data.png" alt></p>
+<h2 id="三、參考"><a href="#三、參考" class="headerlink" title="三、參考"></a>三、參考</h2><ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html" target="_blank" rel="noopener">Data Type Storage Requirements</a></li>
+<li><a href="https://kknews.cc/zh-tw/code/65pe38v.html" target="_blank" rel="noopener">每日頭條-mysql 時間精確到毫秒微秒的處理方法</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.mars-world.net/2019/12/07/mysql-microsecond/" data-id="clhx3p4xo001f7wn6o5ttmdsy" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-git-learning" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -343,100 +431,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="ckh0t37fv0010ewufjj6p2bb9" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/12/07/git-learning/" data-id="clhx3p4xo001h7wn6rwrgatxn" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mysql-microsecond" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2019/12/07/mysql-microsecond/" class="article-date"><time datetime="2019-12-07T12:56:34.000Z" itemprop="datePublished">2019-12-07</time></a>
-</div>
-
-    <div class="article-author">Mars Hung</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/mysql/">mysql</a>
-  </div>
-
-
-    <div class="article-reading">
-  
-  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
-  
-</div>
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-<div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、說明"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、環境建置"><span class="toc-text">二、環境建置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-時間型態"><span class="toc-text">2.1 時間型態</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-建立資料表"><span class="toc-text">2.2 建立資料表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-插入測試資料"><span class="toc-text">2.3 插入測試資料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、參考"><span class="toc-text">三、參考</span></a></li></ol>
-</div>
-
-        <h2 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h2><p>平常用到MySQL時間欄位 DATETIME, TIMESTAMP, TIME 類型大多使用「秒」為最小單位，但其實這三種資料型態可以支援到小數下6位的精確度。  </p>
-<p>如果資料表沒有 unique 的需求(如Log)，可以使用適當精度的時間欄位當索引。</p>
-<h2 id="二、環境建置"><a href="#二、環境建置" class="headerlink" title="二、環境建置"></a>二、環境建置</h2><h3 id="2-1-時間型態"><a href="#2-1-時間型態" class="headerlink" title="2.1 時間型態"></a>2.1 時間型態</h3><p><img src="datatype-datetime.png" alt></p>
-<h3 id="2-2-建立資料表"><a href="#2-2-建立資料表" class="headerlink" title="2.2 建立資料表"></a>2.2 建立資料表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_microsecond`</span>(</span><br><span class="line">  <span class="string">`pk`</span> <span class="built_in">INT</span>(<span class="number">11</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`batch`</span> <span class="built_in">SMALLINT</span>(<span class="number">5</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">  <span class="string">`time1`</span> <span class="built_in">TIMESTAMP</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time2`</span> DATETIME <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time3`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time4`</span> DATETIME(<span class="number">3</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time5`</span> <span class="built_in">TIMESTAMP</span>(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time6`</span> DATETIME(<span class="number">6</span>) <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`time7`</span> DATETIME(<span class="number">6</span>) <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>),</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span>(<span class="string">`pk`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`time6`</span>(<span class="string">`time6`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span> <span class="keyword">CHARSET</span> = utf8;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>欄位 <code>time7</code> 可採用預設值方式自動獲取內容</p>
-</blockquote>
-<h3 id="2-3-插入測試資料"><a href="#2-3-插入測試資料" class="headerlink" title="2.3 插入測試資料"></a>2.3 插入測試資料</h3><p><strong>一次查詢中插入一筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
-<p><strong>一次查詢中插入二筆</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">2</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
-</blockquote>
-<p><strong>一次查詢中插入三筆 - SYSDATE()</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_microsecond(<span class="string">`batch`</span>, <span class="string">`time1`</span>, <span class="string">`time2`</span>, <span class="string">`time3`</span>, <span class="string">`time4`</span>, <span class="string">`time5`</span>, <span class="string">`time6`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>)), </span><br><span class="line">(<span class="number">3</span>, <span class="keyword">CURRENT_TIMESTAMP</span>(), <span class="keyword">NOW</span>(), <span class="keyword">CURRENT_TIMESTAMP</span>(<span class="number">3</span>), <span class="keyword">NOW</span>(<span class="number">3</span>), <span class="keyword">SYSDATE</span>(<span class="number">6</span>), <span class="keyword">NOW</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>SYSDATE()取得的是系統時間，不同於CURRENT_TIMESTAMP()、NOW()取得的值皆為本次session的時間  </p>
-</blockquote>
-<p><img src="datatype-data.png" alt></p>
-<h2 id="三、參考"><a href="#三、參考" class="headerlink" title="三、參考"></a>三、參考</h2><ul>
-<li><a href="https://dev.mysql.com/doc/refman/5.7/en/storage-requirements.html" target="_blank" rel="noopener">Data Type Storage Requirements</a></li>
-<li><a href="https://kknews.cc/zh-tw/code/65pe38v.html" target="_blank" rel="noopener">每日頭條-mysql 時間精確到毫秒微秒的處理方法</a></li>
-</ul>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/12/07/mysql-microsecond/" data-id="ckh0t37fs000vewufwpx9u0b1" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/time/">time</a></li></ul>
 
 
     </footer>
@@ -560,7 +560,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="ckh0t37fu000yewuf29fugxk9" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/11/14/web-server-xampp-install/" data-id="clhx3p4xm00187wn6yo7pcqko" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -658,7 +658,7 @@
 </blockquote>
 </li>
 <li><p>寫入內容</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">defined(<span class="string">'BASEPATH'</span>) <span class="keyword">or</span> <span class="keyword">exit</span>(<span class="string">'No direct script access allowed'</span>);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap 4 Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/node_modules/bootstrap/dist/css/bootstrap.min.css"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/node_modules/jquery/dist/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/node_modules/bootstrap/dist/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- Font Awesome Icon --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&lt;?= JS_DIR; ?&gt;jsTraining/jsTraining.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- Title --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-12"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Javascript Training<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- Controll Form --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-12"</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-warning float-right ctrl-btn"</span>&gt;</span>新增<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- Table --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped table-bordered table-hover ctrl-table"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- Message box --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"ctrl-message"</span> <span class="attr">class</span>=<span class="string">"text-danger ctrl-message"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">defined(&apos;BASEPATH&apos;) or exit(&apos;No direct script access allowed&apos;);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;Bootstrap 4 Example&lt;/title&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">	&lt;link rel=&quot;stylesheet&quot; href=&quot;/node_modules/bootstrap/dist/css/bootstrap.min.css&quot;&gt;</span><br><span class="line">	&lt;script src=&quot;/node_modules/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script src=&quot;/node_modules/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;!-- Font Awesome Icon --&gt;</span><br><span class="line">	&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;script src=&quot;&lt;?= JS_DIR; ?&gt;jsTraining/jsTraining.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">	&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">		&lt;!-- Title --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;col-sm-12&quot;&gt;</span><br><span class="line">				&lt;h1&gt;Javascript Training&lt;/h1&gt;</span><br><span class="line">				&lt;hr&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- Controll Form --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;div class=&quot;col-sm-12&quot;&gt;&lt;button class=&quot;btn btn-warning float-right ctrl-btn&quot;&gt;新增&lt;/button&gt;&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- Table --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;table class=&quot;table table-striped table-bordered table-hover ctrl-table&quot;&gt;</span><br><span class="line">			&lt;/table&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- Message box --&gt;</span><br><span class="line">		&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">			&lt;div id=&quot;ctrl-message&quot; class=&quot;text-danger ctrl-message&quot;&gt;&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="3-4-建立JS檔"><a href="#3-4-建立JS檔" class="headerlink" title="3.4 建立JS檔"></a>3.4 建立JS檔</h2><ul>
@@ -837,7 +837,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="ckh0t37ic005eewuf5okxq6uu" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/18/crud-design-04/" data-id="clhx3p4xm001b7wn69k0tz14c" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -988,7 +988,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="ckh0t37fq000sewufliyw6wk7" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/17/crud-design-03/" data-id="clhx3p4xj00127wn614ux02p3" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1178,7 +1178,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="ckh0t37fn000qewufqou285ke" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/php-training/" data-id="clhx3p4xk00157wn69ao5kcd8" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1256,7 +1256,7 @@
 </ul>
 </li>
 <li><p>Clone crud-training</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 刪除原本的crud-training資料夾</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /var/www/html</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo rm -rf crud-training</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Clone git repo 至 crud-training資料夾</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> &#123;Git Repo RUL&#125; crud-training</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 回到crud-training</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> crud-training</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 刪除原本的crud-training資料夾</span><br><span class="line"><span class="meta">$</span> cd /var/www/html</span><br><span class="line"><span class="meta">$</span> sudo rm -rf crud-training</span><br><span class="line"><span class="meta">#</span> Clone git repo 至 crud-training資料夾</span><br><span class="line"><span class="meta">$</span> git clone &#123;Git Repo RUL&#125; crud-training</span><br><span class="line"><span class="meta">#</span> 回到crud-training</span><br><span class="line"><span class="meta">$</span> cd crud-training</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>將<strong>{Git Repo RUL}</strong>替換成剛剛複製的Git Repo RUL</p>
 </blockquote>
@@ -1289,19 +1289,19 @@
 </ul>
 <h2 id="3-3-推送至Git"><a href="#3-3-推送至Git" class="headerlink" title="3.3 推送至Git"></a>3.3 推送至Git</h2><ul>
 <li><p>查看目前git log</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">log</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看變動的檔案</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>暫存”所有”變動檔案</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git add .</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git add .</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>再查看變動的檔案</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Commit 暫存檔案</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在第一行輸入： [Upload] Upload CodeIgniter 3</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 儲存離開</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git commit</span><br><span class="line"><span class="meta">#</span> 在第一行輸入： [Upload] Upload CodeIgniter 3</span><br><span class="line"><span class="meta">#</span> 儲存離開</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>用#開頭的行不會被git處理，是給使用者看的</li>
@@ -1309,10 +1309,10 @@
 </blockquote>
 </li>
 <li><p>推送至Git</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git push</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git push</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>再查看目前git log</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">log</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>去Github查看上傳結果</p>
 </li>
@@ -1326,7 +1326,7 @@
 <p><img src="02-keyin-content-composer.json.png" alt></p>
 </li>
 <li><p>安裝composer相關資料</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> application</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> composer install</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd application</span><br><span class="line"><span class="meta">$</span> composer install</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>安裝完成後，application下會出現vendor目錄<br><img src="02-composer-initialize.png" alt></p>
 </blockquote>
@@ -1338,7 +1338,7 @@
 </ul>
 <h2 id="4-3-編輯-gitignore-忽略git處理清單"><a href="#4-3-編輯-gitignore-忽略git處理清單" class="headerlink" title="4.3 編輯.gitignore(忽略git處理清單)"></a>4.3 編輯.gitignore(忽略git處理清單)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">application/cache/*</span><br><span class="line">application/logs/*</span><br><span class="line">composer.lock</span><br><span class="line">/vendor/</span><br><span class="line">application/vendor</span><br></pre></td></tr></table></figure>
 <p><img src="02-gitignore-edit.png" alt></p>
-<h2 id="4-4-上傳Git"><a href="#4-4-上傳Git" class="headerlink" title="4.4 上傳Git"></a>4.4 上傳Git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看變動</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 暫存所有變動</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add .</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> commit 變動檔案</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 推送</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-4-上傳Git"><a href="#4-4-上傳Git" class="headerlink" title="4.4 上傳Git"></a>4.4 上傳Git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看變動</span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line"><span class="meta">#</span> 暫存所有變動</span><br><span class="line"><span class="meta">$</span> git add .</span><br><span class="line"><span class="meta">#</span> commit 變動檔案</span><br><span class="line"><span class="meta">$</span> git commit</span><br><span class="line"><span class="meta">#</span> 推送</span><br><span class="line"><span class="meta">$</span> git push</span><br></pre></td></tr></table></figure>
 <h1 id="五、目錄結構"><a href="#五、目錄結構" class="headerlink" title="五、目錄結構"></a>五、目錄結構</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">|-- application 項目目錄</span><br><span class="line">    |-- core 項目的核心程序</span><br><span class="line">    |-- helpers 項目的輔助函數</span><br><span class="line">    |-- libraries 通用類庫</span><br><span class="line">    |-- language 語言包</span><br><span class="line">    |-- config 項目相關的配置</span><br><span class="line">        |-- config.php 項目相關的配置文件</span><br><span class="line">        |-- database.php 數據庫相關的配置文件</span><br><span class="line">        |-- autoload.php 設置自動加載類庫的配置文件</span><br><span class="line">        |-- constants.php 常量配置文件</span><br><span class="line">        |-- routes.php 路由配置文件</span><br><span class="line">    |-- controllers 控制器目錄</span><br><span class="line">        |-- welcome.php 控制器文件，繼承CI_Controller</span><br><span class="line">    |-- models 模型目錄</span><br><span class="line">        |-- welcome_model.php 模型文件，繼承CI_Model</span><br><span class="line">    |-- views 視圖目錄</span><br><span class="line">        |-- welcome.php 視圖模板文件，默認後綴名為.php</span><br><span class="line">    |-- cache 存放數據或模板的緩存文件</span><br><span class="line">    |-- errors 錯誤提示模板</span><br><span class="line">    |-- hooks 鉤子，在不修改系統核心文件的基礎上擴展系統功能</span><br><span class="line">    |-- third_party 第三方庫</span><br><span class="line">    |-- logs 日誌</span><br><span class="line"></span><br><span class="line">|-- system 框架程序目錄</span><br><span class="line">    |-- core 框架的核心程序</span><br><span class="line">        |-- CodeIgniter.php 引導性文件</span><br><span class="line">        |-- Common.php 加載基類庫的公共函數</span><br><span class="line">        |-- Controller.php 基控制器類文件：CI_Controller</span><br><span class="line">        |-- Model.php 基模型類文件：CI_Model</span><br><span class="line">        |-- Config.php 配置類文件：CI_Config</span><br><span class="line">        |-- Input.php 輸入類文件：CI_Input</span><br><span class="line">        |-- Output.php 輸出類文件：CI_Output</span><br><span class="line">        |-- URL.php URL類文件：CI_URl</span><br><span class="line">        |-- Router.php 路由類文件：CI_Router</span><br><span class="line">        |-- Loader.php 加載類文件：CI_Loader</span><br><span class="line">    |-- helpers 輔助函數</span><br><span class="line">        |-- url_helper.php url相關的輔助函數，如：創建url的輔助函數</span><br><span class="line">        |-- captcha_helper.php創建圖形驗證碼的輔助函數</span><br><span class="line">    |-- libraries 通用類庫</span><br><span class="line">        |-- Pagination.php 通用分頁類庫</span><br><span class="line">        |-- Upload.php 通用文件上傳類庫</span><br><span class="line">        |-- Image_lib.php 通用圖像處理類庫</span><br><span class="line">        |-- Session.php 通用session類庫</span><br><span class="line">    |-- language 語言包</span><br><span class="line">    |-- database 數據庫操作相關的程序</span><br><span class="line">        |-- DB_active_rec.php 快捷操作類文件(ActiveRecord)</span><br><span class="line">    |-- fonts 字庫</span><br><span class="line"></span><br><span class="line">|-- index.php 入口文件</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>system目錄下的資料不建議變動</p>
@@ -1375,7 +1375,7 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="6-4-推送至Git"><a href="#6-4-推送至Git" class="headerlink" title="6.4 推送至Git"></a>6.4 推送至Git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看變動</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 暫存所有變動</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add .</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> commit 變動檔案</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 推送</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-4-推送至Git"><a href="#6-4-推送至Git" class="headerlink" title="6.4 推送至Git"></a>6.4 推送至Git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看變動</span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line"><span class="meta">#</span> 暫存所有變動</span><br><span class="line"><span class="meta">$</span> git add .</span><br><span class="line"><span class="meta">#</span> commit 變動檔案</span><br><span class="line"><span class="meta">$</span> git commit</span><br><span class="line"><span class="meta">#</span> 推送</span><br><span class="line"><span class="meta">$</span> git push</span><br></pre></td></tr></table></figure>
 <h1 id="七、資料庫存取"><a href="#七、資料庫存取" class="headerlink" title="七、資料庫存取"></a>七、資料庫存取</h1><p>本教學中選用MySQL資料庫</p>
 <h2 id="7-1-資料設計"><a href="#7-1-資料設計" class="headerlink" title="7.1 資料設計"></a>7.1 資料設計</h2><p>使用者在網頁前端輸入的資料，傳送到後端處理完後，必需存到資料庫中，以待後續取用。但資料要如何存取才符合需求並有好的效率，資料庫設計至關重要。</p>
 <h3 id="7-1-1-建構原則"><a href="#7-1-1-建構原則" class="headerlink" title="7.1.1 建構原則"></a>7.1.1 建構原則</h3><ul>
@@ -1758,7 +1758,7 @@
 <h2 id="7-6-觀察資料庫存取狀況"><a href="#7-6-觀察資料庫存取狀況" class="headerlink" title="7.6 觀察資料庫存取狀況"></a>7.6 觀察資料庫存取狀況</h2><ul>
 <li>前往 <a href="https://crud-training.dev.idv/dept_info" target="_blank" rel="noopener">https://crud-training.dev.idv/dept_info</a> 觀察</li>
 </ul>
-<h2 id="7-7-推送至Git"><a href="#7-7-推送至Git" class="headerlink" title="7.7 推送至Git"></a>7.7 推送至Git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看變動</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 暫存所有變動</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add .</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> commit 變動檔案</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 推送</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push</span></span><br></pre></td></tr></table></figure>
+<h2 id="7-7-推送至Git"><a href="#7-7-推送至Git" class="headerlink" title="7.7 推送至Git"></a>7.7 推送至Git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看變動</span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line"><span class="meta">#</span> 暫存所有變動</span><br><span class="line"><span class="meta">$</span> git add .</span><br><span class="line"><span class="meta">#</span> commit 變動檔案</span><br><span class="line"><span class="meta">$</span> git commit</span><br><span class="line"><span class="meta">#</span> 推送</span><br><span class="line"><span class="meta">$</span> git push</span><br></pre></td></tr></table></figure>
 <h1 id="八、參考"><a href="#八、參考" class="headerlink" title="八、參考"></a>八、參考</h1><ul>
 <li><a href="https://www.codeigniter.com" target="_blank" rel="noopener">CodeIgniter官網</a></li>
 <li><a href="https://codeigniter.org.tw/userguide3/" target="_blank" rel="noopener">CodeIgniter 使用手冊</a></li>
@@ -1780,7 +1780,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="ckh0t37jc0063ewufmx7qe0ue" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/08/16/crud-design-02/" data-id="clhx3p4xi00117wn6bf7efiqy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -1930,15 +1930,20 @@
 </blockquote>
 <h2 id="3-2-GitLab"><a href="#3-2-GitLab" class="headerlink" title="3.2 GitLab"></a>3.2 GitLab</h2><h3 id="3-2-1-SSH金鑰認證"><a href="#3-2-1-SSH金鑰認證" class="headerlink" title="3.2.1 SSH金鑰認證"></a>3.2.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t ed25519 -C "your_email@example.com"</span><br></pre></td></tr></table></figure>
 <p><img src="ssh-keygen-had-email.png" alt></p>
 <blockquote>
 <ul>
+<li>注意: 如果您使用的是不支持ed25519算法的舊系統，請使用以下指令<ul>
+<li><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></li>
+</ul>
+</li>
+<li><a href="mailto:`your_email@example.com" target="_blank" rel="noopener">`your_email@example.com</a>`請替換為您的電子信箱，也可以不指定電子信箱</li>
 <li>產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入密碼</li>
 <li>在<strong>非共用電腦上</strong>使用的ssh key，密碼通常不設，自行保管好即可</li>
 <li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
-<li>私錀：id_rsa-your_email</li>
-<li>公錀：id_rsa-your_email.pub</li>
+<li>私錀：<code>id_ed25519</code></li>
+<li>公錀：<code>id_ed25519.pub</code></li>
 </ul>
 </li>
 <li>家目錄位置<ul>
@@ -1958,7 +1963,7 @@
 </li>
 </ul>
 <ul>
-<li>複制~/.ssh/id_rsa-your_email.pub內容</li>
+<li>複制<code>~/.ssh/id_ed25519.pub</code>內容</li>
 <li><p>SSH-Keys設定位置</p>
 <p><img src="02-ssh-keys-01.png" alt></p>
 <blockquote>
@@ -1967,24 +1972,24 @@
 </ul>
 </blockquote>
 </li>
-<li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<li><p>SSH金錀設定檔 <code>~/.ssh/config</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前往家目錄下的ssh設定資料夾</span><br><span class="line"><span class="meta">$</span> cd ~/.ssh/</span><br><span class="line"><span class="meta">#</span> 編輯ssh config</span><br><span class="line"><span class="meta">$</span> vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
 <p>config內容如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> GitLab.com</span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> GitLab.com</span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line"><span class="meta">  #</span>IdentityFile ~/.ssh/id_ed25519 # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>IdentityFile 指定ssh私鑰路徑</p>
+<p>IdentityFile 指定ssh私鑰路徑，金鑰如果使用預設路徑&amp;檔名，可以不設定本行</p>
 </blockquote>
 </li>
 </ul>
 <blockquote>
 <ul>
 <li>Git SSH連線金鑰<ul>
-<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-your_email, id_rsa-your_email.pub</li>
-<li>id_rsa-your_email是私鑰，存放於本機端</li>
-<li>id_rsa-your_email.pub是公鑰，存放於Git伺服器</li>
+<li>使用指令ssh-keygen建立SSH認証金鑰對<code>id_ed25519</code>, <code>id_ed25519.pub</code></li>
+<li><code>id_ed25519</code>是私鑰，存放於本機端</li>
+<li><code>id_ed25519.pub</code>是公鑰，存放於Git伺服器</li>
 <li>設定config指定連線參數與使用金鑰檔</li>
 <li>此時使用SSH連線到Git伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
 </ul>
@@ -2001,15 +2006,20 @@
 </blockquote>
 <h2 id="3-3-GitHub"><a href="#3-3-GitHub" class="headerlink" title="3.3 GitHub"></a>3.3 GitHub</h2><h3 id="3-3-1-SSH金鑰認證"><a href="#3-3-1-SSH金鑰認證" class="headerlink" title="3.3.1 SSH金鑰認證"></a>3.3.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t ed25519 -C "your_email@example.com"</span><br></pre></td></tr></table></figure>
 <p><img src="ssh-keygen-had-email.png" alt></p>
 <blockquote>
 <ul>
+<li>注意: 如果您使用的是不支持ed25519算法的舊系統，請使用以下指令<ul>
+<li><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></li>
+</ul>
+</li>
+<li><a href="mailto:`your_email@example.com" target="_blank" rel="noopener">`your_email@example.com</a>`請替換為您的電子信箱，也可以不指定電子信箱</li>
 <li>產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入密碼</li>
 <li>在<strong>非共用電腦上</strong>使用的ssh key，密碼通常不設，自行保管好即可</li>
 <li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
-<li>私錀：id_rsa-your_email</li>
-<li>公錀：id_rsa-your_email.pub</li>
+<li>私錀：<code>id_ed25519</code></li>
+<li>公錀：<code>id_ed25519.pub</code></li>
 </ul>
 </li>
 <li>家目錄位置<ul>
@@ -2029,7 +2039,7 @@
 </li>
 </ul>
 <ul>
-<li>複制~/.ssh/id_rsa-your_email.pub內容</li>
+<li>複制<code>~/.ssh/id_ed25519.pub</code>內容</li>
 <li><p>SSH-Keys設定位置</p>
 <p><img src="03-ssh-keys-01.png" alt></p>
 <blockquote>
@@ -2041,24 +2051,24 @@
 </li>
 </ul>
 <ul>
-<li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<li><p>SSH金錀設定檔 <code>~/.ssh/config</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前往家目錄下的ssh設定資料夾</span><br><span class="line"><span class="meta">$</span> cd ~/.ssh/</span><br><span class="line"><span class="meta">#</span> 編輯ssh config</span><br><span class="line"><span class="meta">$</span> vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
 <p>config內容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Github.com</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Github.com</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    #IdentityFile ~/.ssh/id_ed25519 # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>IdentityFile 指定ssh私鑰路徑</p>
+<p>IdentityFile 指定ssh私鑰路徑，金鑰如果使用預設路徑&amp;檔名，可以不設定本行</p>
 </blockquote>
 </li>
 </ul>
 <blockquote>
 <ul>
 <li>Git SSH連線金鑰<ul>
-<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-your_email, id_rsa-your_email.pub</li>
-<li>id_rsa-your_email是私鑰，存放於本機端</li>
-<li>id_rsa-your_email.pub是公鑰，存放於Git伺服器</li>
+<li>使用指令<code>ssh-keygen</code>建立SSH認証金鑰對<code>id_ed25519</code>, <code>id_ed25519.pub</code></li>
+<li><code>id_ed25519</code>是私鑰，存放於本機端</li>
+<li><code>id_ed25519.pub</code>是公鑰，存放於Git伺服器</li>
 <li>設定config指定連線參數與使用金鑰檔</li>
 <li>此時使用SSH連線到Git伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
 </ul>
@@ -2083,7 +2093,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ckh0t37fk000jewuf0vns16kd" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="clhx3p4xg000w7wn6xet1ynyt" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2200,7 +2210,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="ckh0t37fm000lewufot33hbn6" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/composer-install/" data-id="clhx3p4xf000s7wn62df3m4be" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2376,7 +2386,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="ckh0t37fi000fewuf6xmv3xy0" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/21/git-install/" data-id="clhx3p4xh000x7wn6i0b01kpp" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -2409,11 +2419,11 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
+          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
         </li>
       
         <li>
-          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
         </li>
       
         <li>
@@ -2463,7 +2473,7 @@
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2020 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2023 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   
   

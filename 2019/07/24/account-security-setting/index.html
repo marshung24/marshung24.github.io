@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/ssh-keygen-had-email.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-ssh-keys-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-github-security-01.png">
-<meta property="og:updated_time" content="2020-03-02T13:00:06.001Z">
+<meta property="og:updated_time" content="2023-05-20T16:35:40.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="帳號安全設定">
 <meta name="twitter:description" content="一、說明開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google/facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的安全設定如下：  可靠的密碼 限定連線IP SSH金鑰認證 (Authorized_keys) 兩步驟驗證">
@@ -235,15 +235,20 @@
 </blockquote>
 <h2 id="3-2-GitLab"><a href="#3-2-GitLab" class="headerlink" title="3.2 GitLab"></a>3.2 GitLab</h2><h3 id="3-2-1-SSH金鑰認證"><a href="#3-2-1-SSH金鑰認證" class="headerlink" title="3.2.1 SSH金鑰認證"></a>3.2.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t ed25519 -C "your_email@example.com"</span><br></pre></td></tr></table></figure>
 <p><img src="ssh-keygen-had-email.png" alt></p>
 <blockquote>
 <ul>
+<li>注意: 如果您使用的是不支持ed25519算法的舊系統，請使用以下指令<ul>
+<li><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></li>
+</ul>
+</li>
+<li><a href="mailto:`your_email@example.com" target="_blank" rel="noopener">`your_email@example.com</a>`請替換為您的電子信箱，也可以不指定電子信箱</li>
 <li>產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入密碼</li>
 <li>在<strong>非共用電腦上</strong>使用的ssh key，密碼通常不設，自行保管好即可</li>
 <li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
-<li>私錀：id_rsa-your_email</li>
-<li>公錀：id_rsa-your_email.pub</li>
+<li>私錀：<code>id_ed25519</code></li>
+<li>公錀：<code>id_ed25519.pub</code></li>
 </ul>
 </li>
 <li>家目錄位置<ul>
@@ -263,7 +268,7 @@
 </li>
 </ul>
 <ul>
-<li>複制~/.ssh/id_rsa-your_email.pub內容</li>
+<li>複制<code>~/.ssh/id_ed25519.pub</code>內容</li>
 <li><p>SSH-Keys設定位置</p>
 <p><img src="02-ssh-keys-01.png" alt></p>
 <blockquote>
@@ -272,24 +277,24 @@
 </ul>
 </blockquote>
 </li>
-<li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<li><p>SSH金錀設定檔 <code>~/.ssh/config</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前往家目錄下的ssh設定資料夾</span><br><span class="line"><span class="meta">$</span> cd ~/.ssh/</span><br><span class="line"><span class="meta">#</span> 編輯ssh config</span><br><span class="line"><span class="meta">$</span> vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
 <p>config內容如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> GitLab.com</span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> GitLab.com</span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line"><span class="meta">  #</span>IdentityFile ~/.ssh/id_ed25519 # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>IdentityFile 指定ssh私鑰路徑</p>
+<p>IdentityFile 指定ssh私鑰路徑，金鑰如果使用預設路徑&amp;檔名，可以不設定本行</p>
 </blockquote>
 </li>
 </ul>
 <blockquote>
 <ul>
 <li>Git SSH連線金鑰<ul>
-<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-your_email, id_rsa-your_email.pub</li>
-<li>id_rsa-your_email是私鑰，存放於本機端</li>
-<li>id_rsa-your_email.pub是公鑰，存放於Git伺服器</li>
+<li>使用指令ssh-keygen建立SSH認証金鑰對<code>id_ed25519</code>, <code>id_ed25519.pub</code></li>
+<li><code>id_ed25519</code>是私鑰，存放於本機端</li>
+<li><code>id_ed25519.pub</code>是公鑰，存放於Git伺服器</li>
 <li>設定config指定連線參數與使用金鑰檔</li>
 <li>此時使用SSH連線到Git伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
 </ul>
@@ -306,15 +311,20 @@
 </blockquote>
 <h2 id="3-3-GitHub"><a href="#3-3-GitHub" class="headerlink" title="3.3 GitHub"></a>3.3 GitHub</h2><h3 id="3-3-1-SSH金鑰認證"><a href="#3-3-1-SSH金鑰認證" class="headerlink" title="3.3.1 SSH金鑰認證"></a>3.3.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -b 4096 -C "your_email@example.com"  -f ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-keygen -t ed25519 -C "your_email@example.com"</span><br></pre></td></tr></table></figure>
 <p><img src="ssh-keygen-had-email.png" alt></p>
 <blockquote>
 <ul>
+<li>注意: 如果您使用的是不支持ed25519算法的舊系統，請使用以下指令<ul>
+<li><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></li>
+</ul>
+</li>
+<li><a href="mailto:`your_email@example.com" target="_blank" rel="noopener">`your_email@example.com</a>`請替換為您的電子信箱，也可以不指定電子信箱</li>
 <li>產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入密碼</li>
 <li>在<strong>非共用電腦上</strong>使用的ssh key，密碼通常不設，自行保管好即可</li>
 <li>會在家目錄中的.ssh目錄下產生二個檔案<ul>
-<li>私錀：id_rsa-your_email</li>
-<li>公錀：id_rsa-your_email.pub</li>
+<li>私錀：<code>id_ed25519</code></li>
+<li>公錀：<code>id_ed25519.pub</code></li>
 </ul>
 </li>
 <li>家目錄位置<ul>
@@ -334,7 +344,7 @@
 </li>
 </ul>
 <ul>
-<li>複制~/.ssh/id_rsa-your_email.pub內容</li>
+<li>複制<code>~/.ssh/id_ed25519.pub</code>內容</li>
 <li><p>SSH-Keys設定位置</p>
 <p><img src="03-ssh-keys-01.png" alt></p>
 <blockquote>
@@ -346,24 +356,24 @@
 </li>
 </ul>
 <ul>
-<li><p>SSH金錀設定檔 ~/.ssh/config</p>
+<li><p>SSH金錀設定檔 <code>~/.ssh/config</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 前往家目錄下的ssh設定資料夾</span><br><span class="line"><span class="meta">$</span> cd ~/.ssh/</span><br><span class="line"><span class="meta">#</span> 編輯ssh config</span><br><span class="line"><span class="meta">$</span> vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
 <p>config內容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Github.com</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa-your_email</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Github.com</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    #IdentityFile ~/.ssh/id_ed25519 # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>IdentityFile 指定ssh私鑰路徑</p>
+<p>IdentityFile 指定ssh私鑰路徑，金鑰如果使用預設路徑&amp;檔名，可以不設定本行</p>
 </blockquote>
 </li>
 </ul>
 <blockquote>
 <ul>
 <li>Git SSH連線金鑰<ul>
-<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-your_email, id_rsa-your_email.pub</li>
-<li>id_rsa-your_email是私鑰，存放於本機端</li>
-<li>id_rsa-your_email.pub是公鑰，存放於Git伺服器</li>
+<li>使用指令<code>ssh-keygen</code>建立SSH認証金鑰對<code>id_ed25519</code>, <code>id_ed25519.pub</code></li>
+<li><code>id_ed25519</code>是私鑰，存放於本機端</li>
+<li><code>id_ed25519.pub</code>是公鑰，存放於Git伺服器</li>
 <li>設定config指定連線參數與使用金鑰檔</li>
 <li>此時使用SSH連線到Git伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
 </ul>
@@ -388,7 +398,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="ckh0t37fk000jewuf0vns16kd" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="clhx3p4xg000w7wn6xet1ynyt" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -435,11 +445,11 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
+          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
         </li>
       
         <li>
-          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
         </li>
       
         <li>
@@ -489,7 +499,7 @@
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2020 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2023 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   
   

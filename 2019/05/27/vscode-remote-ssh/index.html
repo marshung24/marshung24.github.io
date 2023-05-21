@@ -5,23 +5,23 @@
   
   <title>VS Code遠端開發套件：Remote-SSH | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key打開git bash，輸入下列指令 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh    產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入">
+  <meta name="description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key打開git bash，輸入下列指令 1$ ssh-keygen -t ed25519 -C &amp;quot;your_email@example.com&amp;quot;    注意: 如果您使用的是不支持ed25519算法的舊系統，請使">
 <meta name="keywords" content="dev,coding,tools,ide,vscode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VS Code遠端開發套件：Remote-SSH">
 <meta property="og:url" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
-<meta property="og:description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key打開git bash，輸入下列指令 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh    產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入">
+<meta property="og:description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key打開git bash，輸入下列指令 1$ ssh-keygen -t ed25519 -C &amp;quot;your_email@example.com&amp;quot;    注意: 如果您使用的是不支持ed25519算法的舊系統，請使">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/install-remote-ssh.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/ssh-keygen.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/config-ssh.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/connect-to-remote.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/set-config.png">
-<meta property="og:updated_time" content="2020-03-02T13:00:05.939Z">
+<meta property="og:updated_time" content="2023-05-20T16:31:10.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VS Code遠端開發套件：Remote-SSH">
-<meta name="twitter:description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key打開git bash，輸入下列指令 1$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh    產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入">
+<meta name="twitter:description" content="一、說明使用VS Codey套件Remote-SSH實現遠端開發 二、安裝 下載並安裝VS Code  安裝VS Code套件Remote - SSH  建立SSH Key打開git bash，輸入下列指令 1$ ssh-keygen -t ed25519 -C &amp;quot;your_email@example.com&amp;quot;    注意: 如果您使用的是不支持ed25519算法的舊系統，請使">
 <meta name="twitter:image" content="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/install-remote-ssh.png">
   
   
@@ -131,30 +131,35 @@
 <li><p>安裝VS Code套件Remote - SSH<br><img src="install-remote-ssh.png" alt></p>
 </li>
 <li><p>建立SSH Key<br>打開git bash，輸入下列指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
 <p><img src="ssh-keygen.png" alt></p>
 <blockquote>
 <ul>
+<li>注意: 如果您使用的是不支持ed25519算法的舊系統，請使用以下指令<ul>
+<li><code>$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></li>
+</ul>
+</li>
+<li><a href="mailto:`your_email@example.com" target="_blank" rel="noopener">`your_email@example.com</a>`請替換為您的電子信箱，也可以不指定電子信箱</li>
 <li>產生ssh key時，如果有設定密碼，以後使用此ssh key時都要輸入密碼</li>
 <li>在<strong>非共用電腦上</strong>使用的ssh key，密碼通常不設，自行保管好即可</li>
 </ul>
 </blockquote>
 </li>
 <li><p>設定SSH config<br>In VS Code, run Remote-SSH: Open Configuration File<br><img src="config-ssh.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line"></span><br><span class="line">Host &#123;dev.idv&#125;</span><br><span class="line">    User &#123;user_name&#125;</span><br><span class="line">    HostName &#123;dev.idv&#125;</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa-remote-ssh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># `~/.ssh/config`</span><br><span class="line"></span><br><span class="line">Host &#123;dev.idv&#125;</span><br><span class="line">    User &#123;user_name&#125;</span><br><span class="line">    HostName &#123;dev.idv&#125;</span><br><span class="line">    #IdentityFile ~/.ssh/id_ed25519  # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>將 <strong>{user_name}</strong> 替換成自己的帳號</li>
 <li>Host {dev.idv} 中的 <strong>{dev.idv}</strong> 是伺服器的alias name (可以跟HostName不一樣)</li>
 <li>HostName {dev.idv} 中的 <strong>{dev.idv}</strong> 是伺服器域名，也可以使用IP位址</li>
-<li>IdentityFile 指定ssh私鑰路徑</li>
+<li>IdentityFile 指定ssh私鑰路徑，金鑰如果使用預設路徑&amp;檔名，可以不設定本行</li>
 </ul>
 </blockquote>
 </li>
 </ol>
 <ol start="5">
 <li><p>安裝SSH Key至遠端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id -i ~/.ssh/id_rsa-remote-ssh.pub &#123;user_name&#125;@&#123;dev.idv&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id -i ~/.ssh/id_ed25519.pub &#123;user_name&#125;@&#123;dev.idv&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>連線至遠端<br>In VS Code, run Remote-SSH: Connect to Host</p>
 <blockquote>
@@ -169,9 +174,9 @@
 </ul>
 </li>
 <li>SSH連線金鑰<ul>
-<li>使用指令ssh-keygen建立SSH認証金鑰對id_rsa-remote-ssh, id_rsa-remote-ssh.pub</li>
-<li>id_rsa-remote-ssh是私鑰，存放於本機端</li>
-<li>id_rsa-remote-ssh.pub是公鑰，透過指令ssh-copy-id存放於遠端伺服器</li>
+<li>使用指令ssh-keygen建立SSH認証金鑰對<code>id_ed25519</code>, <code>id_ed25519.pub</code></li>
+<li><code>id_ed25519</code>是私鑰，存放於本機端</li>
+<li><code>id_ed25519.pub</code>是公鑰，透過指令ssh-copy-id存放於遠端伺服器</li>
 <li>設定config指定連線參數與使用金鑰檔</li>
 <li>此時使用SSH連線到遠端伺服器時，就不需再輸入帳號密碼，所以需要妥善保管好SSH私鑰</li>
 </ul>
@@ -239,7 +244,7 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/" data-id="ckh0t37hk004uewufprtwy7om" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/27/vscode-remote-ssh/" data-id="clhx3p4xa000e7wn6ethihq7n" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -286,11 +291,11 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
+          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
         </li>
       
         <li>
-          <a href="/2019/12/07/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
         </li>
       
         <li>
@@ -340,7 +345,7 @@
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2020 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2023 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   
   
