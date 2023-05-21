@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PHP培訓-CRUD | Mars&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、開發環境建議開發環境  LNMP, LAMP, XAMPP 範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向  二、基本要求 請建構一個 帳號新增 的基本CRUD表單，欄位有： 帳號 varchar 姓名 varchar 性別 varchar 生日 date 信箱 varchar 備註 text 資料表名稱 account_info需自行建立資料表     需要用到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP培訓-CRUD">
+<meta property="og:url" content="https://blog.mars-world.net/2019/08/16/2019-08-16-php-training/index.html">
+<meta property="og:site_name" content="Mars&#39;s Blog">
+<meta property="og:description" content="一、開發環境建議開發環境  LNMP, LAMP, XAMPP 範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向  二、基本要求 請建構一個 帳號新增 的基本CRUD表單，欄位有： 帳號 varchar 姓名 varchar 性別 varchar 生日 date 信箱 varchar 備註 text 資料表名稱 account_info需自行建立資料表     需要用到">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-08-16T15:10:30.000Z">
+<meta property="article:modified_time" content="2023-05-21T09:55:17.587Z">
+<meta property="article:author" content="Mars Hung">
+<meta property="article:tag" content="dev">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="training">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="../../../../css/styles.css">
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="../../../../index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="../../../../archives/">Archives</a></li>
+        
+          <li><a class=""
+                 target="_blank" rel="noopener" href="https://github.com/marshung24">GitHub</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">Mars&#39;s Blog</h1>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-2019-08-16-php-training" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      PHP培訓-CRUD
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="" class="article-date"><time datetime="2019-08-16T15:10:30.000Z" itemprop="datePublished">2019-08-16</time></a>
+</div>
+
+    <div class="article-author">Mars Hung</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="../../../../categories/training/">training</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83"><span class="toc-text">一、開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="toc-text">二、基本要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%B2%E9%9A%8E%E8%A6%81%E6%B1%82"><span class="toc-text">三、進階要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%A5%97%E4%BB%B6%E7%B7%B4%E7%BF%92"><span class="toc-text">四、套件練習</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%8F%83%E8%80%83"><span class="toc-text">五、參考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E7%B6%B2"><span class="toc-text">官網</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%99%E7%A8%8B"><span class="toc-text">教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E4%BB%B6"><span class="toc-text">套件</span></a></li></ol></li></ol>
+</div>
+
+        <h1 id="一、開發環境"><a href="#一、開發環境" class="headerlink" title="一、開發環境"></a>一、開發環境</h1><p>建議開發環境</p>
+<ul>
+<li><a href="/2019/07/19/www-server-install/">LNMP</a>, LAMP, XAMPP</li>
+<li>範圍：MySQL資料表建立、HTML、Javascript、PHP、物件導向</li>
+</ul>
+<h1 id="二、基本要求"><a href="#二、基本要求" class="headerlink" title="二、基本要求"></a>二、基本要求</h1><ol>
+<li>請建構一個 帳號新增 的基本CRUD表單，欄位有：<ul>
+<li>帳號 varchar</li>
+<li>姓名 varchar</li>
+<li>性別 varchar</li>
+<li>生日 date</li>
+<li>信箱 varchar</li>
+<li>備註 text<blockquote>
+<p>資料表名稱 account_info<br>需自行建立資料表</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>需要用到PHP物件、繼承、介面等物件導向技巧<ul>
+<li>自行定義物件並展示繼承、介面，本題不算第三方程式物件的使用</li>
+</ul>
+</li>
+<li>清單頁 - 顯示已存在資料</li>
+<li>新增 &#x2F; 編輯 &#x2F; 刪除(需二次確認) - 資料編輯用</li>
+<li>需用到 jQuery, AJAX</li>
+<li>帳號欄位是唯一值，不可重複</li>
+<li>使用彈窗(Dialog)方式開啟 新增&#x2F;編輯表單頁&#x2F;確認視窗<ul>
+<li>可使用套件 Bootstrap Modal, jQuery UI Dialog</li>
+</ul>
+</li>
+<li>支援 搜尋、排序 功能</li>
+<li>每頁顯示數量、分頁(Pagination)</li>
+<li>資料驗証<ul>
+<li>必填：帳號、姓名、性別、生日、信箱</li>
+<li>帳號格式：英數混合(不分大小寫)，位數為5~15碼</li>
+<li>日期格式：生日</li>
+<li>信箱格式：信箱<blockquote>
+<p>前後端皆要驗証</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>基本要求共10題，測試基礎能力</li>
+<li>可使用套件<ul>
+<li><a target="_blank" rel="noopener" href="https://getbootstrap.com/">Bootstrap 3</a></li>
+<li><a target="_blank" rel="noopener" href="https://jquery.com/">jQuery</a></li>
+<li><a target="_blank" rel="noopener" href="https://nakupanda.github.io/bootstrap3-dialog/">BootstrapDialog</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Rusta/rustaMsgBox">rustaMsgBox</a></li>
+</ul>
+</li>
+<li>實作 搜尋、排序、每頁顯示數量、分頁 時不可使用套件 (除jQuery,Bootstrap)</li>
+<li>不可使用到 四、套件練習 中的套件</li>
+</ul>
+</blockquote>
+<div style="page-break-after: always;"></div>
+
+<h1 id="三、進階要求"><a href="#三、進階要求" class="headerlink" title="三、進階要求"></a>三、進階要求</h1><p>以下需求 <strong>依個人能力</strong> 選擇項目完成</p>
+<ol start="11">
+<li>使用PHP Framework<ul>
+<li>如：CodeIgniter3, Yii2, Laravel</li>
+</ul>
+</li>
+<li>使用RWD Framework<ul>
+<li>如：Bootstrap</li>
+</ul>
+</li>
+<li>編碼風格：PSR-1 &amp; PSR-2 &amp; PHPDoc註釋 &amp; PSR-4 &amp; 使用Namespace<ul>
+<li>自行開發spl_autoload_register()或用composer autoload輔助</li>
+</ul>
+</li>
+<li>AJAX使用 RESTful style傳送資料，並且回傳支援 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81">HTTP Status Code</a></li>
+<li>資料處理<ul>
+<li>帳號：字母全部轉<strong>小寫</strong>才寫入資料庫</li>
+<li>性別：顯示時為 男&#x2F;女 ，資料庫儲存為 1&#x2F;0</li>
+<li>生日：顯示時格式 2019年2月15日 ，資料庫儲存格式為 2019-02-15</li>
+</ul>
+</li>
+<li>Javascript使用物件寫法</li>
+<li>批次刪除功能</li>
+<li>匯出資料(text or excel)</li>
+<li>匯入資料(批次新增 or 批次修改)</li>
+<li>匯入處理要求<ul>
+<li>匯入時做差異處理，帳號存在者為更新，帳號不存在者為新增</li>
+<li>匯入時，也需驗証，當有一筆錯誤時，該次匯入不處理，且需返回錯誤訊息</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>進階要求共10題</li>
+<li>可使用<a target="_blank" rel="noopener" href="https://github.com/marshung24/io">Excel匯出匯入模組</a></li>
+<li>不可使用到 四、套件練習 中的套件</li>
+</ul>
+</blockquote>
+<h1 id="四、套件練習"><a href="#四、套件練習" class="headerlink" title="四、套件練習"></a>四、套件練習</h1><ol start="21">
+<li>使用 DataTables 取代自行實作的 搜尋、排序、每頁顯示數量、分頁 功能</li>
+</ol>
+<h1 id="五、參考"><a href="#五、參考" class="headerlink" title="五、參考"></a>五、參考</h1><h2 id="官網"><a href="#官網" class="headerlink" title="官網"></a>官網</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://codeigniter.com/">CodeIgniter</a></li>
+<li><a target="_blank" rel="noopener" href="https://getbootstrap.com/">Bootstrap</a></li>
+<li><a target="_blank" rel="noopener" href="https://jquery.com/">jQuery</a></li>
+</ul>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/php7/">PHP 7 Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.codeigniter.com/user_guide/index.html">CodeIgniter User Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/3.4/">Bootstrap 3 Document</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/bootstrap/">Bootstrap 3 Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Bootstrap 4 Document</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/bootstrap4/">Bootstrap 4 Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/jquery/">jQuery Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/sql/">SQL Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="http://tw.gitbook.net/mysql/index.html">MySQL基礎教程</a></li>
+<li><a target="_blank" rel="noopener" href="http://tw.gitbook.net/php/index.html">PHP基礎教程</a></li>
+</ul>
+<h2 id="套件"><a href="#套件" class="headerlink" title="套件"></a>套件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/marshung24/io">Excel匯出匯入模組</a></li>
+<li><a target="_blank" rel="noopener" href="https://nakupanda.github.io/bootstrap3-dialog/">BootstrapDialog</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Rusta/rustaMsgBox">rustaMsgBox</a></li>
+<li><a target="_blank" rel="noopener" href="https://datatables.net/">DataTables</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.mars-world.net/2019/08/16/2019-08-16-php-training/" data-id="clhxamo8r0049h2o567i68esl" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/training/" rel="tag">training</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/web/" rel="tag">web</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="../2019-08-16-crud-design-02/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">CRUD表單設計 Day-02 安裝PHP Framework</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="../../17/2019-08-17-crud-design-03/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">CRUD表單設計 Day-03 安裝Bootstrap4</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="../../../12/07/2020-11-02-mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+        </li>
+      
+        <li>
+          <a href="../../../12/07/2019-12-07-git-learning/">Git常用指令學習</a>
+        </li>
+      
+        <li>
+          <a href="../../../11/14/2019-11-14-web-server-xampp-install/">Web伺服器安裝(XAMPP)-Windows</a>
+        </li>
+      
+        <li>
+          <a href="../../18/2019-08-18-crud-design-04/">CRUD表單設計 Day-04 Javascript</a>
+        </li>
+      
+        <li>
+          <a href="../../17/2019-08-17-crud-design-03/">CRUD表單設計 Day-03 安裝Bootstrap4</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/11/">November 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/server/">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/tools/">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/codeingiter/" rel="tag">codeingiter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/db/" rel="tag">db</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/ide/" rel="tag">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/info/" rel="tag">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sa/" rel="tag">sa</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sd/" rel="tag">sd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/server/" rel="tag">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/setting/" rel="tag">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/standard/" rel="tag">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/test/" rel="tag">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/time/" rel="tag">time</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/tools/" rel="tag">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/unit-test/" rel="tag">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">總訪問量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">訪客數<span id="busuanzi_value_site_uv"></span>人</span>
+  
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+
+<script src="../../../../js/script.js"></script>
+
+
+</body>
+</html>
