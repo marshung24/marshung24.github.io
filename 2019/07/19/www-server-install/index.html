@@ -77,14 +77,14 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/09-ca-install-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/dns-resolve.png">
 <meta property="article:published_time" content="2019-07-19T13:03:26.000Z">
-<meta property="article:modified_time" content="2023-05-22T12:26:40.311Z">
+<meta property="article:modified_time" content="2023-05-22T16:22:34.121Z">
 <meta property="article:author" content="Mars Hung">
-<meta property="article:tag" content="mysql">
 <meta property="article:tag" content="web">
 <meta property="article:tag" content="php">
-<meta property="article:tag" content="server">
-<meta property="article:tag" content="linux">
 <meta property="article:tag" content="nginx">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="server">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.mars-world.net/2019/07/19/www-server-install/01-download-virtualbox.png">
   
@@ -98,7 +98,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
 
   
-<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
 
   
 
@@ -123,10 +123,10 @@
       <ul class="nav navbar-nav">
         
           <li><a class=""
-                 href="../../../../index.html">Home</a></li>
+                 href="/index.html">Home</a></li>
         
           <li><a class=""
-                 href="../../../../archives/">Archives</a></li>
+                 href="/archives/">Archives</a></li>
         
           <li><a class=""
                  target="_blank" rel="noopener" href="https://github.com/marshung24">GitHub</a></li>
@@ -165,13 +165,13 @@
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="" class="article-date"><time datetime="2019-07-19T13:03:26.000Z" itemprop="datePublished">2019-07-19</time></a>
+  <a href="/2019/07/19/www-server-install/" class="article-date"><time datetime="2019-07-19T13:03:26.000Z" itemprop="datePublished">2019-07-19</time></a>
 </div>
 
     <div class="article-author">Mars Hung</div>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../../../categories/server/">server</a>
+    <a class="article-category-link" href="/categories/server/">server</a>
   </div>
 
 
@@ -203,31 +203,33 @@
 </ul>
 <h1 id="三、安裝-虛擬機器"><a href="#三、安裝-虛擬機器" class="headerlink" title="三、安裝 虛擬機器"></a>三、安裝 虛擬機器</h1><h2 id="3-1-下載-VirtualBox"><a href="#3-1-下載-VirtualBox" class="headerlink" title="3.1 下載 VirtualBox"></a>3.1 下載 VirtualBox</h2><p>前往 <a target="_blank" rel="noopener" href="https://www.virtualbox.org/">VirtualBox</a> 官方網站下載安裝軟體</p>
 <p><a target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Downloads">Download VirtualBox</a></p>
-<p><img src="01-download-virtualbox.png"></p>
+<img src="/2019/07/19/www-server-install/01-download-virtualbox.png" class="">
+
 <h2 id="3-2-安裝-VirtualBox"><a href="#3-2-安裝-VirtualBox" class="headerlink" title="3.2 安裝 VirtualBox"></a>3.2 安裝 VirtualBox</h2><p>執行安裝，一直「下一步」到底即可</p>
-<p><img src="02-install-virtualbox.png"></p>
+<img src="/2019/07/19/www-server-install/02-install-virtualbox.png" class="">
+
 <h2 id="3-3-建立新虛擬機器"><a href="#3-3-建立新虛擬機器" class="headerlink" title="3.3 建立新虛擬機器"></a>3.3 建立新虛擬機器</h2><p>啟動VirtualBox</p>
 <ul>
 <li><p>點選「新增」鍵</p>
-<p><img src="04-create-virtual-machine-1.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-1.png" class="">
 </li>
 <li><p>設定記憶體</p>
-<p><img src="04-create-virtual-machine-2.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-2.png" class="">
 </li>
 <li><p>建立硬碟</p>
-<p><img src="04-create-virtual-machine-3.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-3.png" class="">
 </li>
 <li><p>選擇硬碟類型</p>
-<p><img src="04-create-virtual-machine-4.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-4.png" class="">
 </li>
 <li><p>選擇硬碟使用方式</p>
-<p><img src="04-create-virtual-machine-5.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-5.png" class="">
 </li>
 <li><p>選擇硬碟位置和大小</p>
-<p><img src="04-create-virtual-machine-6.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-6.png" class="">
 </li>
 <li><p>建立完成，並設定光碟機</p>
-<p><img src="04-create-virtual-machine-7.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-7.png" class="">
 <blockquote>
 <ul>
 <li>請先下載 <a target="_blank" rel="noopener" href="https://www.ubuntu-tw.org/modules/tinyd0/">Ubuntu 伺服器版 16.04 ISO檔</a></li>
@@ -239,16 +241,16 @@
 <li><p>設定網路</p>
 <ul>
 <li><p>增加NAT網路<br>點擊左上角 檔案 &#x3D;&gt; 喜好設定 &#x3D;&gt; 網路</p>
-<p><img src="04-nat-network.png"></p>
+<img src="/2019/07/19/www-server-install/04-nat-network.png" class="">
 </li>
 <li><p>虛擬機器可連線internet，且虛擬機器之間可互連</p>
-<p><img src="04-create-virtual-machine-8.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-8.png" class="">
 <blockquote>
 <p>選擇「NAT」時，無法和其他機器互連，但選擇「NAT網路」的機器之間是可以互連的</p>
 </blockquote>
 </li>
 <li><p>讓主機端可連線虛擬機器</p>
-<p><img src="04-create-virtual-machine-9.png"></p>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-9.png" class="">
 <blockquote>
 <p>主機端無法透過「NAT」、「NAT網路」連線到虛擬機器，因此要增加介面卡「僅限主機介面卡」</p>
 </blockquote>
@@ -256,74 +258,74 @@
 </ul>
 </li>
 <li><p>啟動虛擬機器</p>
-<p><img src="04-create-virtual-machine-10.png"></p>
-</li>
+<img src="/2019/07/19/www-server-install/04-create-virtual-machine-10.png" class=""></li>
 </ul>
 <h1 id="四、安裝-Linux"><a href="#四、安裝-Linux" class="headerlink" title="四、安裝 Linux"></a>四、安裝 Linux</h1><h2 id="4-1-下載-Ubuntu-ISO檔"><a href="#4-1-下載-Ubuntu-ISO檔" class="headerlink" title="4.1 下載 Ubuntu ISO檔"></a>4.1 下載 Ubuntu ISO檔</h2><p>前往 <a target="_blank" rel="noopener" href="https://www.ubuntu-tw.org/">Ubuntu 正體中文站</a> 下載 <a target="_blank" rel="noopener" href="https://www.ubuntu-tw.org/modules/tinyd0/">Ubuntu 16.04</a></p>
-<p><img src="03-download-ubuntu.png"></p>
+<img src="/2019/07/19/www-server-install/03-download-ubuntu.png" class="">
+
 <h2 id="4-2-安裝-Ubuntu"><a href="#4-2-安裝-Ubuntu" class="headerlink" title="4.2 安裝 Ubuntu"></a>4.2 安裝 Ubuntu</h2><blockquote>
 <p>Tips: 除了選擇軟體步驗外，基本上不是「continue」就是「yes」</p>
 </blockquote>
 <ul>
 <li><p>選擇語系 English</p>
-<p><img src="05-install-ubuntu-01.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-01.png" class="">
 <blockquote>
 <p>不知為何，筆者用中文語系裝不起來</p>
 </blockquote>
 </li>
 <li><p>安裝畫面 Install Ubuntu Server</p>
-<p><img src="05-install-ubuntu-02.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-02.png" class="">
 </li>
 <li><p>系統語系 建議 English</p>
-<p><img src="05-install-ubuntu-03.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-03.png" class="">
 </li>
 <li><p>地區 other</p>
-<p><img src="05-install-ubuntu-04.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-04.png" class="">
 <blockquote>
 <p>為了選Taiwan</p>
 </blockquote>
 </li>
 <li><p>地區 Asia</p>
-<p><img src="05-install-ubuntu-05.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-05.png" class="">
 <blockquote>
 <p>為了選Taiwan</p>
 </blockquote>
 </li>
 <li><p>地區 Taiwan</p>
-<p><img src="05-install-ubuntu-06.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-06.png" class="">
 </li>
 <li><p>系統語系相關 建議選United States</p>
-<p><img src="05-install-ubuntu-07.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-07.png" class="">
 </li>
 <li><p>鍵盤類型 不偵測</p>
-<p><img src="05-install-ubuntu-08.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-08.png" class="">
 </li>
 <li><p>鍵盤 English(US)</p>
-<p><img src="05-install-ubuntu-09.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-09.png" class="">
 <blockquote>
 <p>台灣標準鍵盤基本上就選這個</p>
 </blockquote>
 </li>
 <li><p>鍵盤 English(US)</p>
-<p><img src="05-install-ubuntu-10.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-10.png" class="">
 </li>
 <li><p>安裝部份元件</p>
-<p><img src="05-install-ubuntu-11.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-11.png" class="">
 </li>
 <li><p>設定主機名稱</p>
-<p><img src="05-install-ubuntu-12.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-12.png" class="">
 <blockquote>
 <p>可自行設定，不影響使用</p>
 </blockquote>
 </li>
 <li><p>建立使用者</p>
-<p><img src="05-install-ubuntu-13.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-13.png" class="">
 <blockquote>
 <p>輸入自己的名子</p>
 </blockquote>
 </li>
 <li><p>輸入帳號名稱</p>
-<p><img src="05-install-ubuntu-14.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-14.png" class="">
 <blockquote>
 <ul>
 <li>輸入自己的帳號</li>
@@ -332,73 +334,73 @@
 </blockquote>
 </li>
 <li><p>輸入密碼</p>
-<p><img src="05-install-ubuntu-15.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-15.png" class="">
 </li>
 <li><p>加密帳號的家目錄[建議No]</p>
-<p><img src="05-install-ubuntu-16.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-16.png" class="">
 </li>
 <li><p>系統時區設定 Asia&#x2F;Taipei</p>
-<p><img src="05-install-ubuntu-17.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-17.png" class="">
 </li>
 <li><p>格式化硬碟(LVM系統)</p>
-<p><img src="05-install-ubuntu-18.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-18.png" class="">
 <blockquote>
 <p>不會設定的話，就預設吧</p>
 </blockquote>
 </li>
 <li><p>設定LVM目標</p>
-<p><img src="05-install-ubuntu-19.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-19.png" class="">
 <blockquote>
 <p>不會設定的話，就預設吧</p>
 </blockquote>
 </li>
 <li><p>將LVM設定寫入碟碟</p>
-<p><img src="05-install-ubuntu-20.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-20.png" class="">
 <blockquote>
 <p>Yes就對了</p>
 </blockquote>
 </li>
 <li><p>設定LVM磁區大小</p>
-<p><img src="05-install-ubuntu-21.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-21.png" class="">
 <blockquote>
 <p>全給了</p>
 </blockquote>
 </li>
 <li><p>LVM的建議磁碟分割</p>
-<p><img src="05-install-ubuntu-22.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-22.png" class="">
 <blockquote>
 <p>Yes就對了，反正也玩不出花來</p>
 </blockquote>
 </li>
 <li><p>proxy，空白即可</p>
-<p><img src="05-install-ubuntu-23.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-23.png" class="">
 </li>
 <li><p>不自動更新</p>
-<p><img src="05-install-ubuntu-24.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-24.png" class="">
 <blockquote>
 <p>更新還是手動來比較好，起碼知道更新了什麼</p>
 </blockquote>
 </li>
 <li><p>安裝套件-建議如圖選項</p>
-<p><img src="05-install-ubuntu-25.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-25.png" class="">
 <blockquote>
 <p>需要的套件，建議之後再裝，在此只要裝基本套件和SSH服務即可</p>
 </blockquote>
 </li>
 <li><p>套件安裝中</p>
-<p><img src="05-install-ubuntu-26.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-26.png" class="">
 </li>
 <li><p>安裝開機引導程式[建議Yes]</p>
-<p><img src="05-install-ubuntu-27.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-27.png" class="">
 </li>
 <li><p>安裝完成</p>
-<p><img src="05-install-ubuntu-28.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-28.png" class="">
 </li>
 <li><p>重開機中</p>
-<p><img src="05-install-ubuntu-29.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-29.png" class="">
 </li>
 <li><p>開機完成</p>
-<p><img src="05-install-ubuntu-30.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-30.png" class="">
 <blockquote>
 <p>關機步驟：  </p>
 <ul>
@@ -411,7 +413,7 @@
 </blockquote>
 </li>
 <li><p>關機，製作快照</p>
-<p><img src="05-install-ubuntu-31.png"></p>
+<img src="/2019/07/19/www-server-install/05-install-ubuntu-31.png" class="">
 <blockquote>
 <p>建立快照(Snapshot)還原點</p>
 </blockquote>
@@ -419,7 +421,7 @@
 </ul>
 <h2 id="4-3-登入-Ubuntu-Server"><a href="#4-3-登入-Ubuntu-Server" class="headerlink" title="4.3 登入 Ubuntu Server"></a>4.3 登入 Ubuntu Server</h2><ul>
 <li><p>下載 <a target="_blank" rel="noopener" href="https://www.putty.org/">Putty</a> SSH連線程式 (windows用的)</p>
-<p><img src="06-download-putty.png"></p>
+<img src="/2019/07/19/www-server-install/06-download-putty.png" class="">
 <blockquote>
 <p>或使用其他SSH連線程式</p>
 </blockquote>
@@ -428,7 +430,7 @@
 <blockquote>
 <p>輸入安裝系統時建立的帳號密碼</p>
 </blockquote>
-<p><img src="06-login-server.png"></p>
+<img src="/2019/07/19/www-server-install/06-login-server.png" class="">
 <blockquote>
 <ul>
 <li>先使用VirtualBox介面登入系統中找IP (預設使用DHCP抓取浮動IP)</li>
@@ -439,17 +441,18 @@
 </blockquote>
 <ul>
 <li><p>發現有張網卡沒有啟動</p>
-<p><img src="06-server-ip-1.png"></p>
+<img src="/2019/07/19/www-server-install/06-server-ip-1.png" class="">
 </li>
 <li><p>編輯網路設定檔</p>
-<p><img src="06-server-ip-2-1.png"></p>
+<img src="/2019/07/19/www-server-install/06-server-ip-2-1.png" class="">
 <blockquote>
 <p>指令： sudo vi &#x2F;etc&#x2F;network&#x2F;interfaces</p>
 <blockquote>
 <p>小貼士：打指令打個開頭後按tab鍵，會自動指令補完，如果連按二下tab會顯示所有可能的選擇</p>
 </blockquote>
 </blockquote>
-<p><img src="06-server-ip-2-2.png"></p>
+<img src="/2019/07/19/www-server-install/06-server-ip-2-2.png" class="">
+
 <blockquote>
 <ul>
 <li>增加第二張網卡「enp0s8」設定</li>
@@ -467,7 +470,7 @@
 </blockquote>
 </li>
 <li><p>重新啟動網路，查IP</p>
-<p><img src="06-server-ip-3.png"></p>
+<img src="/2019/07/19/www-server-install/06-server-ip-3.png" class="">
 <blockquote>
 <p>指令： ifconfig -a<br>指令： sudo service networking restart</p>
 </blockquote>
@@ -475,8 +478,8 @@
 </ul>
 </li>
 <li><p>使用SSH連線程式登入</p>
-<p><img src="06-ssh-login-1.png"><br><img src="06-ssh-login-2.png"></p>
-</li>
+<img src="/2019/07/19/www-server-install/06-ssh-login-1.png" class="">
+<img src="/2019/07/19/www-server-install/06-ssh-login-2.png" class=""></li>
 </ul>
 <blockquote>
 <ul>
@@ -488,19 +491,23 @@
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">建立帳號dev</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo useradd -m -s /bin/bash dev</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">設定密碼</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo passwd dev</span></span><br><span class="line">Enter new UNIX password:    # 輸入密碼</span><br><span class="line">Retype new UNIX password:   # 確認密碼</span><br><span class="line">passwd: password updated successfully</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">設定帳號dev的sudo權限</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo vi /etc/group</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在 sudo:x:27:web 後面加入 ,dev</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="06-ssh-login-3.png"></p>
+<img src="/2019/07/19/www-server-install/06-ssh-login-3.png" class="">
+
+
 <h1 id="五、安裝-LNMP-Server"><a href="#五、安裝-LNMP-Server" class="headerlink" title="五、安裝 LNMP Server"></a>五、安裝 LNMP Server</h1><h2 id="5-1-更新套件"><a href="#5-1-更新套件" class="headerlink" title="5.1 更新套件"></a>5.1 更新套件</h2><ul>
 <li>更新apt資料庫</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo apt-get update</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="07-update-01.png"></p>
+<img src="/2019/07/19/www-server-install/07-update-01.png" class="">
+
 <ul>
 <li>更新套件</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo apt-get upgrade</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="07-update-02.png"></p>
+<img src="/2019/07/19/www-server-install/07-update-02.png" class="">
+
 <blockquote>
 <ul>
 <li>新系統使用前，建議全面更新</li>
@@ -511,26 +518,27 @@
 <li>時間同步&amp;vim編輯器</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo apt-get install ntp ntpdate vim</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">開機時自動同步時間</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo vi /etc/rc.local</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">在 <span class="built_in">exit</span> 0 之前加入下行指令</span></span><br><span class="line">  (/usr/sbin/ntpdate tock.stdtime.gov.tw &amp;&amp; /sbin/hwclock -w) &amp;&gt; /dev/null</span><br></pre></td></tr></table></figure>
-<p><img src="07-update-date-on-boot.png"></p>
+<img src="/2019/07/19/www-server-install/07-update-date-on-boot.png" class="">
+
 <h2 id="5-3-安裝Nginx-PHP套件"><a href="#5-3-安裝Nginx-PHP套件" class="headerlink" title="5.3 安裝Nginx,PHP套件"></a>5.3 安裝Nginx,PHP套件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo apt-get install nginx php php-fpm php-mysql php-cli php-mcrypt php-curl php-mbstring php-imagick php-gd php-xml php-bcmath php-zip php-opcache php-common</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="5-4-安裝MySQL-phpMyAdmin套件"><a href="#5-4-安裝MySQL-phpMyAdmin套件" class="headerlink" title="5.4 安裝MySQL,phpMyAdmin套件"></a>5.4 安裝MySQL,phpMyAdmin套件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">sudo apt-get install mysql-server mysql-client phpmyadmin</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>設定MySQL root密碼</p>
-<p><img src="08-install-mysql-01.png"></p>
+<img src="/2019/07/19/www-server-install/08-install-mysql-01.png" class="">
 </li>
 <li><p>略過phpMyAdmin web server安裝</p>
-<p><img src="08-install-mysql-02.png"></p>
+<img src="/2019/07/19/www-server-install/08-install-mysql-02.png" class="">
 <blockquote>
 <p>已經裝了Nginx，不需要再裝二上面個web server</p>
 </blockquote>
 </li>
 <li><p>設定phpMyAdmin參數，預設即可</p>
-<p><img src="08-install-mysql-03.png"></p>
+<img src="/2019/07/19/www-server-install/08-install-mysql-03.png" class="">
 </li>
 <li><p>設定帳號phpmyadmin的密碼</p>
-<p><img src="08-install-mysql-04.png"></p>
+<img src="/2019/07/19/www-server-install/08-install-mysql-04.png" class="">
 <blockquote>
 <p>此帳號密碼是phpMyAdmin建立的MySQL帳號</p>
 </blockquote>
@@ -606,7 +614,7 @@
 <ul>
 <li>PHP還未設定完成，無法查看 <a target="_blank" rel="noopener" href="https://sql.dev.idv/">https://sql.dev.idv/</a></li>
 <li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
-<li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<br><img src="dns-resolve.png"></li>
+<li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<img src="/2019/07/19/www-server-install/dns-resolve.png" class=""></li>
 <li>在檔案最下方增加二行設定<ul>
 <li>192.168.56.102 sql.dev.idv</li>
 <li>192.168.56.102 site2.dev.idv<blockquote>
@@ -620,7 +628,8 @@
 <h3 id="5-5-8-自簽憑証問題"><a href="#5-5-8-自簽憑証問題" class="headerlink" title="5.5.8 自簽憑証問題"></a>5.5.8 自簽憑証問題</h3><ul>
 <li>憑証不安全提示</li>
 </ul>
-<p><img src="09-ca-install-01.png"></p>
+<img src="/2019/07/19/www-server-install/09-ca-install-01.png" class="">
+
 <blockquote>
 <p>選擇進階 &#x3D;&gt; 繼續前往 XXXX 網站(不安全) 可略過警告</p>
 </blockquote>
@@ -654,7 +663,7 @@
 <blockquote>
 <ul>
 <li>如果你的域名不是DNS可查到的，請在作業系統的hosts中增加解譯規則</li>
-<li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<br><img src="dns-resolve.png"></li>
+<li>使用記事本打開 C:\Windows\System32\drivers\etc\hosts (需用管理者權限打開)<img src="/2019/07/19/www-server-install/dns-resolve.png" class=""></li>
 <li>在檔案最下方增加二行設定<ul>
 <li>192.168.56.102 sql.dev.idv</li>
 <li>192.168.56.102 site2.dev.idv<blockquote>
@@ -710,12 +719,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="clhytrw3a0024d4no3uy6ab1k" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/19/www-server-install/" data-id="clhz2b6eu000o4co53htu4fmi" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/server/" rel="tag">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/web/" rel="tag">web</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server/" rel="tag">server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
 
 
     </footer>
@@ -725,7 +734,7 @@
 <ul id="article-nav" class="nav nav-pills nav-justified">
   
   <li role="presentation">
-    <a href="../../03/phpunit/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/03/phpunit/" id="article-nav-older" class="article-nav-link-wrap">
       <i class="fa fa-chevron-left pull-left"></i>
       <span class="article-nav-link-title">使用PHPUnit進行單元測試</span>
     </a>
@@ -733,7 +742,7 @@
   
   
   <li role="presentation">
-    <a href="../../20/crud-design-01/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/20/crud-design-01/" id="article-nav-newer" class="article-nav-link-wrap">
       <span class="article-nav-link-title">CRUD表單設計 Day-01 環境建置</span>
       <i class="fa fa-chevron-right pull-right"></i>
     </a>
@@ -757,23 +766,23 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="../../../../2020/11/02/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+          <a href="/2020/11/02/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
         </li>
       
         <li>
-          <a href="../../../12/07/git-learning/">Git常用指令學習</a>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
         </li>
       
         <li>
-          <a href="../../../11/14/web-server-xampp-install/">Web伺服器安裝(XAMPP)-Windows</a>
+          <a href="/2019/11/14/web-server-xampp-install/">Web伺服器安裝(XAMPP)-Windows</a>
         </li>
       
         <li>
-          <a href="../../../08/18/crud-design-04/">CRUD表單設計 Day-04 Javascript</a>
+          <a href="/2019/08/18/crud-design-04/">CRUD表單設計 Day-04 Javascript</a>
         </li>
       
         <li>
-          <a href="../../../08/17/crud-design-03/">CRUD表單設計 Day-03 安裝Bootstrap4</a>
+          <a href="/2019/08/17/crud-design-03/">CRUD表單設計 Day-03 安裝Bootstrap4</a>
         </li>
       
     </ul>
@@ -783,7 +792,7 @@
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2020/11/">November 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/11/">November 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">November 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/11/">November 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
 
 
@@ -791,7 +800,7 @@
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/server/">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/tools/">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tools/">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -799,7 +808,7 @@
   
   <div class="sidebar-module">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/codeingiter/" rel="tag">codeingiter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/db/" rel="tag">db</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/ide/" rel="tag">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/info/" rel="tag">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sa/" rel="tag">sa</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sd/" rel="tag">sd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/server/" rel="tag">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/setting/" rel="tag">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/standard/" rel="tag">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/test/" rel="tag">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/time/" rel="tag">time</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/tools/" rel="tag">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/unit-test/" rel="tag">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/codeingiter/" rel="tag">codeingiter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/db/" rel="tag">db</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ide/" rel="tag">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/info/" rel="tag">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sa/" rel="tag">sa</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sd/" rel="tag">sd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/" rel="tag">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/" rel="tag">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/" rel="tag">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/" rel="tag">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/time/" rel="tag">time</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tools/" rel="tag">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/" rel="tag">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -832,7 +841,7 @@
 
 
 
-<script src="../../../../js/script.js"></script>
+<script src="/js/script.js"></script>
 
 
 </body>

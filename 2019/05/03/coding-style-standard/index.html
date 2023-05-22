@@ -5,16 +5,16 @@
   
   <title>程式碼寫作風格標準-CodeStyle | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目錄 一、說明 二、公開標準-PSR 2.1. PSR-1 2.2. PSR-2 2.3. PSR-4 2.4. PHPDoc   三、團隊標準 3.1. 函式內部註解 3.1.1. 功能群組註解 3.1.2. 單行註解   3.2. 命名規則 3.2.1. 原則 3.2.2. 辨識度探討 3.2.3. 命名流派比較 3.2.4. 常見的命名名詞     四、檔案結構 CodeIgniter">
+  <meta name="description" content="目錄 目錄 一、說明 二、公開標準-PSR 2.1. PSR-1 總覽 範例   2.2. PSR-2 規範 範例   2.3. PSR-4 規範 使用範例   2.4. PHPDoc   三、團隊標準 3.1. 函式內部註解 3.1.1. 功能群組註解 3.1.2. 單行註解   3.2. 命名規則 3.2.1. 原則 3.2.2. 辨識度探討 3.2.3. 命名流派比較 A. 短名稱+說明+來">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程式碼寫作風格標準-CodeStyle">
 <meta property="og:url" content="https://blog.mars-world.net/2019/05/03/coding-style-standard/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
-<meta property="og:description" content="目錄 一、說明 二、公開標準-PSR 2.1. PSR-1 2.2. PSR-2 2.3. PSR-4 2.4. PHPDoc   三、團隊標準 3.1. 函式內部註解 3.1.1. 功能群組註解 3.1.2. 單行註解   3.2. 命名規則 3.2.1. 原則 3.2.2. 辨識度探討 3.2.3. 命名流派比較 3.2.4. 常見的命名名詞     四、檔案結構 CodeIgniter">
+<meta property="og:description" content="目錄 目錄 一、說明 二、公開標準-PSR 2.1. PSR-1 總覽 範例   2.2. PSR-2 規範 範例   2.3. PSR-4 規範 使用範例   2.4. PHPDoc   三、團隊標準 3.1. 函式內部註解 3.1.1. 功能群組註解 3.1.2. 單行註解   3.2. 命名規則 3.2.1. 原則 3.2.2. 辨識度探討 3.2.3. 命名流派比較 A. 短名稱+說明+來">
 <meta property="og:locale">
 <meta property="og:image" content="https://blog.mars-world.net/2019/05/03/coding-style-standard/naming_rules.png">
 <meta property="article:published_time" content="2019-05-03T13:33:24.000Z">
-<meta property="article:modified_time" content="2023-05-22T12:26:40.319Z">
+<meta property="article:modified_time" content="2023-05-22T16:20:31.165Z">
 <meta property="article:author" content="Mars Hung">
 <meta property="article:tag" content="dev">
 <meta property="article:tag" content="coding">
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
 
   
-<link rel="stylesheet" href="../../../../css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
 
   
 
@@ -60,10 +60,10 @@
       <ul class="nav navbar-nav">
         
           <li><a class=""
-                 href="../../../../index.html">Home</a></li>
+                 href="/index.html">Home</a></li>
         
           <li><a class=""
-                 href="../../../../archives/">Archives</a></li>
+                 href="/archives/">Archives</a></li>
         
           <li><a class=""
                  target="_blank" rel="noopener" href="https://github.com/marshung24">GitHub</a></li>
@@ -102,13 +102,13 @@
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="" class="article-date"><time datetime="2019-05-03T13:33:24.000Z" itemprop="datePublished">2019-05-03</time></a>
+  <a href="/2019/05/03/coding-style-standard/" class="article-date"><time datetime="2019-05-03T13:33:24.000Z" itemprop="datePublished">2019-05-03</time></a>
 </div>
 
     <div class="article-author">Mars Hung</div>
     
   <div class="article-category">
-    <a class="article-category-link" href="../../../../categories/info/">info</a>
+    <a class="article-category-link" href="/categories/info/">info</a>
   </div>
 
 
@@ -129,31 +129,48 @@
 </div>
 
         <h1 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h1><ul>
-<li><a href="#%E4%B8%80%E3%80%81%E8%AA%AA%E6%98%8E">一、說明</a></li>
-<li><a href="#%E4%BA%8C%E3%80%81%E5%85%AC%E9%96%8B%E6%A8%99%E6%BA%96-PSR">二、公開標準-PSR</a><ul>
-<li><a href="#2-1-PSR-1">2.1. PSR-1</a></li>
-<li><a href="#2-2-PSR-2">2.2. PSR-2</a></li>
-<li><a href="#2-3-PSR-4">2.3. PSR-4</a></li>
-<li><a href="#2-4-PHPDoc">2.4. PHPDoc</a></li>
+<li><a href="#%E7%9B%AE%E9%8C%84">目錄</a></li>
+<li><a href="#%E4%B8%80%E8%AA%AA%E6%98%8E">一、說明</a></li>
+<li><a href="#%E4%BA%8C%E5%85%AC%E9%96%8B%E6%A8%99%E6%BA%96-psr">二、公開標準-PSR</a><ul>
+<li><a href="#21-psr-1">2.1. PSR-1</a><ul>
+<li><a href="#%E7%B8%BD%E8%A6%BD">總覽</a></li>
+<li><a href="#%E7%AF%84%E4%BE%8B">範例</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%89%E3%80%81%E5%9C%98%E9%9A%8A%E6%A8%99%E6%BA%96">三、團隊標準</a><ul>
-<li><a href="#3-1-%E5%87%BD%E5%BC%8F%E5%85%A7%E9%83%A8%E8%A8%BB%E8%A7%A3">3.1. 函式內部註解</a><ul>
-<li><a href="#3-1-1-%E5%8A%9F%E8%83%BD%E7%BE%A4%E7%B5%84%E8%A8%BB%E8%A7%A3">3.1.1. 功能群組註解</a></li>
-<li><a href="#3-1-2-%E5%96%AE%E8%A1%8C%E8%A8%BB%E8%A7%A3">3.1.2. 單行註解</a></li>
+<li><a href="#22-psr-2">2.2. PSR-2</a><ul>
+<li><a href="#%E8%A6%8F%E7%AF%84">規範</a></li>
+<li><a href="#%E7%AF%84%E4%BE%8B-1">範例</a></li>
 </ul>
 </li>
-<li><a href="#3-2-%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87">3.2. 命名規則</a><ul>
-<li><a href="#3-2-1-%E5%8E%9F%E5%89%87">3.2.1. 原則</a></li>
-<li><a href="#3-2-2-%E8%BE%A8%E8%AD%98%E5%BA%A6%E6%8E%A2%E8%A8%8E">3.2.2. 辨識度探討</a></li>
-<li><a href="#3-2-3-%E5%91%BD%E5%90%8D%E6%B5%81%E6%B4%BE%E6%AF%94%E8%BC%83">3.2.3. 命名流派比較</a></li>
-<li><a href="#3-2-4-%E5%B8%B8%E8%A6%8B%E7%9A%84%E5%91%BD%E5%90%8D%E5%90%8D%E8%A9%9E">3.2.4. 常見的命名名詞</a></li>
+<li><a href="#23-psr-4">2.3. PSR-4</a><ul>
+<li><a href="#%E8%A6%8F%E7%AF%84-1">規範</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E7%AF%84%E4%BE%8B">使用範例</a></li>
+</ul>
+</li>
+<li><a href="#24-phpdoc">2.4. PHPDoc</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89%E5%9C%98%E9%9A%8A%E6%A8%99%E6%BA%96">三、團隊標準</a><ul>
+<li><a href="#31-%E5%87%BD%E5%BC%8F%E5%85%A7%E9%83%A8%E8%A8%BB%E8%A7%A3">3.1. 函式內部註解</a><ul>
+<li><a href="#311-%E5%8A%9F%E8%83%BD%E7%BE%A4%E7%B5%84%E8%A8%BB%E8%A7%A3">3.1.1. 功能群組註解</a></li>
+<li><a href="#312-%E5%96%AE%E8%A1%8C%E8%A8%BB%E8%A7%A3">3.1.2. 單行註解</a></li>
+</ul>
+</li>
+<li><a href="#32-%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87">3.2. 命名規則</a><ul>
+<li><a href="#321-%E5%8E%9F%E5%89%87">3.2.1. 原則</a></li>
+<li><a href="#322-%E8%BE%A8%E8%AD%98%E5%BA%A6%E6%8E%A2%E8%A8%8E">3.2.2. 辨識度探討</a></li>
+<li><a href="#323-%E5%91%BD%E5%90%8D%E6%B5%81%E6%B4%BE%E6%AF%94%E8%BC%83">3.2.3. 命名流派比較</a><ul>
+<li><a href="#a-%E7%9F%AD%E5%90%8D%E7%A8%B1%E8%AA%AA%E6%98%8E%E4%BE%86%E6%BA%90%E6%84%8F%E7%BE%A9">A. 短名稱+說明+來源&#x2F;意義</a></li>
+<li><a href="#b-%E9%95%B7%E5%90%8D%E7%A8%B1%E4%BE%86%E6%BA%90%E6%84%8F%E7%BE%A9">B. 長名稱+來源&#x2F;意義</a></li>
+</ul>
+</li>
+<li><a href="#324-%E5%B8%B8%E8%A6%8B%E7%9A%84%E5%91%BD%E5%90%8D%E5%90%8D%E8%A9%9E">3.2.4. 常見的命名名詞</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#%E5%9B%9B%E3%80%81%E6%AA%94%E6%A1%88%E7%B5%90%E6%A7%8B">四、檔案結構</a><ul>
-<li><a href="#CodeIgniter">CodeIgniter</a></li>
+<li><a href="#%E5%9B%9B%E6%AA%94%E6%A1%88%E7%B5%90%E6%A7%8B">四、檔案結構</a><ul>
+<li><a href="#codeigniter">CodeIgniter</a></li>
 </ul>
 </li>
 </ul>
@@ -277,7 +294,7 @@
 </tr>
 <tr>
 <td align="left">@author</td>
-<td align="left">函數建立者名稱 (Example: @author Mars <a href="mailto:&#97;&#x75;&#x74;&#104;&#x6f;&#114;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#97;&#x75;&#x74;&#104;&#x6f;&#114;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a>)</td>
+<td align="left">函數建立者名稱 (Example: @author Mars <a href="mailto:&#x61;&#117;&#x74;&#x68;&#111;&#x72;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x61;&#117;&#x74;&#x68;&#111;&#x72;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a>)</td>
 </tr>
 <tr>
 <td align="left">@category</td>
@@ -425,7 +442,8 @@
 </li>
 <li>單行註解格式：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 單行註解內容</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="3-2-命名規則"><a href="#3-2-命名規則" class="headerlink" title="3.2. 命名規則"></a><a href="#%E7%9B%AE%E9%8C%84">3.2. 命名規則</a></h2><p><img src="naming_rules.png"></p>
+<h2 id="3-2-命名規則"><a href="#3-2-命名規則" class="headerlink" title="3.2. 命名規則"></a><a href="#%E7%9B%AE%E9%8C%84">3.2. 命名規則</a></h2><img src="/2019/05/03/coding-style-standard/naming_rules.png" class="">
+
 <h3 id="3-2-1-原則"><a href="#3-2-1-原則" class="headerlink" title="3.2.1. 原則"></a><a href="#%E7%9B%AE%E9%8C%84">3.2.1. 原則</a></h3><ul>
 <li><p>使用PSR-1駝峰式命名法</p>
 </li>
@@ -682,12 +700,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/05/03/coding-style-standard/" data-id="clhytrw2w0009d4no4qw4g4zr" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/05/03/coding-style-standard/" data-id="clhz2b6el00094co55w86cvsx" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/coding/" rel="tag">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/info/" rel="tag">info</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/standard/" rel="tag">standard</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/style/" rel="tag">style</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/" rel="tag">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/info/" rel="tag">info</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/standard/" rel="tag">standard</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/style/" rel="tag">style</a></li></ul>
 
 
     </footer>
@@ -697,7 +715,7 @@
 <ul id="article-nav" class="nav nav-pills nav-justified">
   
   <li role="presentation">
-    <a href="../../../04/20/github-blog/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/20/github-blog/" id="article-nav-older" class="article-nav-link-wrap">
       <i class="fa fa-chevron-left pull-left"></i>
       <span class="article-nav-link-title">Github Blog</span>
     </a>
@@ -705,7 +723,7 @@
   
   
   <li role="presentation">
-    <a href="../../27/vscode-remote-ssh/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/27/vscode-remote-ssh/" id="article-nav-newer" class="article-nav-link-wrap">
       <span class="article-nav-link-title">VS Code遠端開發套件：Remote-SSH</span>
       <i class="fa fa-chevron-right pull-right"></i>
     </a>
@@ -729,23 +747,23 @@
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="../../../../2020/11/02/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+          <a href="/2020/11/02/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
         </li>
       
         <li>
-          <a href="../../../12/07/git-learning/">Git常用指令學習</a>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
         </li>
       
         <li>
-          <a href="../../../11/14/web-server-xampp-install/">Web伺服器安裝(XAMPP)-Windows</a>
+          <a href="/2019/11/14/web-server-xampp-install/">Web伺服器安裝(XAMPP)-Windows</a>
         </li>
       
         <li>
-          <a href="../../../08/18/crud-design-04/">CRUD表單設計 Day-04 Javascript</a>
+          <a href="/2019/08/18/crud-design-04/">CRUD表單設計 Day-04 Javascript</a>
         </li>
       
         <li>
-          <a href="../../../08/17/crud-design-03/">CRUD表單設計 Day-03 安裝Bootstrap4</a>
+          <a href="/2019/08/17/crud-design-03/">CRUD表單設計 Day-03 安裝Bootstrap4</a>
         </li>
       
     </ul>
@@ -755,7 +773,7 @@
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2020/11/">November 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/11/">November 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">November 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/11/">November 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
 
 
@@ -763,7 +781,7 @@
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/server/">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/tools/">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tools/">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -771,7 +789,7 @@
   
   <div class="sidebar-module">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/codeingiter/" rel="tag">codeingiter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/db/" rel="tag">db</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/ide/" rel="tag">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/info/" rel="tag">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sa/" rel="tag">sa</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sd/" rel="tag">sd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/server/" rel="tag">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/setting/" rel="tag">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/standard/" rel="tag">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/test/" rel="tag">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/time/" rel="tag">time</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/tools/" rel="tag">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/unit-test/" rel="tag">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="../../../../tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/codeingiter/" rel="tag">codeingiter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/db/" rel="tag">db</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ide/" rel="tag">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/info/" rel="tag">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sa/" rel="tag">sa</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sd/" rel="tag">sd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/" rel="tag">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/" rel="tag">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/" rel="tag">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/" rel="tag">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/time/" rel="tag">time</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tools/" rel="tag">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/" rel="tag">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -804,7 +822,7 @@
 
 
 
-<script src="../../../../js/script.js"></script>
+<script src="/js/script.js"></script>
 
 
 </body>
