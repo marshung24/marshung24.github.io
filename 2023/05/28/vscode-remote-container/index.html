@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VS Code 使用 Dev Container 建立專案開發環境 | Mars&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="說明 容器化不但安裝迅速而且效能高，尤其是在更新版本時更是比vm來得快速，並且可使用設定檔快速佈署環境，達到開發測試全員環境統一的狀況，非常棒。 在本文中記錄如何使用Dev Container建構開發環境。  安裝 Dev Container 打開VSCode延申模組介面 搜尋Remote - SSH, Dev Container，安裝並啟動   需已安裝Docker環境  在專案中建立Conta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS Code 使用 Dev Container 建立專案開發環境">
+<meta property="og:url" content="https://blog.mars-world.net/2023/05/28/vscode-remote-container/index.html">
+<meta property="og:site_name" content="Mars&#39;s Blog">
+<meta property="og:description" content="說明 容器化不但安裝迅速而且效能高，尤其是在更新版本時更是比vm來得快速，並且可使用設定檔快速佈署環境，達到開發測試全員環境統一的狀況，非常棒。 在本文中記錄如何使用Dev Container建構開發環境。  安裝 Dev Container 打開VSCode延申模組介面 搜尋Remote - SSH, Dev Container，安裝並啟動   需已安裝Docker環境  在專案中建立Conta">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-05-27T16:16:38.000Z">
+<meta property="article:modified_time" content="2024-08-31T04:34:33.744Z">
+<meta property="article:author" content="Mars Hung">
+<meta property="article:tag" content="container">
+<meta property="article:tag" content="dev">
+<meta property="article:tag" content="env">
+<meta property="article:tag" content="remote-dev">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+          <li><a class=""
+                 target="_blank" rel="noopener" href="https://github.com/marshung24">GitHub</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">Mars&#39;s Blog</h1>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-vscode-remote-container" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      VS Code 使用 Dev Container 建立專案開發環境
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2023/05/28/vscode-remote-container/" class="article-date"><time datetime="2023-05-27T16:16:38.000Z" itemprop="datePublished">2023-05-28</time></a>
+</div>
+
+    <div class="article-author">Mars Hung</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/container/">container</a>
+  </div>
+
+
+    <div class="article-reading">
+  
+  <span id="busuanzi_container_page_pv">文章閱讀量<span id="busuanzi_value_page_pv"></span>次</span>
+  
+</div>
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div id="toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AA%AA%E6%98%8E"><span class="toc-text">說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Dev-Container"><span class="toc-text">安裝 Dev Container</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8%E5%B0%88%E6%A1%88%E4%B8%AD%E5%BB%BA%E7%AB%8BContainer%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83"><span class="toc-text">在專案中建立Container開發環境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js"><span class="toc-text">Node.js</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8Container%E4%B8%AD%E9%87%8D%E6%96%B0%E5%95%9F%E5%8B%95%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83"><span class="toc-text">在Container中重新啟動開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8%E5%8E%9F%E7%9B%AE%E9%8C%84%E9%87%8D%E6%96%B0%E5%95%9F%E5%8B%95%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83"><span class="toc-text">在原目錄重新啟動開發環境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%AB%E9%96%8B%E7%99%BC%E5%AE%B9%E5%99%A8%E5%8A%A0%E5%85%A5VSCode-Extension"><span class="toc-text">幫開發容器加入VSCode Extension</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%AB%E9%96%8B%E7%99%BC%E5%AE%B9%E5%99%A8%E5%AE%89%E8%A3%9D%E9%A0%90%E8%A8%ADVSCode-Extension"><span class="toc-text">幫開發容器安裝預設VSCode Extension</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B5%90%E8%AB%96"><span class="toc-text">結論</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%84%AA%E9%BB%9E"><span class="toc-text">優點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%BA%E9%BB%9E"><span class="toc-text">缺點</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol>
+</div>
+
+        <h1 id="說明"><a href="#說明" class="headerlink" title="說明"></a>說明</h1><ul>
+<li>容器化不但安裝迅速而且效能高，尤其是在更新版本時更是比vm來得快速，並且可使用設定檔快速佈署環境，達到開發測試全員環境統一的狀況，非常棒。</li>
+<li>在本文中記錄如何使用<code>Dev Container</code>建構開發環境。</li>
+</ul>
+<h1 id="安裝-Dev-Container"><a href="#安裝-Dev-Container" class="headerlink" title="安裝 Dev Container"></a>安裝 Dev Container</h1><ul>
+<li>打開<code>VSCode</code>延申模組介面</li>
+<li>搜尋<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/ssh">Remote - SSH</a>, <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/devcontainers/containers">Dev Container</a>，安裝並啟動</li>
+</ul>
+<blockquote>
+<p>需已安裝Docker環境</p>
+</blockquote>
+<h1 id="在專案中建立Container開發環境"><a href="#在專案中建立Container開發環境" class="headerlink" title="在專案中建立Container開發環境"></a>在專案中建立Container開發環境</h1><h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><ul>
+<li>git clone 目標專案</li>
+<li>打開命令列，執行 <code>&gt;Dev Containers: Add Dev Container Configuration Files</code></li>
+<li>選擇<code>來自docker-compose.yaml</code></li>
+<li>輸入目標 <code>Node.js</code>後選擇版本參數</li>
+<li>可在專案根目錄中發現資料夾及檔案<ul>
+<li><code>.devcontainer</code><ul>
+<li><code>devcontainer.json</code> : 容器設定檔</li>
+<li><code>docker-compose.yml</code> : docker-compose設定檔，可在<code>devcontainer.json</code>的<code>dockerComposeFile</code>重新指定位置</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="在Container中重新啟動開發環境"><a href="#在Container中重新啟動開發環境" class="headerlink" title="在Container中重新啟動開發環境"></a>在Container中重新啟動開發環境</h1><ul>
+<li>打開命令列，執行 <code>&gt;Dev Containers: Reopen in Container</code></li>
+</ul>
+<blockquote>
+<p>可設定快速鍵方便使用，如 <code>ctrl</code>+<code>cmd</code>+<code>c</code></p>
+</blockquote>
+<h1 id="在原目錄重新啟動開發環境"><a href="#在原目錄重新啟動開發環境" class="headerlink" title="在原目錄重新啟動開發環境"></a>在原目錄重新啟動開發環境</h1><ul>
+<li>打開命令列，執行 <code>&gt;Dev Containers: Reopen Folder Locally</code></li>
+</ul>
+<blockquote>
+<p>可設定快速鍵方便使用，如 <code>ctrl</code>+<code>cmd</code>+<code>l</code></p>
+</blockquote>
+<h1 id="幫開發容器加入VSCode-Extension"><a href="#幫開發容器加入VSCode-Extension" class="headerlink" title="幫開發容器加入VSCode Extension"></a>幫開發容器加入VSCode Extension</h1><ul>
+<li>打開延申模組介面，找到指定模組。</li>
+<li>在模組上按右鍵，選<code>新增至 devcontainer.json</code></li>
+</ul>
+<blockquote>
+<p>可在Extension清單中點選<code>安裝至 開發容器</code>後，執行 <code>&gt;Rebuild container</code> (命令列)</p>
+</blockquote>
+<h1 id="幫開發容器安裝預設VSCode-Extension"><a href="#幫開發容器安裝預設VSCode-Extension" class="headerlink" title="幫開發容器安裝預設VSCode Extension"></a>幫開發容器安裝預設VSCode Extension</h1><ul>
+<li>打開<code>Setting</code></li>
+<li>搜尋設定項目<code>dev.containers.defaultExtensions</code></li>
+<li>加入要安裝的<code>Extension ID</code></li>
+<li>打開命令列，執行 <code>&gt;Rebuild container</code></li>
+</ul>
+<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><h2 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h2><ul>
+<li>執行環境容器化，在不同電腦也能保持一致環境</li>
+<li>Host電腦主機免安裝各式程式，保持乾淨</li>
+</ul>
+<h2 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h2><ul>
+<li>跑容器會損失一點效能</li>
+</ul>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Microsoft/vscode-remote-release">Github - vscode-remote-release</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/devcontainers/containers">VS Code Developing inside a Container</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tpisoftware.com/tpu/articleDetails/2575">Visual Studio Code 使用 Remote Container 建立專案開發環境</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="https://blog.mars-world.net/2023/05/28/vscode-remote-container/" data-id="cmb0e6afo003p08ouf5ag11sy" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/container/" rel="tag">container</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/env/" rel="tag">env</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/remote-dev/" rel="tag">remote-dev</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2020/11/02/mysql-microsecond/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">MySQL時間型態的毫秒與微秒</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2023/05/28/vscode-remote-container/">VS Code 使用 Dev Container 建立專案開發環境</a>
+        </li>
+      
+        <li>
+          <a href="/2020/11/02/mysql-microsecond/">MySQL時間型態的毫秒與微秒</a>
+        </li>
+      
+        <li>
+          <a href="/2019/12/07/git-learning/">Git常用指令學習</a>
+        </li>
+      
+        <li>
+          <a href="/2019/11/14/web-server-xampp-install/">Web伺服器安裝(XAMPP)-Windows</a>
+        </li>
+      
+        <li>
+          <a href="/2019/08/18/crud-design-04/">CRUD表單設計 Day-04 Javascript</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2023/05/">May 2023</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">November 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/12/">December 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/11/">November 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">August 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">July 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/06/">June 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">May 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">April 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">September 2017</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/container/">container</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tools/">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/codeingiter/" rel="tag">codeingiter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/container/" rel="tag">container</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/db/" rel="tag">db</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">19</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ide/" rel="tag">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/info/" rel="tag">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/remote-dev/" rel="tag">remote-dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sa/" rel="tag">sa</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sd/" rel="tag">sd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/" rel="tag">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/" rel="tag">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/" rel="tag">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/" rel="tag">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/time/" rel="tag">time</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tools/" rel="tag">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/" rel="tag">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2025 Mars Hung Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">總訪問量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">訪客數<span id="busuanzi_value_site_uv"></span>人</span>
+  
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>
