@@ -5,12 +5,12 @@
   
   <title>帳號安全設定 | Mars&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、說明開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google&#x2F;facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的安全設定如下：  可靠的密碼 限定連線IP SSH金鑰認證 (Authorized_keys) 兩步">
+  <meta name="description" content="設定 Google、GitHub、GitLab 的兩步驟驗證與 SSH 金鑰認證，強化帳號安全防護">
 <meta property="og:type" content="article">
 <meta property="og:title" content="帳號安全設定">
 <meta property="og:url" content="https://blog.mars-world.net/2019/07/24/account-security-setting/index.html">
 <meta property="og:site_name" content="Mars&#39;s Blog">
-<meta property="og:description" content="一、說明開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google&#x2F;facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的安全設定如下：  可靠的密碼 限定連線IP SSH金鑰認證 (Authorized_keys) 兩步">
+<meta property="og:description" content="設定 Google、GitHub、GitLab 的兩步驟驗證與 SSH 金鑰認證，強化帳號安全防護">
 <meta property="og:locale">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-02.png">
@@ -36,12 +36,14 @@
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-ssh-keys-01.png">
 <meta property="og:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/03-github-security-01.png">
 <meta property="article:published_time" content="2019-07-24T14:15:46.000Z">
-<meta property="article:modified_time" content="2024-08-31T04:34:33.715Z">
+<meta property="article:modified_time" content="2025-10-10T17:07:02.811Z">
 <meta property="article:author" content="Mars Hung">
-<meta property="article:tag" content="dev">
+<meta property="article:tag" content="2025renew">
+<meta property="article:tag" content="github">
 <meta property="article:tag" content="security">
-<meta property="article:tag" content="env">
 <meta property="article:tag" content="account">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="env">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.mars-world.net/2019/07/24/account-security-setting/01-google-security-01.png">
   
@@ -145,7 +147,7 @@
       
         
 <div id="toc">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AA%AA%E6%98%8E"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9B%AE%E6%A8%99"><span class="toc-text">二、目標</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A"><span class="toc-text">三、設定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Google"><span class="toc-text">3.1 Google</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%95%9F%E7%94%A8"><span class="toc-text">3.1.1 兩步驟驗證-啟用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-Authenticator"><span class="toc-text">3.1.2 兩步驟驗證-Authenticator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-GitLab"><span class="toc-text">3.2 GitLab</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-SSH%E9%87%91%E9%91%B0%E8%AA%8D%E8%AD%89"><span class="toc-text">3.2.1 SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89"><span class="toc-text">3.2.2 兩步驟驗證</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-GitHub"><span class="toc-text">3.3 GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-SSH%E9%87%91%E9%91%B0%E8%AA%8D%E8%AD%89"><span class="toc-text">3.3.1 SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89"><span class="toc-text">3.3.2 兩步驟驗證</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AA%AA%E6%98%8E"><span class="toc-text">一、說明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9B%AE%E6%A8%99"><span class="toc-text">二、目標</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A"><span class="toc-text">三、設定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Google"><span class="toc-text">3.1 Google</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-%E5%95%9F%E7%94%A8"><span class="toc-text">3.1.1 兩步驟驗證-啟用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89-Authenticator"><span class="toc-text">3.1.2 兩步驟驗證-Authenticator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-GitLab"><span class="toc-text">3.2 GitLab</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-SSH%E9%87%91%E9%91%B0%E8%AA%8D%E8%AD%89"><span class="toc-text">3.2.1 SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89"><span class="toc-text">3.2.2 兩步驟驗證</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-GitHub"><span class="toc-text">3.3 GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-SSH%E9%87%91%E9%91%B0%E8%AA%8D%E8%AD%89"><span class="toc-text">3.3.1 SSH金鑰認證</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E5%85%A9%E6%AD%A5%E9%A9%9F%E9%A9%97%E8%AD%89"><span class="toc-text">3.3.2 兩步驟驗證</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%A4%9A-SSH-%E9%87%91%E9%91%B0%E7%AE%A1%E7%90%86"><span class="toc-text">四、多 SSH 金鑰管理</span></a></li></ol>
 </div>
 
         <h1 id="一、說明"><a href="#一、說明" class="headerlink" title="一、說明"></a>一、說明</h1><p>開發過程中會用到很多第三方服務，使用這些服務時，大多要開註冊帳號，但為避免麻煩都會使用 google&#x2F;facebook 等大型服務認証登入，軟體開源服務(如Github,Packagist)也可能互相串接，如果沒有做好安全防護，一個帳號被破，可能要死一大票，因此做好安全設定是必要的<br>安全設定如下：</p>
@@ -183,64 +185,64 @@
 </ul>
 <h1 id="三、設定"><a href="#三、設定" class="headerlink" title="三、設定"></a>三、設定</h1><h2 id="3-1-Google"><a href="#3-1-Google" class="headerlink" title="3.1 Google"></a>3.1 Google</h2><h3 id="3-1-1-兩步驟驗證-啟用"><a href="#3-1-1-兩步驟驗證-啟用" class="headerlink" title="3.1.1 兩步驟驗證-啟用"></a>3.1.1 兩步驟驗證-啟用</h3><ul>
 <li><p>前往<a target="_blank" rel="noopener" href="https://www.google.com/">Google</a>，登入個人帳號後，點擊右上角LOGO，選「Google帳戶」</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-01.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-01.png" class="" title="Google 帳戶入口位置">
 </li>
 <li><p>選擇「安全性」 &#x3D;&gt; 「兩步驟驗證」</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-02.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-02.png" class="" title="Google 帳戶安全性設定頁面">
 </li>
 <li><p>選擇「開始使用」</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-03.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-03.png" class="" title="兩步驟驗證啟用按鈕">
 </li>
 <li><p>輸入密碼</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-04.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-04.png" class="" title="輸入 Google 帳號密碼確認身份">
 </li>
 <li><p>使用手機驗証 (必需設定備援手機)</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-05.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-05.png" class="" title="選擇手機驗證方式">
 </li>
 <li><p>輸入傳至手機的驗証碼</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-06.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-06.png" class="" title="輸入手機收到的驗證碼">
 </li>
 <li><p>選擇綁定的手機，及驗証方式</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-07.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-07.png" class="" title="設定備援手機與驗證方式">
 </li>
 <li><p>輸入驗証碼</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-08.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-08.png" class="" title="輸入備援手機驗證碼">
 </li>
 <li><p>綁定手機完成，啟用「兩步驟驗證」</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-09.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-09.png" class="" title="確認啟用兩步驟驗證">
 </li>
 <li><p>啟用「兩步驟驗證」完成</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-10.png" class=""></li>
+<img src="/2019/07/24/account-security-setting/01-google-security-10.png" class="" title="兩步驟驗證啟用成功畫面"></li>
 </ul>
 <h3 id="3-1-2-兩步驟驗證-Authenticator"><a href="#3-1-2-兩步驟驗證-Authenticator" class="headerlink" title="3.1.2 兩步驟驗證-Authenticator"></a>3.1.2 兩步驟驗證-Authenticator</h3><ul>
 <li><p>設定 Authenticator</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-11.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-11.png" class="" title="Authenticator App 設定選項">
 </li>
 <li><p>安裝app: Authenticator</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-12.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-12.png" class="" title="下載 Authenticator App">
 </li>
 <li><p>選擇手機系統</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-13.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-13.png" class="" title="選擇 Android 或 iOS 系統">
 </li>
 <li><p>打開Authenticator，掃描QR Code</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-14.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-14.png" class="" title="使用 Authenticator 掃描 QR Code">
 </li>
 <li><p>新增完成</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-15.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-15.png" class="" title="Authenticator 新增帳號成功">
 </li>
 <li><p>輸入驗証碼</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-16.png" class="">
+<img src="/2019/07/24/account-security-setting/01-google-security-16.png" class="" title="輸入 Authenticator 顯示的驗證碼">
 </li>
 <li><p>設定Authenticator完成</p>
-<img src="/2019/07/24/account-security-setting/01-google-security-17.png" class=""></li>
+<img src="/2019/07/24/account-security-setting/01-google-security-17.png" class="" title="Authenticator 設定完成畫面"></li>
 </ul>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://support.google.com/accounts/answer/185839?co=GENIE.Platform=Desktop&hl=zh-Hant">Google兩步驟驗證教學</a></p>
 </blockquote>
 <h2 id="3-2-GitLab"><a href="#3-2-GitLab" class="headerlink" title="3.2 GitLab"></a>3.2 GitLab</h2><h3 id="3-2-1-SSH金鑰認證"><a href="#3-2-1-SSH金鑰認證" class="headerlink" title="3.2.1 SSH金鑰認證"></a>3.2.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span></span><br></pre></td></tr></table></figure>
-<img src="/2019/07/24/account-security-setting/ssh-keygen-had-email.png" class="">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+<img src="/2019/07/24/account-security-setting/ssh-keygen-had-email.png" class="" title="SSH 金鑰產生過程畫面">
 <blockquote>
 <ul>
 <li>注意: 如果您使用的是不支持ed25519算法的舊系統，請使用以下指令<ul>
@@ -273,7 +275,7 @@
 <li><p>複制<code>~/.ssh/id_ed25519.pub</code>內容</p>
 </li>
 <li><p>SSH-Keys設定位置</p>
-<img src="/2019/07/24/account-security-setting/02-ssh-keys-01.png" class="">
+<img src="/2019/07/24/account-security-setting/02-ssh-keys-01.png" class="" title="GitLab SSH 金鑰設定頁面">
 
 <blockquote>
 <ul>
@@ -282,16 +284,18 @@
 </blockquote>
 </li>
 <li><p>SSH金錀設定檔 <code>~/.ssh/config</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">前往家目錄下的ssh設定資料夾</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ~/.ssh/</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">編輯ssh config</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">vi config</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前往家目錄下的ssh設定資料夾</span></span><br><span class="line">$ <span class="built_in">cd</span> ~/.ssh/</span><br><span class="line"><span class="comment"># 編輯ssh config</span></span><br><span class="line">$ vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
 <p>config內容如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">GitLab.com</span></span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">IdentityFile ~/.ssh/id_ed25519 <span class="comment"># 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitLab.com</span></span><br><span class="line">Host gitlab.com</span><br><span class="line">  HostName gitlab.com</span><br><span class="line">  User git</span><br><span class="line">  <span class="comment">#IdentityFile ~/.ssh/id_ed25519 # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>IdentityFile 指定ssh私鑰路徑，金鑰如果使用預設路徑&amp;檔名，可以不設定本行</p>
 </blockquote>
 </li>
+<li><p><strong>測試 SSH 連線</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 測試 GitLab SSH 連線</span></span><br><span class="line">$ ssh -T git@gitlab.com</span><br><span class="line"><span class="comment"># 成功訊息：Welcome to GitLab, @username!</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <blockquote>
 <ul>
@@ -307,15 +311,15 @@
 </blockquote>
 <h3 id="3-2-2-兩步驟驗證"><a href="#3-2-2-兩步驟驗證" class="headerlink" title="3.2.2 兩步驟驗證"></a>3.2.2 兩步驟驗證</h3><ul>
 <li><p>登入GitLab，設定兩步驟驗證</p>
-<img src="/2019/07/24/account-security-setting/02-gitlab-security-01.png" class=""></li>
+<img src="/2019/07/24/account-security-setting/02-gitlab-security-01.png" class="" title="GitLab 兩步驟驗證設定頁面"></li>
 </ul>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html">GitLab兩步驟驗證教學</a></p>
 </blockquote>
 <h2 id="3-3-GitHub"><a href="#3-3-GitHub" class="headerlink" title="3.3 GitHub"></a>3.3 GitHub</h2><h3 id="3-3-1-SSH金鑰認證"><a href="#3-3-1-SSH金鑰認證" class="headerlink" title="3.3.1 SSH金鑰認證"></a>3.3.1 SSH金鑰認證</h3><ul>
 <li><p>產生SSH金錀</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span></span><br></pre></td></tr></table></figure>
-<img src="/2019/07/24/account-security-setting/ssh-keygen-had-email.png" class="">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+<img src="/2019/07/24/account-security-setting/ssh-keygen-had-email.png" class="" title="SSH 金鑰產生過程畫面">
 <blockquote>
 <ul>
 <li>注意: 如果您使用的是不支持ed25519算法的舊系統，請使用以下指令<ul>
@@ -348,26 +352,28 @@
 <li><p>複制<code>~/.ssh/id_ed25519.pub</code>內容</p>
 </li>
 <li><p>SSH-Keys設定位置</p>
-<img src="/2019/07/24/account-security-setting/03-ssh-keys-01.png" class="">
+<img src="/2019/07/24/account-security-setting/03-ssh-keys-01.png" class="" title="GitHub SSH 金鑰設定頁面">
 
 <blockquote>
 <ul>
-<li>[使用SSH 連接到GitHub (簡中版手冊)](<a target="_blank" rel="noopener" href="https://help.github.com/cn/articles/">https://help.github.com/cn/articles/</a>  connecting-to-github-with-ssh)</li>
-<li>[Connecting to GitHub with SSH (英文版手冊)](<a target="_blank" rel="noopener" href="https://help.github.com/en/articles/">https://help.github.com/en/articles/</a>  connecting-to-github-with-ssh)</li>
+<li><a target="_blank" rel="noopener" href="https://help.github.com/cn/articles/connecting-to-github-with-ssh">使用SSH 連接到GitHub (簡中版手冊)</a></li>
+<li><a target="_blank" rel="noopener" href="https://help.github.com/en/articles/connecting-to-github-with-ssh">Connecting to GitHub with SSH (英文版手冊)</a></li>
 </ul>
 </blockquote>
 </li>
 <li><p>SSH金錀設定檔 <code>~/.ssh/config</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">前往家目錄下的ssh設定資料夾</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ~/.ssh/</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">編輯ssh config</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">vi config</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前往家目錄下的ssh設定資料夾</span></span><br><span class="line">$ <span class="built_in">cd</span> ~/.ssh/</span><br><span class="line"><span class="comment"># 編輯ssh config</span></span><br><span class="line">$ vi config</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>可以為多個主機設置配置使用的金錀</p>
 </blockquote>
 <p>config內容如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    #IdentityFile ~/.ssh/id_ed25519 # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Github.com</span></span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    <span class="comment">#IdentityFile ~/.ssh/id_ed25519 # 金鑰如果使用預設路徑&amp;檔名，可以不設定本行</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>IdentityFile 指定ssh私鑰路徑，金鑰如果使用預設路徑&amp;檔名，可以不設定本行</p>
 </blockquote>
 </li>
+<li><p><strong>測試 SSH 連線</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 測試 GitHub SSH 連線</span></span><br><span class="line">$ ssh -T git@github.com</span><br><span class="line"><span class="comment"># 成功訊息：Hi username! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <blockquote>
 <ul>
@@ -383,11 +389,25 @@
 </blockquote>
 <h3 id="3-3-2-兩步驟驗證"><a href="#3-3-2-兩步驟驗證" class="headerlink" title="3.3.2 兩步驟驗證"></a>3.3.2 兩步驟驗證</h3><ul>
 <li><p>登入GitHub，設定兩步驟驗證</p>
-<img src="/2019/07/24/account-security-setting/03-github-security-01.png" class=""></li>
+<img src="/2019/07/24/account-security-setting/03-github-security-01.png" class="" title="GitHub 兩步驟驗證設定頁面"></li>
 </ul>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://help.github.com/en/articles/configuring-two-factor-authentication-recovery-methods#downloading-your-two-factor-authentication-recovery-codes">GitHub兩步驟驗證教學</a></p>
 </blockquote>
+<h1 id="四、多-SSH-金鑰管理"><a href="#四、多-SSH-金鑰管理" class="headerlink" title="四、多 SSH 金鑰管理"></a>四、多 SSH 金鑰管理</h1><p>當您需要分別管理公司與個人專案的 SSH 金鑰時：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 產生公司用金鑰</span></span><br><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;work@company.com&quot;</span> -f ~/.ssh/id_ed25519_work</span><br><span class="line"></span><br><span class="line"><span class="comment"># 產生個人用金鑰</span></span><br><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;personal@gmail.com&quot;</span> -f ~/.ssh/id_ed25519_personal</span><br></pre></td></tr></table></figure>
+
+<p><strong>config 設定範例</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/.ssh/config</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 公司 GitHub</span></span><br><span class="line">Host github-work</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_ed25519_work</span><br><span class="line"></span><br><span class="line"><span class="comment"># 個人 GitHub</span></span><br><span class="line">Host github-personal</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_ed25519_personal</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用方式</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Clone 公司專案</span></span><br><span class="line">git <span class="built_in">clone</span> git@github-work:company/project.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># Clone 個人專案</span></span><br><span class="line">git <span class="built_in">clone</span> git@github-personal:username/project.git</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
 
       
     </div>
@@ -398,12 +418,12 @@
     
 
     <footer class="article-footer">
-      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cmb0e6afk002s08ou20l7alqq" class="article-share-link">
+      <a data-url="https://blog.mars-world.net/2019/07/24/account-security-setting/" data-id="cmgl4fubs0010fvqpgujn6dxr" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/account/" rel="tag">account</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/env/" rel="tag">env</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/security/" rel="tag">security</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2025renew/" rel="tag">2025renew</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/account/" rel="tag">account</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/env/" rel="tag">env</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/security/" rel="tag">security</a></li></ul>
 
 
     </footer>
@@ -479,7 +499,7 @@
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/container/">container</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/doc/">doc</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/info/">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/mysql/">mysql</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/server/">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/test/">test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tools/">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/web/">web</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/database/">database</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/doc/">doc</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/security/">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/testing/">testing</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/training/">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/tutorial/">tutorial</a><span class="sidebar-module-list-count">9</span></li></ul>
   </div>
 
 
@@ -487,7 +507,7 @@
   
   <div class="sidebar-module">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/codeingiter/" rel="tag">codeingiter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/container/" rel="tag">container</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/db/" rel="tag">db</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">19</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ide/" rel="tag">ide</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/info/" rel="tag">info</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/remote-dev/" rel="tag">remote-dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sa/" rel="tag">sa</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sd/" rel="tag">sd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/server/" rel="tag">server</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/setting/" rel="tag">setting</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/standard/" rel="tag">standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/test/" rel="tag">test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/time/" rel="tag">time</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tools/" rel="tag">tools</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/" rel="tag">unit test</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/2025renew/" rel="tag">2025renew</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SOLID/" rel="tag">SOLID</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/account/" rel="tag">account</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ajax/" rel="tag">ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/apache/" rel="tag">apache</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/architecture/" rel="tag">architecture</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/assessment/" rel="tag">assessment</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/blog/" rel="tag">blog</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/bootstrap/" rel="tag">bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/branch/" rel="tag">branch</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/codeigniter/" rel="tag">codeigniter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding/" rel="tag">coding</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coding-standard/" rel="tag">coding-standard</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/composer/" rel="tag">composer</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/container/" rel="tag">container</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/coverage/" rel="tag">coverage</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/crud/" rel="tag">crud</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/database/" rel="tag">database</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/datetime/" rel="tag">datetime</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/debug/" rel="tag">debug</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/design/" rel="tag">design</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev/" rel="tag">dev</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/dev-container/" rel="tag">dev-container</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/doc/" rel="tag">doc</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/env/" rel="tag">env</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/environment/" rel="tag">environment</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/frontend/" rel="tag">frontend</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/git/" rel="tag">git</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/github/" rel="tag">github</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/infra/" rel="tag">infra</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/install/" rel="tag">install</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/linux/" rel="tag">linux</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/microsecond/" rel="tag">microsecond</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nvm/" rel="tag">nvm</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/package-manager/" rel="tag">package-manager</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/php/" rel="tag">php</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/phpunit/" rel="tag">phpunit</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/remote-dev/" rel="tag">remote-dev</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/remote-ssh/" rel="tag">remote-ssh</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/rwd/" rel="tag">rwd</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/security/" rel="tag">security</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/sop/" rel="tag">sop</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/style/" rel="tag">style</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/testing/" rel="tag">testing</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/timestamp/" rel="tag">timestamp</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/trace/" rel="tag">trace</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/training/" rel="tag">training</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/tutorial/" rel="tag">tutorial</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/unit-test/" rel="tag">unit-test</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/version-control/" rel="tag">version-control</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/web/" rel="tag">web</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/windows/" rel="tag">windows</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/workflow/" rel="tag">workflow</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/xdebug/" rel="tag">xdebug</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
